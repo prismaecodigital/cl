@@ -22,8 +22,9 @@ export default {
         success: '#219653',
         danger: '#D34053',
         warning: '#FFA70B',
-        oleLighter: '#42c5ba',
-        oleDarken: '#168c82',
+        'ole-lighter': '#42c5ba',
+        'ole-darken': '#168c82',
+        'white-70': 'rgba(255, 255, 255, 0.7)',
         ...defaultTheme.colors,
       },
       fontFamily: {
