@@ -17,6 +17,7 @@ class PackageSeeder extends Seeder
             ['name' => 'Cluster', 'uom' => 'cluster'],
             ['name' => 'Live Music', 'uom' => 'pax'],
             ['name' => 'Additional Breakfast', 'uom' => 'pax'],
+            ['name' => 'Fullboard Meeting Package Twinshare', 'uom' => 'pax'],
         ];
 
         foreach ($packages as $package) {

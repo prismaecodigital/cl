@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Note extends Model
 {
     use HasFactory;
-    protected $fillable = ['letter_id', 'date'];
+    protected $fillable = ['letter_id', 'start_date', 'end_date'];
 
     public function letter(): BelongsTo
     {
