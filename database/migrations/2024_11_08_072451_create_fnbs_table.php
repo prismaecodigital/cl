@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('fnbs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('letter_id');
-            $table->string('breakfast', 20)->nullable();
-            $table->string('cb_morning', 20)->nullable();
-            $table->string('lunch', 20)->nullable();
-            $table->string('cb_evening', 20)->nullable();
-            $table->string('dinner', 20)->nullable();
-            $table->string('cb_night', 20)->nullable();
+            $table->string('breakfast', 10)->nullable();
+            $table->string('cb_morning', 10)->nullable();
+            $table->string('lunch', 10)->nullable();
+            $table->string('cb_evening', 10)->nullable();
+            $table->string('dinner', 10)->nullable();
+            $table->string('cb_night', 10)->nullable();
             $table->timestamps();
 
             // Added foreign key constraint
