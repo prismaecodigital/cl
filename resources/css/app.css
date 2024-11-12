@@ -4,6 +4,8 @@
 @import 'base/content';
 
 @import 'components/loader';
+@import 'components/dropdown';
+@import 'components/toggle-bar';
 
 @import 'layout/header';
 @import 'layout/sidebar';

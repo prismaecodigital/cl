@@ -1,0 +1,61 @@
+.nav {
+  @apply
+    mt-1
+    py-4
+    px-4
+    lg:px-6
+  }
+  
+.nav__list {
+  @apply
+    mb-6
+    flex
+    flex-col
+    gap-1.5
+    relative
+}
+
+.nav__list.top::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -13px;
+  width: 60%;
+  height: 1px;
+  transform: translateX(-50%);
+
+  @apply bg-gray-100
+}
+
+.nav__link {
+  @apply 
+    relative
+    flex
+    items-center
+    gap-2.5
+    rounded-sm
+    px-4
+    py-3
+    font-medium
+    text-gray-400
+    duration-300
+    ease-in-out
+    hover:bg-ole-lighter
+    hover:text-ole
+}
+
+.nav__link.active {
+  @apply
+    text-ole
+    bg-ole-lighter
+}
+
+.nav__dropdown__list {
+  @apply
+    mt-4
+    mb-5
+    flex
+    flex-col
+    gap-2.5
+    pl-6
+}
