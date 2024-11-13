@@ -33,21 +33,21 @@
     flex
     items-center
     gap-2.5
-    rounded-sm
+    rounded-md
     px-4
     py-3
     font-medium
     text-gray-400
-    duration-300
+    duration-200
     ease-in-out
-    hover:bg-ole-lighter
-    hover:text-ole
+    hover:bg-ole
+    hover:text-white
 }
 
 .nav__link.active {
   @apply
-    text-ole
-    bg-ole-lighter
+    text-white
+    bg-ole
 }
 
 .nav__dropdown__list {
