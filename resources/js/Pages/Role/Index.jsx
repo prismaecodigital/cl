@@ -1,7 +1,9 @@
 import React from 'react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 
-function Index() {
+function Index({ roles }) {
+  console.log(roles, 'data role');
+  
   return (
     <div className='content-box'>
       <h1 className='text--title'>Role</h1>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\OrganizationListResource;
+use App\Models\Organization;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -13,7 +15,11 @@ class OrganizationController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('Organization/Index');
+        $data = Organization::all();
+
+        return Inertia::render('Organization/Index', [
+            'organizations' => OrganizationListResource::collection($data),
+        ]);
     }
 
     /**

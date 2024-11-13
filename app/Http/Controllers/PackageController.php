@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PackageListResource;
+use App\Models\Package;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -13,7 +15,11 @@ class PackageController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('Package/Index');
+        $data = Package::all();
+
+        return Inertia::render('Package/Index', [
+            'packages' => PackageListResource::collection($data),
+        ]);
     }
 
     /**

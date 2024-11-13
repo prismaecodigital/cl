@@ -1,7 +1,9 @@
 import React from 'react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 
-function Index() {
+function Index({ letters }) {
+  console.log(letters, 'data confirmation letter');
+  
   return (
     <div className='content-box'>
       <h1 className='text--title'>Confirmation Letter</h1>

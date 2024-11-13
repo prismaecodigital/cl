@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PermissionListResource;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -13,7 +15,11 @@ class PermissionController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('Permission/Index');
+        $data = Permission::all();
+
+        return Inertia::render('Permission/Index', [
+            'permissions' => PermissionListResource::collection($data),
+        ]);
     }
 
     /**

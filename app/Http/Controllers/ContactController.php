@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ContactListResource;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -13,7 +15,12 @@ class ContactController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('Contact/Index');
+        $data = Contact::all();
+        $data->load('organization');
+
+        return Inertia::render('Contact/Index', [
+            'contacts' => ContactListResource::collection($data),
+        ]);
     }
 
     /**

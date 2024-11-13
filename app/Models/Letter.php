@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Letter extends Model
 {
@@ -41,9 +42,21 @@ class Letter extends Model
     {
         return $this->hasMany(Note::class, 'letter_id', 'id');
     }
+
+    public function hasPackages(): HasManyThrough
+    {
+        return $this->hasManyThrough(NotePackage::class, Note::class);
+    }
     
     public function hasFnb(): HasMany
     {
         return $this->hasMany(Fnb::class, 'letter_id', 'id');
+    }
+
+    public function calculateAmount(): float
+    {
+        return $this->hasNotes->flatMap(function ($note) {
+            return $note->notePackage;
+        })->sum('price');
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EventListResource;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -13,7 +15,11 @@ class EventController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('Event/Index');
+        $data = Event::all();
+
+        return Inertia::render('Event/Index', [
+            'events' => EventListResource::collection($data),
+        ]);
     }
 
     /**

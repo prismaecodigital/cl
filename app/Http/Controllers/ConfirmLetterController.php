@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ConfirmLetterListResource;
+use App\Models\Letter;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -13,7 +15,12 @@ class ConfirmLetterController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('ConfirmLetter/Index');
+        $data = Letter::all();
+        $data->load('hasNotes', 'hasPackages');
+        
+        return Inertia::render('ConfirmLetter/Index', [
+            'letters' => ConfirmLetterListResource::collection($data),
+        ]);
     }
 
     /**

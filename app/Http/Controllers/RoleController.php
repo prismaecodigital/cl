@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\RoleListResource;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -13,7 +15,12 @@ class RoleController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('Role/Index');
+        $data = Role::all();
+        $data->load('hasPermissions');
+
+        return Inertia::render('Role/Index', [
+            'roles' => RoleListResource::collection($data),
+        ]);
     }
 
     /**

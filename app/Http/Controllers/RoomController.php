@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\RoomListResource;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -13,7 +15,11 @@ class RoomController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('Room/Index');
+        $data = Room::all();
+
+        return Inertia::render('Room/Index', [
+            'rooms' => RoomListResource::collection($data),
+        ]);
     }
 
     /**

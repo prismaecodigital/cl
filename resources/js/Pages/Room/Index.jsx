@@ -1,7 +1,9 @@
 import React from 'react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 
-function Index() {
+function Index({ rooms }) {
+  console.log(rooms);
+  
   return (
     <div className='content-box'>
       <h1 className='text--title'>Room</h1>
