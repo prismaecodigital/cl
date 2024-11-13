@@ -1,7 +1,15 @@
 <?php
 
+use App\Http\Controllers\ConfirmLetterController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\PackageController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -23,6 +31,23 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['auth', 'verified'])->group(function() {
+    Route::resources([
+        'confirm-letter' => ConfirmLetterController::class,
+
+        'database/organizations' => OrganizationController::class,
+        'database/contacts' => ContactController::class,
+        'database/events' => EventController::class,
+        'database/rooms' => RoomController::class,
+        'database/packages' => PackageController::class,
+
+        'authorization/users' => UserController::class,
+        'authorization/roles' => RoleController::class,
+        'authorization/permissions' => PermissionController::class
+    ]);
+
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

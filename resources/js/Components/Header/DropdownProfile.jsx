@@ -6,7 +6,7 @@ export default function DropdownProfile() {
     <div className='dropdown__wrapper'>
       <ul className='dropdown__content'>
         <Link
-          href={route('profile.index')}
+          href='#'
           className='dropdown__list ole'
         >
           <User /> Profile

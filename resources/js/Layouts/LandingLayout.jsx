@@ -1,7 +1,7 @@
 import { Link } from '@inertiajs/react';
 import { Mails } from 'lucide-react';
 
-export default function Guest({ children }) {
+export default function LandingLayout({ children }) {
     return (
         <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             <div>

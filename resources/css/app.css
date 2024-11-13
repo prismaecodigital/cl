@@ -2,6 +2,7 @@
 
 @import 'base/base';
 @import 'base/content';
+@import 'base/typography';
 
 @import 'components/loader';
 @import 'components/dropdown';

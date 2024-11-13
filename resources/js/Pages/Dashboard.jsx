@@ -1,26 +1,16 @@
-import React, { useState } from 'react';
-import { Head } from '@inertiajs/react';
-import Header from '@/Components/Header/Header';
-import Sidebar from '@/Components/Sidebar/Sidebar';
+import React from 'react';
+import DashboardLayout from '@/Layouts/DashboardLayout';
 
-export default function DashboardLayout({ title, children }){
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
+function DashboardPage() {
   return (
-    <>
-      <Head title={title} />
-      
-      <div className='app'>
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        <div className='app__content'>
-          <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-          <main className='min-h-screen'>
-            <div className='content'>
-              {children}
-            </div>
-          </main>
-        </div>
-      </div>
-    </>
+    <div className='content-box'>
+      <h1 className='text--title'>Dashboard</h1>
+    </div>
   );
 }
+
+DashboardPage.layout = page => (
+  <DashboardLayout title='Dashboard' children={page} />
+);
+
+export default DashboardPage;
