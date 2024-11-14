@@ -4,6 +4,7 @@
 @import 'base/content';
 @import 'base/typography';
 
+@import 'components/label';
 @import 'components/table';
 @import 'components/loader';
 @import 'components/dropdown';

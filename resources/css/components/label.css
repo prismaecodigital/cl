@@ -1,0 +1,42 @@
+.label {
+	@apply
+		text-sm
+		inline-block
+		p-2
+		rounded-md
+		m-1
+		ml-0
+}
+
+.label--secondary {
+	@apply
+		bg-gray-50
+}
+
+/* .label--superadmin {
+	@apply
+		bg-pastel-maroon
+		text-white
+		font-semibold
+}
+
+.label--admin {
+	@apply
+		bg-pastel-danger
+		text-white
+		font-semibold
+}
+
+.label--instructor {
+	@apply
+		bg-pastel-warning
+		text-white
+		font-semibold
+}
+
+.label--user {
+	@apply
+		bg-pastel-success
+		text-white
+		font-semibold
+} */
