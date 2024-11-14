@@ -4,8 +4,10 @@
 @import 'base/content';
 @import 'base/typography';
 
+@import 'components/table';
 @import 'components/loader';
 @import 'components/dropdown';
+@import 'components/breadcrumb';
 @import 'components/toggle-bar';
 
 @import 'layout/header';
