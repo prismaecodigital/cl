@@ -6,7 +6,7 @@ export default function MyTable({ data, columns }) {
     }
 
     // Check if column has 'render' key
-    return col.render ? col.render(col, colIndex) : item[col.key];
+    return col.render ? col.render(item, rowIndex) : item[col.key];
   }
 
   return (
