@@ -1,12 +1,19 @@
 import React from 'react';
+import createColumn from './data';
 import DashboardLayout from '@/Layouts/DashboardLayout';
+import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
+import MyTable from '@/Components/Table/MyTable';
+function Index({ auth, permissions }) {
+  const columns = createColumn();
+  const breadcrumb = [
+    { link: route('dashboard'), text: 'Dashboard' },
+  ];
 
-function Index({ permissions }) {
-  console.log(permissions, 'data permission');
-  
   return (
     <div className='content-box'>
-      <h1 className='text--title'>Permission</h1>
+      <Breadcrumb pageName='Authorization' prevPage={breadcrumb} />
+
+      <MyTable data={permissions.data} columns={columns} />
     </div>
   );
 }
