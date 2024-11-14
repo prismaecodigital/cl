@@ -19,6 +19,7 @@ class RoleListResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'permissions' => $this->collectPermission(),
+            'canDelete' => true, // as a default role can delete
         ];
     }
 

@@ -20,6 +20,7 @@ class ContactListResource extends JsonResource
             'organization' => $this->organization->name,
             'name' => $this->name,
             'phone' => $this->maskNumber($this->phone),
+            'canDelete' => $this->hasLetter->isEmpty(),
         ];
     }
 

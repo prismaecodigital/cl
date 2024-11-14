@@ -22,6 +22,7 @@ class UserListResource extends JsonResource
             'role' => $this->collectRole(),
             'email' => $this->email,
             'phone' => $this->phone,
+            'canDelete' => $this->hasLetter->isEmpty(),
         ];
     }
 

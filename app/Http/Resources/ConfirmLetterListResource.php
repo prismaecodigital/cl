@@ -23,6 +23,7 @@ class ConfirmLetterListResource extends JsonResource
             'event' => $this->event->name,
             'sales' => $this->createdBy->fullname,
             'amount' => $this->calculateAmount(),
+            'canDelete' => true, // as a default confirm letter can be soft deleted
         ];
     }
 }

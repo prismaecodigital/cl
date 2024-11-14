@@ -18,6 +18,7 @@ class EventListResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'canDelete' => $this->hasLetter->isEmpty(),
         ];
     }
 }

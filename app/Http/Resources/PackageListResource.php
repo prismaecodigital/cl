@@ -19,6 +19,7 @@ class PackageListResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'unit' => $this->uom,
+            'canDelete' => $this->hasNotePackage->isEmpty(),
         ];
     }
 }

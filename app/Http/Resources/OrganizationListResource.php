@@ -19,6 +19,7 @@ class OrganizationListResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'address' => $this->address,
+            'canDelete' => $this->hasLetter->isEmpty(),
         ];
     }
 }

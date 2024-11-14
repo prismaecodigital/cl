@@ -18,6 +18,7 @@ class PermissionListResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'canDelete' => true, // as a default permission can delete
         ];
     }
 }
