@@ -1,12 +1,20 @@
 import React from 'react';
+import createColumn from './data';
 import DashboardLayout from '@/Layouts/DashboardLayout';
+import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
+import MyTable from '@/Components/Table/MyTable';
 
-function Index({ letters }) {
-  console.log(letters, 'data confirmation letter');
+function Index({ auth, letters }) {
+  const columns = createColumn();
+  const breadcrumb = [
+    { link: route('dashboard'), text: 'Dashboard' },
+  ];
   
   return (
     <div className='content-box'>
-      <h1 className='text--title'>Confirmation Letter</h1>
+      <Breadcrumb pageName='Confirmation Letter' prevPage={breadcrumb} />
+
+      <MyTable data={letters.data} columns={columns} />
     </div>
   );
 }
