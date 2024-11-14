@@ -1,12 +1,21 @@
 import React from 'react';
+import createColumn from './data';
 import DashboardLayout from '@/Layouts/DashboardLayout';
+import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
+import MyTable from '@/Components/Table/MyTable';
 
-function Index({ roles }) {
-  console.log(roles, 'data role');
+function Index({ auth, roles }) {
+  const columns = createColumn();
+  const breadcrumb = [
+    { link: route('dashboard'), text: 'Dashboard' },
+    { link: '#', text: 'Authorization' },
+  ];
   
   return (
     <div className='content-box'>
-      <h1 className='text--title'>Role</h1>
+      <Breadcrumb pageName='Role' prevPage={breadcrumb} />
+
+      <MyTable data={roles.data} columns={columns} />
     </div>
   );
 }
