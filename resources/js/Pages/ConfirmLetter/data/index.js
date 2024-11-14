@@ -32,7 +32,7 @@ const createColumn = () => {
     {
       key: 'amount',
       label: 'Amount',
-      // render: item => formatToIDR(item),
+      render: item => formatToIDR(item.amount),
     },
   ];
 }
