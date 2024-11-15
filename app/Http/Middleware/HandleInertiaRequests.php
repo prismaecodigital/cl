@@ -41,8 +41,10 @@ class HandleInertiaRequests extends Middleware
                 'permissions' => $permissions,
             ],
             'flash' => [
-                'success' => $request->session()->get('success'),
-                'error' => $request->session()->get('error'),
+                'alert-success' => $request->session()->get('alert-success'),
+                'alert-error' => $request->session()->get('alert-error'),
+                'toast-success' => $request->session()->get('toast-success'),
+                'toast-error' => $request->session()->get('toast-error'),
             ]
         ];
     }
