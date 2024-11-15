@@ -4,9 +4,11 @@
 @import 'base/content';
 @import 'base/typography';
 
+@import 'components/form';
 @import 'components/label';
 @import 'components/table';
 @import 'components/loader';
+@import 'components/button';
 @import 'components/dropdown';
 @import 'components/breadcrumb';
 @import 'components/toggle-bar';
