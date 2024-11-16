@@ -49,7 +49,7 @@ class OrganizationController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             return Redirect::back()->withErrors([
-                'error' => $e
+                'error' => $e->getMessage(),
             ])->withInput();
         }
     }

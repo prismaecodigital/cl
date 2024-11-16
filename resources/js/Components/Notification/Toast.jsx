@@ -3,8 +3,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 const toastConfig = {
-  theme: 'colored',
-  position: 'bottom-right',
+  theme: 'dark',
+  position: 'top-right',
   autoClose: 5000,
   draggable: true,
   closeOnClick: true,
@@ -23,7 +23,7 @@ const ToastContent = {
 }
 
 const ToastWrapper = () => {
-  return <ToastContainer />
+  return <ToastContainer style={{top: '90px'}} />
 };
 
 export { ToastContent, ToastWrapper };
