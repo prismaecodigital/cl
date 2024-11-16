@@ -13,8 +13,9 @@
 
 .form--max-length {
 	@apply
+		italic
 		text-sm
-		text-gray-800
+		text-gray-500
 }
 
 .form--error{

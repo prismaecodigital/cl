@@ -44,7 +44,7 @@ export default function FieldGroup({
         {maxLength && (
           <span className="form--max-length">
             {" "}
-            ({currentLength}/{maxLength})
+            {currentLength}/{maxLength}
           </span>
         )}
 
