@@ -44,7 +44,7 @@ export default function NavMenu({ sidebarExpand, setSidebarExpand }) {
                   <ChevronDown className={`absolute right-4 top-1/2 -translate-y-1/2 ${open && 'rotate-180'}`} />
                 </NavLink>
                 <div className={`translate transform overflow-hidden ${!open && 'hidden'}`} >
-                  <ul className='mt-1 mb-5.5 flex flex-col gap-2.5 pl-6'>
+                  <ul className='nav__dropdown'>
                     <NavLink
                       link={route('organizations.index')}
                       icon={<Building2 />}
@@ -104,7 +104,7 @@ export default function NavMenu({ sidebarExpand, setSidebarExpand }) {
                   <ChevronDown className={`absolute right-4 top-1/2 -translate-y-1/2 ${open && 'rotate-180'}`} />
                 </NavLink>
                 <div className={`translate transform overflow-hidden ${!open && 'hidden'}`} >
-                  <ul className='mt-1 mb-5.5 flex flex-col gap-2.5 pl-6'>
+                  <ul className='nav__dropdown'>
                     <NavLink
                       link={route('users.index')}
                       icon={<Users />}
