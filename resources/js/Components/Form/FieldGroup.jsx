@@ -24,12 +24,17 @@ export default function FieldGroup({
     }
   };
 
-  // Add props dynamically to the child input field
+  // Add props dynamically to the child input field when maxLength is set
   const renderChildWithProps = () => {
-    return React.cloneElement(children, {
-      onChange: handleInputChange,
-      value: children.props.value?.slice(0, maxLength), // Enforce maxLength at the input level
-    });
+    if (maxLength) {
+      return React.cloneElement(children, {
+        onChange: handleInputChange,
+        value: children.props.value?.slice(0, maxLength), // Enforce maxLength at the input level
+      });
+    }
+
+    // Return the child as is when maxLength is not set
+    return children;
   };
 
   return (
