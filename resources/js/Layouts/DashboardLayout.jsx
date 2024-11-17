@@ -11,9 +11,6 @@ export default function DashboardLayout({ title, children }) {
 
   useEffect(() => {
     const { 'toast-success': successMessage, 'toast-failed': failedMessage } = flash;
-    
-    console.log(successMessage, 'success message');
-    console.log(failedMessage, 'failed message');
 
     if (successMessage) ToastContent.success(successMessage);
     if (failedMessage) ToastContent.error(failedMessage);

@@ -15,7 +15,6 @@ function Create() {
   const { data, setData, post, errors, processing } = useForm({
 		name: '',
 	});
-  console.log(errors);
 
   const submit = (e) => {
 		e.preventDefault();
