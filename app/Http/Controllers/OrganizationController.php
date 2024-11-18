@@ -7,7 +7,6 @@ use App\Http\Requests\UpdateOrganizationRequest;
 use App\Http\Resources\OrganizationListResource;
 use App\Models\Organization;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
@@ -22,9 +21,10 @@ class OrganizationController extends Controller
     public function index(): Response
     {
         $data = Organization::all();
+        $lists = OrganizationListResource::collection($data);
 
         return Inertia::render('Organization/Index', [
-            'organizations' => OrganizationListResource::collection($data),
+            'organizations' => $lists,
         ]);
     }
 
@@ -44,9 +44,10 @@ class OrganizationController extends Controller
         DB::beginTransaction();
         try {
             $validated = $request->validated();
+            
             Organization::create($validated);
-
             DB::commit();
+
             return Redirect::route('organizations.index')->with('toast-success', 'Organization created');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -77,12 +78,23 @@ class OrganizationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateOrganizationRequest $request, Organization $organization)
+    public function update(UpdateOrganizationRequest $request, Organization $organization): RedirectResponse
     {
-        dd(json_encode([
-            'request' => $request->all(),
-            'data' => $organization,
-        ]));
+        DB::beginTransaction();
+        try {
+            $validated = $request->validated();
+            $organization->fill($validated);
+
+            $organization->save();
+            DB::commit();
+
+            return Redirect::route('organizations.index')->with('toast-success', 'Organization udpated');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return Redirect::back()->withErrors([
+                'error' => $e->getMessage(),
+            ])->withInput();
+        }
     }
 
     /**

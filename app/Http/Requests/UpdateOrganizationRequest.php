@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateOrganizationRequest extends FormRequest
@@ -11,7 +12,7 @@ class UpdateOrganizationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +22,11 @@ class UpdateOrganizationRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('organization');
+        
         return [
-            //
+            'name' => ['required', 'string', 'max:100', Rule::unique('organizations')->ignore($id)],
+            'address' => ['required', 'string'],
         ];
     }
 }
