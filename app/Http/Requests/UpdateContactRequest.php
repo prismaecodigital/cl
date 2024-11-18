@@ -2,17 +2,18 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
-class CreateContactRequest extends FormRequest
+class UpdateContactRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return Gate::allows('pic_create');
+        return Gate::allows('pic_edit');
     }
 
     /**
@@ -22,12 +23,14 @@ class CreateContactRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('contact');
+
         return [
             'organization' => ['required', 'integer', 'exists:organizations,id'],
             'name' => ['required', 'string', 'max:60'],
-            'phone' => ['required', 'string', 'max:16', 'unique:contacts,phone'],
-            'fax' => ['required', 'string', 'max:25', 'unique:contacts,fax'],
-            'email' => ['required', 'email', 'max:50', 'unique:contacts,email']
+            'phone' => ['required', 'string', 'max:16', Rule::unique('contacts')->ignore($id)],
+            'fax' => ['required', 'string', 'max:25', Rule::unique('contacts')->ignore($id)],
+            'email' => ['required', 'email', 'max:50', Rule::unique('contacts')->ignore($id)]
         ];
     }
 }
