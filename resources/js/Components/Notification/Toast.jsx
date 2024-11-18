@@ -9,8 +9,7 @@ const toastConfig = {
   draggable: true,
   closeOnClick: true,
   pauseOnHover: false,
-  progress: undefined,
-  hideProgressBar: true,
+  hideProgressBar: false,
 };
 
 const ToastContent = {

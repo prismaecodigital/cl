@@ -1,11 +1,11 @@
 import React from 'react';
-import createColumn from './data';
 import { Link } from '@inertiajs/react';
+import createColumn from './data/createColumn';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
 import MyTable from '@/Components/Table/MyTable';
 
-function Index({ auth, organizations }) {
+function Index({ organizations }) {
   const columns = createColumn();
   const breadcrumb = [
     { link: route('dashboard'), text: 'Dashboard' },

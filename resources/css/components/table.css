@@ -38,6 +38,7 @@
 }
 
 .table--action {
-	width: 150px;
-	@apply whitespace-nowrap
+	@apply 
+    whitespace-nowrap
+    w-40
 }

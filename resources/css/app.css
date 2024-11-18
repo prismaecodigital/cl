@@ -32,3 +32,8 @@
     scrollbar-width: none; /* Firefox */
   }
 }
+
+/* Add this to your CSS file */
+.Toastify__toast {
+  font-family: 'Figtree', serif !important; /* Replace with your desired font */
+}
