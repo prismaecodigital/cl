@@ -1,20 +1,17 @@
 import React from 'react';
-import createColumn from './data';
 import { Link } from '@inertiajs/react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
+import { databaseBreadcrumb } from '@/utils/breadcrumbContent';
 import MyTable from '@/Components/Table/MyTable';
+import createColumn from './data';
 
-function Index({ auth, events }) {
+function Index({ events }) {
   const columns = createColumn();
-  const breadcrumb = [
-    { link: route('dashboard'), text: 'Dashboard' },
-		{ link: '#', text: 'Database' },
-  ];
   
   return (
     <div className='content-box'>
-      <Breadcrumb pageName='Event' prevPage={breadcrumb} />
+      <Breadcrumb pageName='Event' prevPage={databaseBreadcrumb} />
       <Link className='btn btn--primary' href={route('events.create')}> Create </Link>
 
       <MyTable data={events.data} columns={columns} />

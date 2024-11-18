@@ -1,20 +1,17 @@
 import React from 'react';
-import createColumn from './data';
 import { Link } from '@inertiajs/react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
+import { authorizationBreadcrumb } from '@/utils/breadcrumbContent';
 import MyTable from '@/Components/Table/MyTable';
+import createColumn from './data';
 
-function Index({ auth, users }) {
+function Index({ users }) {
   const columns = createColumn();
-  const breadcrumb = [
-    { link: route('dashboard'), text: 'Dashboard' },
-    { link: '#', text: 'Authorization' },
-  ];
   
   return (
     <div className='content-box'>
-      <Breadcrumb pageName='User' prevPage={breadcrumb} />
+      <Breadcrumb pageName='User' prevPage={authorizationBreadcrumb} />
       <Link className='btn btn--primary' href={route('users.create')}> Create </Link>
 
       <MyTable data={users.data} columns={columns} />
