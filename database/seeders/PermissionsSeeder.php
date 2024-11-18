@@ -26,35 +26,40 @@ class PermissionsSeeder extends Seeder
             'organization_edit', // 9
             'organization_delete', // 10
 
-            'event_access', // 11
-            'event_create', // 12
-            'event_edit', // 13
-            'event_delete', // 14
+            'pic_access', // 11
+            'pic_create', // 12
+            'pic_edit', // 13
+            'pic_delete', // 14
+
+            'event_access', // 15
+            'event_create', // 16
+            'event_edit', // 17
+            'event_delete', // 18
             
-            'room_access', // 15
-            'room_create', // 16
-            'room_edit', // 17
-            'room_delete', // 18
+            'room_access', // 19
+            'room_create', // 20
+            'room_edit', // 21
+            'room_delete', // 22
             
-            'package_access', // 19
-            'package_create', // 20
-            'package_edit', // 21
-            'package_delete', // 22
+            'package_access', // 23
+            'package_create', // 24
+            'package_edit', // 25
+            'package_delete', // 26
 
-            'user_access', // 23
-            'user_create', // 24
-            'user_edit', // 25
-            'user_delete', // 26
+            'user_access', // 27
+            'user_create', // 28
+            'user_edit', // 29
+            'user_delete', // 30
 
-            'role_access', // 27
-            'role_create', // 28
-            'role_edit', // 29
-            'role_delete', // 30
+            'role_access', // 31
+            'role_create', // 32
+            'role_edit', // 33
+            'role_delete', // 34
 
-            'permission_access', // 31
-            'permission_create', // 32
-            'permission_edit', // 33
-            'permission_delete', // 34
+            'permission_access', // 35
+            'permission_create', // 36
+            'permission_edit', // 37
+            'permission_delete', // 38
         ];
 
         foreach ($permissions as $permission) {
