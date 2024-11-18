@@ -19,7 +19,7 @@ class PermissionsSeeder extends Seeder
             'letter_create', // 3
             'letter_edit', // 4
             'letter_delete', // 5
-            'letter_convert', // 6
+            'letter_export', // 6
             
             'organization_access', // 7
             'organization_create', // 8
