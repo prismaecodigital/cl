@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserRequest;
 use App\Http\Resources\UserListResource;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -26,17 +30,33 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): Response
     {
-        //
+        return Inertia::render('User/Create', [
+            'roles' => roleSelectOptions(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request): RedirectResponse
     {
-        //
+        DB::beginTransaction();
+        try {
+            $validated = $request->validated();
+
+            $user = User::create($validated);
+            $user->hasRoles()->sync($validated['role']);
+
+            DB::commit();
+            return Redirect::route('users.index')->with('toast-success', 'User created');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return Redirect::back()->withErrors([
+                'error' => $e->getMessage(),
+            ])->withInput();
+        }
     }
 
     /**

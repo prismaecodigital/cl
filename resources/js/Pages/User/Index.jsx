@@ -1,5 +1,6 @@
 import React from 'react';
 import createColumn from './data';
+import { Link } from '@inertiajs/react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
 import MyTable from '@/Components/Table/MyTable';
@@ -14,6 +15,7 @@ function Index({ auth, users }) {
   return (
     <div className='content-box'>
       <Breadcrumb pageName='User' prevPage={breadcrumb} />
+      <Link className='btn btn--primary' href={route('users.create')}> Create </Link>
 
       <MyTable data={users.data} columns={columns} />
     </div>
