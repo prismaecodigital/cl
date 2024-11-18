@@ -20,6 +20,8 @@ class OrganizationController extends Controller
      */
     public function index(): Response
     {
+        Gate::authorize('organization_access');
+
         $data = Organization::all();
         $lists = OrganizationListResource::collection($data);
 
@@ -48,7 +50,7 @@ class OrganizationController extends Controller
             Organization::create($validated);
             DB::commit();
 
-            return Redirect::route('organizations.index')->with('toast-success', 'Organization created');
+            return Redirect::route('organizations.index')->with('toast-success', 'Organization created!');
         } catch (\Exception $e) {
             DB::rollBack();
             return Redirect::back()->withErrors([
@@ -88,7 +90,7 @@ class OrganizationController extends Controller
             $organization->save();
             DB::commit();
 
-            return Redirect::route('organizations.index')->with('toast-success', 'Organization udpated');
+            return Redirect::route('organizations.index')->with('toast-success', 'Organization udpated!');
         } catch (\Exception $e) {
             DB::rollBack();
             return Redirect::back()->withErrors([
@@ -105,6 +107,6 @@ class OrganizationController extends Controller
         Gate::authorize('organization_delete');
 
         $organization->delete();
-        return Redirect::back()->with('toast-success', 'Organization deleted');
+        return Redirect::back()->with('toast-success', 'Organization deleted!');
     }
 }

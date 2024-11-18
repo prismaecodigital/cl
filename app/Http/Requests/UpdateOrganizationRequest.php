@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class UpdateOrganizationRequest extends FormRequest
 {
@@ -12,7 +13,7 @@ class UpdateOrganizationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return Gate::allows('organization_edit');
     }
 
     /**

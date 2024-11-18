@@ -7,7 +7,7 @@ const createColumn = () => {
   const permissionEdit = permissions.includes('organization_edit');
   const permissionDelete = permissions.includes('organization_delete');
 
-  let columns = [
+  const columns = [
     {
       key: 'id',
       label: 'No.',

@@ -6,9 +6,10 @@ import TextArea from '@/Components/Form/TextArea';
 import LoadingButton from '@/Components/Button/LoadingButton';
 
 export default function OrganizationForm ({ method, initialValues, routeName, organization='' }) {
+  const { name, address } = initialValues;
   const { data, setData, post, patch, errors, processing } = useForm({
-    name: initialValues.name || '',
-    address: initialValues.address || ''
+    name: name || '',
+    address: address || ''
   });
 
   const submit = (e) => {
@@ -21,7 +22,7 @@ export default function OrganizationForm ({ method, initialValues, routeName, or
   };
 
   return (
-    <form onSubmit={submit} className="w-full">
+    <form onSubmit={submit} className='w-full'>
       <FieldGroup
         label='Name'
         name='name'
@@ -36,8 +37,8 @@ export default function OrganizationForm ({ method, initialValues, routeName, or
           value={data.name}
           required
           isFocused
-          autoComplete="name"
-          placeholder="Organization Name..."
+          autoComplete='name'
+          placeholder='Organization Name...'
           onChange={(e) => setData('name', e.target.value)}
         />
       </FieldGroup>
@@ -54,8 +55,8 @@ export default function OrganizationForm ({ method, initialValues, routeName, or
           className='mt-1 block w-full'
           value={data.address}
           required
-          autoComplete="address"
-          placeholder="Organization Address..."
+          autoComplete='address'
+          placeholder='Organization Address...'
           onChange={(e) => setData('address', e.target.value)}
         />
       </FieldGroup>
