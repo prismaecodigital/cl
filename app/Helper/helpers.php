@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Organization;
+use App\Models\Permission;
 use Carbon\Carbon;
 
 if (!function_exists('convertToJakartaTime')) {
@@ -16,6 +17,18 @@ if (!function_exists('organizationSelectOptions')) {
     function organizationSelectOptions()
     {
         return Organization::all(['id', 'name'])->map(function ($data) {
+            return [
+                'value' => $data->id,
+                'label' => $data->name,
+            ];
+        })->toArray();
+    }
+}
+
+if (!function_exists('permissionSelectOptions')) {
+    function permissionSelectOptions()
+    {
+        return Permission::all(['id', 'name'])->map(function ($data) {
             return [
                 'value' => $data->id,
                 'label' => $data->name,

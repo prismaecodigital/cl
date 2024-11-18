@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateRoleRequest;
 use App\Http\Resources\RoleListResource;
 use App\Models\Role;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -26,17 +30,33 @@ class RoleController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): Response
     {
-        //
+        return Inertia::render('Role/Create', [
+            'permissions' => permissionSelectOptions(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateRoleRequest $request): RedirectResponse
     {
-        //
+        DB::beginTransaction();
+        try {
+            $validated = $request->validated();
+
+            $role = Role::create($validated);
+            $role->hasPermissions()->sync($validated['permission']);
+
+            DB::commit();
+            return Redirect::route('roles.index')->with('toast-success', 'Role created');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return Redirect::back()->withErrors([
+                'error' => $e->getMessage(),
+            ])->withInput();
+        }
     }
 
     /**
