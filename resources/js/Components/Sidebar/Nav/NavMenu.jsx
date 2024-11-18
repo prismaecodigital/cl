@@ -109,14 +109,14 @@ export default function NavMenu({ sidebarExpand, setSidebarExpand }) {
                       link={route('users.index')}
                       icon={<Users />}
                       name='users'
-                      text='Users'
+                      text='User'
                       active={urlPath[2] == 'users'}
                     />
                     <NavLink
                       link={route('roles.index')}
                       icon={<Settings2 />}
                       name='roles'
-                      text='Roles'
+                      text='Role'
                       active={urlPath[2] == 'roles'}
                     />
                     <NavLink
