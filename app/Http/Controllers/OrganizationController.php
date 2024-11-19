@@ -90,7 +90,7 @@ class OrganizationController extends Controller
             $organization->save();
             DB::commit();
 
-            return Redirect::route('organizations.index')->with('toast-success', 'Organization udpated!');
+            return Redirect::route('organizations.index')->with('toast-success', 'Organization updated!');
         } catch (\Exception $e) {
             DB::rollBack();
             return Redirect::back()->withErrors([

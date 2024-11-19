@@ -1,15 +1,10 @@
 import React from 'react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
+import { picBreadcrumb } from '@/utils/breadcrumbContent';
 import ContactForm from './component/ContactForm';
 
 function Edit({ contact, organizations }) {
-  const breadcrumb = [
-    { link: route('dashboard'), text: 'Dashboard' },
-		{ link: route('contacts.index'), text: 'Contact' },
-  ];
-
-  console.log(contact);
   const { name, phone, fax, email, organization } = contact;
   const data = {
     organization: organization.id,
@@ -25,7 +20,7 @@ function Edit({ contact, organizations }) {
   
   return (
     <div className='content-box'>
-			<Breadcrumb title='Contact Edit' pageName='Edit' prevPage={breadcrumb} />
+			<Breadcrumb title='Contact Edit' pageName='Edit' prevPage={picBreadcrumb} />
       
       <ContactForm
         method='patch'

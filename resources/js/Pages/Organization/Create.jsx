@@ -1,14 +1,10 @@
 import React from 'react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
+import { organizationBreadcrumb } from '@/utils/breadcrumbContent';
 import OrganizationForm from './component/OrganizationForm';
 
 function Create () {
-  const breadcrumb = [
-    { link: route('dashboard'), text: 'Dashboard' },
-    { link: route('organizations.index'), text: 'Organization' },
-  ];
-
   const data = {
     name: '',
     address: '',
@@ -16,7 +12,7 @@ function Create () {
 
   return (
     <div className='content-box'>
-      <Breadcrumb title='Create Organization' pageName='Create' prevPage={breadcrumb} />
+      <Breadcrumb title='Create Organization' pageName='Create' prevPage={organizationBreadcrumb} />
 
       <OrganizationForm
         method='post'
