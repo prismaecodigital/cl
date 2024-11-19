@@ -4,26 +4,27 @@ import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
 import { roomBreadcrumb } from '@/utils/breadcrumbContent';
 import RoomForm from './component/RoomForm';
 
-function Create() {
+function Edit({ room }) {
   const data = {
-		name: '',
+		name: room.name,
 	};
-
+  
   return (
     <div className='content-box'>
-			<Breadcrumb title='Room Create' pageName='Create' prevPage={roomBreadcrumb} />
+			<Breadcrumb title='Room Edit' pageName='Edit' prevPage={roomBreadcrumb} />
       
       <RoomForm
-        method='post'
+        method='patch'
         initialValues={data}
-        routeName='rooms.store'
+        routeName='rooms.update'
+        room={room}
       />
     </div>
   );
 }
 
-Create.layout = page => (
-  <DashboardLayout title='Room Create' children={page} />
+Edit.layout = page => (
+  <DashboardLayout title='Room Edit' children={page} />
 );
 
-export default Create;
+export default Edit;

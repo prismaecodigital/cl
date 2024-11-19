@@ -4,7 +4,7 @@ import DashboardLayout from '@/Layouts/DashboardLayout';
 import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
 import { databaseBreadcrumb } from '@/utils/breadcrumbContent';
 import MyTable from '@/Components/Table/MyTable';
-import createColumn from './data';
+import createColumn from './data/createColumn';
 
 function Index({ rooms }) {
   const columns = createColumn();

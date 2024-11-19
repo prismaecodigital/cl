@@ -4,15 +4,16 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Rule;
 
-class CreateRoomRequest extends FormRequest
+class UpdateRoomRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return Gate::allows('room_create');
+        return Gate::allows('room_edit');
     }
 
     /**
@@ -22,8 +23,10 @@ class CreateRoomRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('room');
+
         return [
-            'name' => ['required', 'string', 'max:70', 'unique:rooms,name'],
+            'name' => ['required', 'string', 'max:70', Rule::unique('rooms')->ignore($id)], 
         ];
     }
 }
