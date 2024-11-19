@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePackageRequest;
+use App\Http\Requests\UpdatePackageRequest;
 use App\Http\Resources\PackageListResource;
 use App\Models\Package;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -19,10 +20,13 @@ class PackageController extends Controller
      */
     public function index(): Response
     {
+        Gate::authorize('package_access');
+
         $data = Package::all();
+        $lists = PackageListResource::collection($data);
 
         return Inertia::render('Package/Index', [
-            'packages' => PackageListResource::collection($data),
+            'packages' => $lists,
         ]);
     }
 
@@ -42,9 +46,10 @@ class PackageController extends Controller
         DB::beginTransaction();
         try {
             $validated = $request->validated();
-            Package::create($validated);
 
+            Package::create($validated);
             DB::commit();
+            
             return Redirect::route('packages.index')->with('toast-success', 'Package created');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -65,24 +70,43 @@ class PackageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Package $package): Response
     {
-        //
+        return Inertia::render('Package/Edit', [
+            'packageData' => $package,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdatePackageRequest $request, Package $package): RedirectResponse
     {
-        //
+        DB::beginTransaction();
+        try {
+            $validated = $request->validated();
+            $package->fill($validated);
+
+            $package->save();
+            DB::commit();
+
+            return Redirect::route('packages.index')->with('toast-success', 'Package updated!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return Redirect::back()->withErrors([
+                'error' => $e->getMessage(),
+            ])->withInput();
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Package $package): RedirectResponse
     {
-        //
+        Gate::authorize('package_delete');
+
+        $package->delete();
+        return Redirect::back()->with('toast-success', 'Package deleted!');
     }
 }

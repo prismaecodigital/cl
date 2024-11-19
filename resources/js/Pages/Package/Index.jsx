@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from '@inertiajs/react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
-import MyTable from '@/Components/Table/MyTable';
-import createColumn from './data';
 import { databaseBreadcrumb } from '@/utils/breadcrumbContent';
+import MyTable from '@/Components/Table/MyTable';
+import createColumn from './data/createColumn';
 
 function Index({ packages }) {
   const columns = createColumn();

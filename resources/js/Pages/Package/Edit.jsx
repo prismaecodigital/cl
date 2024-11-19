@@ -4,27 +4,29 @@ import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
 import { packageBreadcrumb } from '@/utils/breadcrumbContent';
 import PackageForm from './component/PackageForm';
 
-function Create() {
+function Edit({ packageData }) {
+  const { name, uom } = packageData;
   const data ={
-		name: '',
-		uom: ''
+		name: name,
+		uom: uom
 	};
 
   return (
     <div className='content-box'>
-			<Breadcrumb title='Package Create' pageName='Create' prevPage={packageBreadcrumb} />
+			<Breadcrumb title='Package Edit' pageName='Edit' prevPage={packageBreadcrumb} />
       
       <PackageForm 
-        method='post'
+        method='patch'
         initialValues={data}
-        routeName='packages.store'
+        routeName='packages.update'
+        packageData={packageData}
       />
     </div>
   );
 }
 
-Create.layout = page => (
-  <DashboardLayout title='Package Create' children={page} />
+Edit.layout = page => (
+  <DashboardLayout title='Package Edit' children={page} />
 );
 
-export default Create;
+export default Edit;
