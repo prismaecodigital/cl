@@ -4,26 +4,27 @@ import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
 import { eventBreadcrumb } from '@/utils/breadcrumbContent';
 import EventForm from './component/EventForm';
 
-function Create() {
+function Edit({ event }) {
   const data = {
-		name: '',
+		name: event.name,
 	};
-
+  
   return (
     <div className='content-box'>
-			<Breadcrumb title='Event Create' pageName='Create' prevPage={eventBreadcrumb} />
+			<Breadcrumb title='Event Edit' pageName='Edit' prevPage={eventBreadcrumb} />
       
       <EventForm
-        method='post'
+        method='patch'
         initialValues={data}
-        routeName='events.store'
+        routeName='events.update'
+        event={event}
       />
     </div>
   );
 }
 
-Create.layout = page => (
-  <DashboardLayout title='Event Create' children={page} />
+Edit.layout = page => (
+  <DashboardLayout title='Organization Edit' children={page} />
 );
 
-export default Create;
+export default Edit;

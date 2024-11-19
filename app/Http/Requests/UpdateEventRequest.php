@@ -4,15 +4,16 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Rule;
 
-class CreateEventRequest extends FormRequest
+class UpdateEventRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return Gate::allows('event_create');
+        return Gate::allows('event_edit');
     }
 
     /**
@@ -22,8 +23,10 @@ class CreateEventRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('event');
+
         return [
-            'name' => ['required', 'string', 'max:100', 'unique:events,name'],
+            'name' => ['required', 'string', 'max:100', Rule::unique('events')->ignore($id)], 
         ];
     }
 }
