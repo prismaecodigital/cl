@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/react';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
 import MyTable from '@/Components/Table/MyTable';
-import createColumn from './data';
+import createColumn from './data/createColumn';
 import { authorizationBreadcrumb } from '@/utils/breadcrumbContent';
 
 function Index({ roles }) {

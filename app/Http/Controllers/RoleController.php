@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateRoleRequest;
+use App\Http\Requests\UpdateRoleRequest;
 use App\Http\Resources\RoleListResource;
 use App\Models\Role;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -19,11 +20,14 @@ class RoleController extends Controller
      */
     public function index(): Response
     {
+        Gate::authorize('role_access');
+
         $data = Role::all();
         $data->load('hasPermissions');
+        $lists = RoleListResource::collection($data);
 
         return Inertia::render('Role/Index', [
-            'roles' => RoleListResource::collection($data),
+            'roles' => $lists,
         ]);
     }
 
@@ -50,7 +54,7 @@ class RoleController extends Controller
             $role->hasPermissions()->sync($validated['permission']);
 
             DB::commit();
-            return Redirect::route('roles.index')->with('toast-success', 'Role created');
+            return Redirect::route('roles.index')->with('toast-success', 'Role created!');
         } catch (\Exception $e) {
             DB::rollBack();
             return Redirect::back()->withErrors([
@@ -70,24 +74,45 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Role $role): Response
     {
-        //
+        $role->load('hasPermissions');
+        return Inertia::render('Role/Edit', [
+            'permissions' => permissionSelectOptions(),
+            'role' => $role,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRoleRequest $request, Role $role): RedirectResponse
     {
-        //
+        DB::beginTransaction();
+        try {
+            $validated = $request->validated();
+
+            $role->fill($validated);
+            $role->hasPermissions()->sync($validated['permission']);
+
+            DB::commit();
+            return Redirect::route('roles.index')->with('toast-success', 'Role updated!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return Redirect::back()->withErrors([
+                'error' => $e->getMessage(),
+            ])->withInput();
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Role $role): RedirectResponse
     {
-        //
+        Gate::authorize('role_delete');
+
+        $role->delete();
+        return Redirect::back()->with('toast-success', 'Role deleted!');
     }
 }
