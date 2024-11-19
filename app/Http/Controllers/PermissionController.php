@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePermissionRequest;
+use App\Http\Requests\UpdatePermissionRequest;
 use App\Http\Resources\PermissionListResource;
 use App\Models\Permission;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 
 class PermissionController extends Controller
 {
@@ -18,10 +21,13 @@ class PermissionController extends Controller
      */
     public function index(): Response
     {
+        Gate::authorize('permission_access');
+
         $data = Permission::all();
+        $lists = PermissionListResource::collection($data);
 
         return Inertia::render('Permission/Index', [
-            'permissions' => PermissionListResource::collection($data),
+            'permissions' => $lists,
         ]);
     }
 
@@ -41,10 +47,11 @@ class PermissionController extends Controller
         DB::beginTransaction();
         try {
             $validated = $request->validated();
-            Permission::create($validated);
 
+            Permission::create($validated);
             DB::commit();
-            return Redirect::route('permissions.index')->with('toast-success', 'Permission created');
+            
+            return Redirect::route('permissions.index')->with('toast-success', 'Permission created!');
         } catch (\Exception $e) {
             DB::rollBack();
             return Redirect::back()->withErrors([
@@ -64,24 +71,43 @@ class PermissionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Permission $permission): Response
     {
-        //
+        return Inertia::render('Permission/Edit', [
+            'permission' => $permission,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdatePermissionRequest $request, Permission $permission): RedirectResponse
     {
-        //
+        DB::beginTransaction();
+        try {
+            $validated = $request->validated();
+            $permission->fill($validated);
+
+            $permission->save();
+            DB::commit();
+
+            return Redirect::route('permissions.index')->with('toast-success', 'Permission updated!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return Redirect::back()->withErrors([
+                'error' => $e->getMessage(),
+            ])->withInput();
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Permission $permission): RedirectResponse
     {
-        //
+        Gate::authorize('permission_delete');
+
+        $permission->delete();
+        return Redirect::back()->with('toast-success', 'Permission deleted!');
     }
 }

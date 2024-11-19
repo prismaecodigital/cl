@@ -4,26 +4,27 @@ import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
 import { permissionBreadcrumb } from '@/utils/breadcrumbContent';
 import PermissionForm from './component/PermissionForm';
 
-function Create() {
+function Edit({ permission }) {
   const data = {
-		name: '',
+		name: permission.name,
 	};
 
   return (
     <div className='content-box'>
-			<Breadcrumb title='Permission Create' pageName='Create' prevPage={permissionBreadcrumb} />
+			<Breadcrumb title='Permission Edit' pageName='Edit' prevPage={permissionBreadcrumb} />
       
       <PermissionForm
-        method='post'
+        method='patch'
         initialValues={data}
-        routeName='permissions.store'
+        routeName='permissions.update'
+        permission={permission}
       />
     </div>
   );
 }
 
-Create.layout = page => (
-  <DashboardLayout title='Permission Create' children={page} />
+Edit.layout = page => (
+  <DashboardLayout title='Permission Edit' children={page} />
 );
 
-export default Create;
+export default Edit;
