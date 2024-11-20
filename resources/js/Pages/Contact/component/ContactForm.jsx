@@ -6,14 +6,9 @@ import Select from 'react-select';
 import LoadingButton from '@/Components/Button/LoadingButton';
 
 export default function ContactForm({ method, initialValues, routeName, organizations, contact='' }) {
-  const { organization, organizationSelected, name, phone, fax, email } = initialValues;
+  const fieldData = {...initialValues};
   const { data, setData, post, patch, errors, processing } = useForm({
-    organization: organization || '',
-    organizationSelected: organizationSelected || '',
-		name: name || '',
-    phone: phone || '',
-    fax: fax || '',
-    email: email || ''
+    ...fieldData
   });
 
   const handleOrganizationChange = (option) => {
@@ -119,7 +114,7 @@ export default function ContactForm({ method, initialValues, routeName, organiza
         <TextInput
           id='email'
           name='email'
-          type='email'
+          type={data.email === '-' ? 'text' : 'email'}
           className='mt-1 block w-full'
           value={data.email}
           autoComplete='email'
