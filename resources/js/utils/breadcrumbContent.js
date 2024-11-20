@@ -1,3 +1,8 @@
+const letterBreadcrumb = [
+  { link: route('dashboard'), text: 'Dashboard' },
+  { link: route('confirm-letter.index'), text: 'Confirm Letter' },
+];
+
 const databaseBreadcrumb = [
   { link: route('dashboard'), text: 'Dashboard' },
   { link: '#', text: 'Database' },
@@ -49,6 +54,7 @@ const permissionBreadcrumb = [
 ];
 
 export {
+  letterBreadcrumb,
   databaseBreadcrumb,
   organizationBreadcrumb,
   picBreadcrumb,

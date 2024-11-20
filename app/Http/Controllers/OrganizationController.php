@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateOrganizationRequest;
 use App\Http\Requests\UpdateOrganizationRequest;
 use App\Http\Resources\OrganizationListResource;
+use App\Models\Contact;
 use App\Models\Organization;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
@@ -108,5 +111,17 @@ class OrganizationController extends Controller
 
         $organization->delete();
         return Redirect::back()->with('toast-success', 'Organization deleted!');
+    }
+
+    /**
+     * Get contact list
+     */
+
+    public function getContact(Request $request): JsonResponse
+    {
+        $id = $request->query('organizationId');
+        $contact = Contact::where('organization_id', $id)->get();
+
+        return response()->json($contact);
     }
 }

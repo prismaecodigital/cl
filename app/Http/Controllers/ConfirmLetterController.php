@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ConfirmLetterListResource;
 use App\Models\Letter;
+use App\Models\Organization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -15,20 +17,27 @@ class ConfirmLetterController extends Controller
      */
     public function index(): Response
     {
+        Gate::authorize('letter_access');
+
         $data = Letter::all();
         $data->load('hasNotes', 'hasPackages');
+        $lists = ConfirmLetterListResource::collection($data);
         
         return Inertia::render('ConfirmLetter/Index', [
-            'letters' => ConfirmLetterListResource::collection($data),
+            'letters' => $lists,
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): Response
     {
-        //
+        return Inertia::render('ConfirmLetter/Create', [
+            'organizations' => Organization::all(),
+            'events' => eventSelectOptions(),
+            'rooms' => roomSelectOptions()
+        ]);
     }
 
     /**
