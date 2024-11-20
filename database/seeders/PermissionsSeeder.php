@@ -16,50 +16,51 @@ class PermissionsSeeder extends Seeder
             'dashboard_access', // 1
 
             'letter_access', // 2
-            'letter_create', // 3
-            'letter_edit', // 4
-            'letter_delete', // 5
-            'letter_export', // 6
+            'letter_show', // 3
+            'letter_create', // 4
+            'letter_edit', // 5
+            'letter_delete', // 6
+            'letter_export', // 7
             
-            'organization_access', // 7
-            'organization_create', // 8
-            'organization_edit', // 9
-            'organization_delete', // 10
+            'organization_access', // 8
+            'organization_create', // 9
+            'organization_edit', // 10
+            'organization_delete', // 11
 
-            'pic_access', // 11
-            'pic_create', // 12
-            'pic_edit', // 13
-            'pic_delete', // 14
+            'pic_access', // 12
+            'pic_create', // 13
+            'pic_edit', // 14
+            'pic_delete', // 15
 
-            'event_access', // 15
-            'event_create', // 16
-            'event_edit', // 17
-            'event_delete', // 18
+            'event_access', // 16
+            'event_create', // 17
+            'event_edit', // 18
+            'event_delete', // 19
             
-            'room_access', // 19
-            'room_create', // 20
-            'room_edit', // 21
-            'room_delete', // 22
+            'room_access', // 20
+            'room_create', // 21
+            'room_edit', // 22
+            'room_delete', // 23
             
-            'package_access', // 23
-            'package_create', // 24
-            'package_edit', // 25
-            'package_delete', // 26
+            'package_access', // 24
+            'package_create', // 25
+            'package_edit', // 26
+            'package_delete', // 27
 
-            'user_access', // 27
-            'user_create', // 28
-            'user_edit', // 29
-            'user_delete', // 30
+            'user_access', // 28
+            'user_create', // 29
+            'user_edit', // 30
+            'user_delete', // 31
 
-            'role_access', // 31
-            'role_create', // 32
-            'role_edit', // 33
-            'role_delete', // 34
+            'role_access', // 32
+            'role_create', // 33
+            'role_edit', // 34
+            'role_delete', // 35
 
-            'permission_access', // 35
-            'permission_create', // 36
-            'permission_edit', // 37
-            'permission_delete', // 38
+            'permission_access', // 36
+            'permission_create', // 37
+            'permission_edit', // 38
+            'permission_delete', // 39
         ];
 
         foreach ($permissions as $permission) {
