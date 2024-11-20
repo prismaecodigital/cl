@@ -25,9 +25,9 @@ class CreateContactRequest extends FormRequest
         return [
             'organization' => ['required', 'integer', 'exists:organizations,id'],
             'name' => ['required', 'string', 'max:60'],
-            'phone' => ['required', 'string', 'max:16', 'unique:contacts,phone'],
-            'fax' => ['required', 'string', 'max:25', 'unique:contacts,fax'],
-            'email' => ['required', 'email', 'max:50', 'unique:contacts,email']
+            'phone' => ['required', 'string', 'max:16'],
+            'fax' => ['required', 'string', 'max:25'],
+            'email' => ['required', 'string', 'max:50']
         ];
     }
 }

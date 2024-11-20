@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('organization_id');
             $table->string('name', 60);
-            $table->string('phone', 16)->unique();
-            $table->string('fax', 25)->nullable();
-            $table->string('email', 50)->unique();
+            $table->string('phone', 16);
+            $table->string('fax', 25);
+            $table->string('email', 50);
             $table->timestamps();
 
             // Added foreign key constraint

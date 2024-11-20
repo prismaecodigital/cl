@@ -92,6 +92,7 @@ class ContactController extends Controller
         DB::beginTransaction();
         try {
             $validated = $request->validated();
+            $validated['organization_id'] = $validated['organization'];
             $contact->fill($validated);
 
             $contact->save();

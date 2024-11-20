@@ -26,6 +26,10 @@ class ContactListResource extends JsonResource
 
     private function maskNumber(string $phone): string
     {
-        return substr_replace($phone, '×××××××××', 4);
+        if($phone === '-') {
+            return $phone;
+        }
+
+        return substr_replace($phone, '××××××××', 4);
     }
 }

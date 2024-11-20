@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
@@ -23,14 +22,12 @@ class UpdateContactRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->route('contact');
-
         return [
             'organization' => ['required', 'integer', 'exists:organizations,id'],
             'name' => ['required', 'string', 'max:60'],
-            'phone' => ['required', 'string', 'max:16', Rule::unique('contacts')->ignore($id)],
-            'fax' => ['required', 'string', 'max:25', Rule::unique('contacts')->ignore($id)],
-            'email' => ['required', 'email', 'max:50', Rule::unique('contacts')->ignore($id)]
+            'phone' => ['required', 'string', 'max:16'],
+            'fax' => ['required', 'string', 'max:25'],
+            'email' => ['required', 'string', 'max:50']
         ];
     }
 }
