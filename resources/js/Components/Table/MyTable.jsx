@@ -1,6 +1,6 @@
-export default function MyTable({ data, columns }) {
+export default function MyTable({ data, columns, handleClick }) {
   // Render cell if number or data
-  function renderCell(col, colIndex, rowIndex, item) {
+  function renderCell(col, rowIndex, item) {
     if (col.key === 'id') {
       return rowIndex + 1;
     }
@@ -23,10 +23,14 @@ export default function MyTable({ data, columns }) {
         </thead>
         <tbody>
           {data.length !== 0 ? data.map((item, index) => (
-            <tr key={index} className='group'>
+            <tr 
+              key={index}
+              className={`group ${handleClick && 'cursor-pointer'}`}
+              onClick={() => handleClick && handleClick(item, index)}
+            >
               {columns.map((col, colIndex) => (
                 <td key={colIndex} className={`group-hover:text-ole ` + col.classBody}>
-                  { renderCell(col, colIndex, index, item) }
+                  { renderCell(col, index, item) }
                 </td>
               ))}
             </tr>
