@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ConfirmLetterListResource;
 use App\Models\Letter;
 use App\Models\Organization;
+use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
@@ -36,7 +37,8 @@ class ConfirmLetterController extends Controller
         return Inertia::render('ConfirmLetter/Create', [
             'organizations' => Organization::all(),
             'events' => eventSelectOptions(),
-            'rooms' => roomSelectOptions()
+            'rooms' => roomSelectOptions(),
+            'packages' => Package::all(),
         ]);
     }
 
