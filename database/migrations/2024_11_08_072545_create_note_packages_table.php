@@ -21,7 +21,8 @@ return new class extends Migration
             $table->timestamps();
 
             // Added foreign key constraint
-            $table->foreign('note_id')->on('notes')->references('id');
+            $table->foreign('note_id')->on('notes')->references('id')
+                  ->onDelete('cascade');
             $table->foreign('package_id')->on('packages')->references('id');
         });
     }

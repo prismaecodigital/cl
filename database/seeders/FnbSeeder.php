@@ -14,6 +14,7 @@ class FnbSeeder extends Seeder
     public function run(): void
     {
         Fnb::create([
+            'date' => '2024-12-01',
             'letter_id' => 1,
             'breakfast' => '34+21',
             'cb_morning' => '55',
@@ -24,6 +25,7 @@ class FnbSeeder extends Seeder
         ]);
 
         Fnb::create([
+            'date' => '2024-12-02',
             'letter_id' => 1,
             'breakfast' => '55+2',
             'cb_morning' => '',

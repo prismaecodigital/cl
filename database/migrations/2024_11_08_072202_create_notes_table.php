@@ -19,7 +19,8 @@ return new class extends Migration
             $table->timestamps();
 
             // Added foreign key constraint
-            $table->foreign('letter_id')->on('letters')->references('id');
+            $table->foreign('letter_id')->on('letters')->references('id')
+                  ->onDelete('cascade');
         });
     }
 

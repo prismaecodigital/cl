@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('fnbs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('letter_id');
+            $table->date('date');
             $table->string('breakfast', 10)->nullable();
             $table->string('cb_morning', 10)->nullable();
             $table->string('lunch', 10)->nullable();
@@ -23,7 +24,8 @@ return new class extends Migration
             $table->timestamps();
 
             // Added foreign key constraint
-            $table->foreign('letter_id')->on('letters')->references('id');
+            $table->foreign('letter_id')->on('letters')->references('id')
+                  ->onDelete('cascade');
         });
     }
 
