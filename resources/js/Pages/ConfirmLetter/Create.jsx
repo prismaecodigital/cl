@@ -31,6 +31,7 @@ function Create({ auth, organizations, events, rooms, packages }) {
       }],
     }],
     schedule: [{
+      date: '',
       breakfast: '',
       cb_morning: '',
       lunch: '',
@@ -45,7 +46,7 @@ function Create({ auth, organizations, events, rooms, packages }) {
       method='post'
       selectOption={selectOption}
       initialValues={data}
-      routeName='confirm_letter.store'
+      routeName='confirm-letter.store'
     />
   );
 }
