@@ -5,9 +5,8 @@ import TextInput from '@/Components/Form/TextInput';
 import LoadingButton from '@/Components/Button/LoadingButton';
 
 export default function PermissionForm({ method, initialValues, routeName, permission='' }) {
-  const fieldData = {...initialValues};
   const { data, setData, post, patch, errors, processing } = useForm({
-    ...fieldData
+    ...initialValues
   });
 
   const submit = (e) => {
