@@ -8,10 +8,10 @@ import Select from 'react-select';
 import DateTimePicker from '@/Components/Form/DateTimePicker';
 import convertOptions from '@/utils/convertOptions';
 
-export default function MainField({ data, setData, errors, selectOption }) {
+export default function MainField({ data, setData, errors, pageName, selectOption, readOnly }) {
   const { user } = usePage().props.auth;
-  const [ phone, setPhone ] = useState('');
-  const [ address, setAddress ] = useState('');
+  const [ phone, setPhone ] = useState(data.phone);
+  const [ address, setAddress ] = useState(data.address);
   const [ contacts, setContact ] = useState([]);
   const { organizations, events, rooms } = selectOption;
 
@@ -85,7 +85,7 @@ export default function MainField({ data, setData, errors, selectOption }) {
 
   return (
     <div className='content-box mb-2'>
-      <Breadcrumb title='Create Confirm Letter' pageName='Create' prevPage={letterBreadcrumb} />
+      <Breadcrumb title={`${pageName} Confirm Letter`} pageName={pageName} prevPage={letterBreadcrumb} />
 
       {/* Organization */}
       <FieldGroup
@@ -102,6 +102,7 @@ export default function MainField({ data, setData, errors, selectOption }) {
           required
           menuPortalTarget={document.body} 
           menuPosition={'fixed'}
+          isDisabled={readOnly}
         />
       </FieldGroup>
 
@@ -134,6 +135,7 @@ export default function MainField({ data, setData, errors, selectOption }) {
           required
           menuPortalTarget={document.body} 
           menuPosition={'fixed'}
+          isDisabled={readOnly}
         />
       </FieldGroup>
 
@@ -202,6 +204,7 @@ export default function MainField({ data, setData, errors, selectOption }) {
           required
           menuPortalTarget={document.body} 
           menuPosition={'fixed'}
+          isDisabled={readOnly}
         />
       </FieldGroup>
 
@@ -220,6 +223,7 @@ export default function MainField({ data, setData, errors, selectOption }) {
           required
           menuPortalTarget={document.body} 
           menuPosition={'fixed'}
+          isDisabled={readOnly}
         />
       </FieldGroup>
 
@@ -241,6 +245,7 @@ export default function MainField({ data, setData, errors, selectOption }) {
           placeholder='Estimated Attendance...'
           pattern='^[0-9]{0,10}$'
           onChange={handleAttendanceChange}
+          disabled={readOnly}
         />
       </FieldGroup>
 
@@ -262,6 +267,7 @@ export default function MainField({ data, setData, errors, selectOption }) {
           required
           menuPortalTarget={document.body} 
           menuPosition={'fixed'}
+          isDisabled={readOnly}
         />
       </FieldGroup>
 

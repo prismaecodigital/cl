@@ -4,7 +4,7 @@ export default forwardRef(function TextInput({ type = 'text', className = '', is
     const input = ref ? ref : useRef();
 
     const styleEnable = 'border-gray-300 focus:border-ole focus:ring-ole rounded-md shadow-sm';
-    const styleDisable = 'rounded-md shadow-sm border-gray-300 bg-gray-100'
+    const styleDisable = 'rounded-md shadow-sm border-gray-300 bg-gray-100 text-gray-500'
 
     useEffect(() => {
         if (isFocused) {

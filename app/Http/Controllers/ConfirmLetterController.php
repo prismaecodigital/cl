@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateLetterRequest;
+use App\Http\Resources\ConfirmLetterDetailResource;
 use App\Http\Resources\ConfirmLetterListResource;
 use App\Models\Letter;
 use App\Models\Organization;
@@ -83,9 +84,18 @@ class ConfirmLetterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Letter $letter): Response
     {
-        //
+        $letter->load('createdBy', 'organization', 'contact', 'event', 'room', 'hasNotes.notePackage', 'hasFnb');
+
+        $letterResource = new ConfirmLetterDetailResource($letter);
+        return Inertia::render('ConfirmLetter/Show', [
+            'letter' => $letterResource,
+            'organizations' => Organization::all(),
+            'events' => eventSelectOptions(),
+            'rooms' => roomSelectOptions(),
+            'packages' => Package::all(),
+        ]);
     }
 
     /**

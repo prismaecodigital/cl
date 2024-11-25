@@ -7,8 +7,10 @@ function Create({ auth, organizations, events, rooms, packages }) {
   const data = {
     organization: '',
     organizationSelected: '',
+    address: '',
     contact: '',
     contactSelected: '',
+    phone: '',
     event: '',
     eventSelected: '',
     room: '',
@@ -44,6 +46,7 @@ function Create({ auth, organizations, events, rooms, packages }) {
 
   return (
     <LetterForm
+      pageName='Create'
       method='post'
       selectOption={selectOption}
       initialValues={data}

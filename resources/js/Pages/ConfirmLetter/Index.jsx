@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '@inertiajs/react';
+import { router, Link } from '@inertiajs/react';
 import createColumn from './data/createColumn';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
@@ -21,8 +21,8 @@ function Index({ auth, letters }) {
         data={letters.data}
         columns={columns}
         {...(permissions.includes('letter_show') && {
-          handleClick: (item, index) => {
-            console.log('Row letter clicked:', item, index);
+          handleClick: item => {
+            router.visit(route('confirm-letter.show', item.id));
           },
         })}
       />
