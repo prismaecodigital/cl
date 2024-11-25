@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('note_packages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('note_id');
-            $table->unsignedBigInteger('package_id');
-            $table->integer('qty');
-            $table->integer('price');
+            $table->unsignedBigInteger('package_id')->nullable();
+            $table->integer('qty')->nullable();
+            $table->integer('price')->nullable();
             $table->text('note')->nullable();
             $table->timestamps();
 
