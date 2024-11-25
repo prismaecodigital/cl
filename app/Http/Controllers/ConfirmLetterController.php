@@ -107,9 +107,12 @@ class ConfirmLetterController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Letter $letter): RedirectResponse
     {
-        //
+        Gate::authorize('letter_delete');
+
+        $letter->delete();
+        return Redirect::back()->with('toast-success', 'Confirmation Letter Deleted!');
     }
 
     private function createLetterObject(array $input): array
