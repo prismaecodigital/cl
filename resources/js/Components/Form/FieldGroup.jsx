@@ -39,7 +39,7 @@ export default function FieldGroup({
 
   return (
     <div className={`mb-3 ` + className}>
-      <div className='flex flex-row items-center justify-between'>
+      <div className='flex flex-row items-end justify-between'>
         {label && (
           <label className='form--label' htmlFor={name}>
             {label} {isPrimary && <span className='form--primary'>*</span> }

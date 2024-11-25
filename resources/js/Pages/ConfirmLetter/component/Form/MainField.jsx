@@ -111,7 +111,6 @@ export default function MainField({ data, setData, errors, selectOption }) {
         name='address'
       >
         <TextInput
-          id='address'
           name='address'
           value={address}
           disabled={true}
@@ -144,7 +143,6 @@ export default function MainField({ data, setData, errors, selectOption }) {
         name='phone'
       >
         <TextInput
-          id='phone'
           name='phone'
           value={phone}
           disabled={true}
@@ -273,7 +271,6 @@ export default function MainField({ data, setData, errors, selectOption }) {
         name='sales'
       >
         <TextInput
-          id='sales'
           name='sales'
           value={user.fullname}
           disabled={true}

@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateLetterRequest;
 use App\Http\Resources\ConfirmLetterListResource;
 use App\Models\Letter;
 use App\Models\Organization;
 use App\Models\Package;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -45,9 +49,35 @@ class ConfirmLetterController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateLetterRequest $request): RedirectResponse
     {
-        dd($request->all());
+        DB::beginTransaction();
+        try{
+            $validated = $request->validated();
+            $letterObject = $this->createLetterObject($validated);
+
+            $letter = Letter::create($letterObject);
+            foreach($request->input('notes', []) as $note){
+                $notes = $letter->hasNotes()->create([
+                    'start_date' => $note['start_date'],
+                    'end_date' => $note['end_date'],
+                ]);
+
+                foreach($note['lists'] as $package){
+                    $packageObject = $this->createNotePackageObject($package);
+                    $notes->notePackage()->create($packageObject);
+                }
+            }
+
+            DB::commit();
+            return Redirect::route('confirm-letter.index')->with('success', 'Confirmation Letter Created!');
+        } catch(\Exception $e) {
+            DB::rollBack();
+            dd($e);
+            return Redirect::back()->withErrors([
+                'error' => $e->getMessage(),
+            ])->withInput();
+        }
     }
 
     /**
@@ -80,5 +110,30 @@ class ConfirmLetterController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    private function createLetterObject(array $input): array
+    {
+        return [
+            'created_by' => $input['sales'],
+            'organization_id' => $input['organization'],
+            'contact_id' => $input['contact'],
+            'event_id' => $input['event'],
+            'room_id' => $input['room'],
+            'check_in' => convertToJakartaTime($input['check_in']),
+            'check_out' => convertToJakartaTime($input['check_out']),
+            'attendance' => $input['attendance'],
+            'payment' => $input['payment'],
+        ];
+    }
+
+    private function createNotePackageObject(array $input): array
+    {
+        return [
+            'package_id' => $input['package'],
+            'qty' => $input['qty'],
+            'price' => $input['price'],
+            'note' => $input['note']
+        ];
     }
 }

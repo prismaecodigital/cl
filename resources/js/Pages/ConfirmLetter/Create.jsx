@@ -27,10 +27,11 @@ function Create({ auth, organizations, events, rooms, packages }) {
         packageSelected: '',
         qty: '',
         price: '',
+        priceValue: '',
         note: '',
       }],
     }],
-    schedule: [{
+    schedules: [{
       date: '',
       breakfast: '',
       cb_morning: '',
