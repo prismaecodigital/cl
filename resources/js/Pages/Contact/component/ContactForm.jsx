@@ -6,9 +6,8 @@ import Select from 'react-select';
 import LoadingButton from '@/Components/Button/LoadingButton';
 
 export default function ContactForm({ method, initialValues, routeName, organizations, contact='' }) {
-  const fieldData = {...initialValues};
   const { data, setData, post, patch, errors, processing } = useForm({
-    ...fieldData
+    ...initialValues
   });
 
   const handleOrganizationChange = (option) => {

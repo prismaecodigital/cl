@@ -6,9 +6,8 @@ import Select from 'react-select';
 import LoadingButton from '@/Components/Button/LoadingButton';
 
 export default function RoleForm({ method, initialValues, routeName, permissions, role='' }) {
-  const fieldData = {...initialValues};
   const { data, setData, post, patch, errors, processing } = useForm({
-    ...fieldData
+    ...initialValues
   });
 
   const handlePermissionChange = (option) => {

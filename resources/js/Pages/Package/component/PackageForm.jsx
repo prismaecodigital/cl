@@ -5,10 +5,8 @@ import TextInput from '@/Components/Form/TextInput';
 import LoadingButton from '@/Components/Button/LoadingButton';
 
 export default function PackageForm ({ method, initialValues, routeName, packageData='' }) {
-  const { name, uom } = initialValues;
   const { data, setData, post, patch, errors, processing } = useForm({
-    name: name || '',
-    uom: uom || ''
+    ...initialValues
   });
 
   const submit = (e) => {

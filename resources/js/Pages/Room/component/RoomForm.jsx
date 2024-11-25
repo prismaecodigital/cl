@@ -5,9 +5,8 @@ import TextInput from '@/Components/Form/TextInput';
 import LoadingButton from '@/Components/Button/LoadingButton';
 
 export default function RoomForm ({ method, initialValues, routeName, room='' }) {
-  const fieldData = {...initialValues};
   const { data, setData, post, patch, errors, processing } = useForm({
-    ...fieldData
+    ...initialValues
   });
 
   const submit = (e) => {

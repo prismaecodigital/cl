@@ -6,9 +6,8 @@ import TextArea from '@/Components/Form/TextArea';
 import LoadingButton from '@/Components/Button/LoadingButton';
 
 export default function OrganizationForm ({ method, initialValues, routeName, organization='' }) {
-  const fieldData = {...initialValues};
   const { data, setData, post, patch, errors, processing } = useForm({
-    ...fieldData
+    ...initialValues
   });
 
   const submit = (e) => {
