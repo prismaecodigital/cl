@@ -6,7 +6,7 @@ import { Trash2 } from 'lucide-react';
 
 const MySwal = withReactContent(Swal);
 
-const DeleteConfirmation = ({ id, routeName }) => {
+const DeleteConfirmation = ({ id, routeName, className='', withText=true }) => {
   const handleDelete = () => {
     MySwal.fire({
       title: 'Are you sure?',
@@ -24,8 +24,13 @@ const DeleteConfirmation = ({ id, routeName }) => {
   };
 
   return (
-    <button className='text-red-600 ml-2' onClick={handleDelete}>
-      <Trash2 className='inline-block mb-1' size={14} /> Delete
+    <button className={'text-red-600 ml-2 ' + className} onClick={handleDelete}>
+      <Trash2 
+        className='inline-block mb-1' 
+        size={withText ? 14 : 16} 
+        strokeWidth={withText ? 1 : 3}
+      /> 
+      {withText && 'Delete'}
     </button>
   );
 };

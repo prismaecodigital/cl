@@ -1,11 +1,12 @@
-import { usePage, Link } from "@inertiajs/react";
-import { Pencil } from "lucide-react";
-import DeleteConfirmation from "@/Components/Notification/DeleteConfirmation";
-import formatToIDR from "@/utils/formatToIDR";
+import { usePage, Link } from '@inertiajs/react';
+import { Pencil, FileText } from 'lucide-react';
+import DeleteConfirmation from '@/Components/Notification/DeleteConfirmation';
+import formatToIDR from '@/utils/formatToIDR';
 
 const createColumn = () => {
   const { permissions } = usePage().props.auth;
   const permissionEdit = permissions.includes('letter_edit');
+  const permissionExport = permissions.includes('letter_export');
   const permissionDelete = permissions.includes('letter_delete');
 
   const columns = [
@@ -49,16 +50,30 @@ const createColumn = () => {
     classHead: 'table--action',
     classBody: 'table--action',
     render: item => (
-      <>
+      <div className='flex flex-row gap-2 items-center'>
+        {permissionExport && 
+          <span className='py-2 px-3 rounded-md bg-sky-500 text-white'>
+            <FileText className='inline-block mb-1' strokeWidth={3} size={16} />
+          </span>
+        }
+        
         {permissionEdit &&
-          <Link href={route('confirm-letter.edit', item.id)} className='text-warning'>
-            <Pencil className='inline-block mb-1' size={14} /> Edit
+          <Link 
+            href={route('confirm-letter.edit', item.id)}
+            className='py-2 px-3 rounded-md bg-warning text-white'
+          >
+            <Pencil className='inline-block mb-1' strokeWidth={3} size={16} />
           </Link>
         }
         {(permissionDelete && item.canDelete) &&
-          <DeleteConfirmation id={item.id} routeName='confirm-letter.destroy' />
+          <DeleteConfirmation 
+            id={item.id} 
+            routeName='confirm-letter.destroy'
+            className='!bg-danger !ml-0 text-white py-2 px-3 rounded-md'
+            withText={false}
+          />
         }
-      </>
+      </div>
     ),
   };
 

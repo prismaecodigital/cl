@@ -174,7 +174,7 @@ export default function FnbField({ data, setData, errors, processing }) {
                 type='text'
                 value={item.dinner}
                 className='mt-1 block w-full'
-                placeholder='dinner...'
+                placeholder='Dinner...'
                 onChange={(e) => {
                   updateSchedule((schedules) => {
                     schedules[index].dinner = e.target.value;
