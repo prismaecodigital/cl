@@ -7,7 +7,7 @@ import ConfirmDelete from '@/utils/confirmDelete';
 import { Plus, Trash2 } from 'lucide-react';
 import FormattedDateFlatpickr from '@/utils/DateFormatFlatpickr';
 
-export default function FnbField({ data, setData, errors, processing }) {
+export default function FnbField({ data, setData, errors, processing, readOnly=false }) {
   // Reusable function to update `notes`
   const updateSchedule = (updateFn) => {
     const schedules = updateFn([...data.schedules]);
@@ -38,9 +38,11 @@ export default function FnbField({ data, setData, errors, processing }) {
       {/* Section Title */}
       <div className='flex flex-row items-center justify-between gap-2 mb-3'>
         <h2 className='text--sub-heading'>Food & Beverage Schedules</h2>
-        <span className='btn btn--sm btn--primary' onClick={handleAddSchedule}>
-          <Plus strokeWidth={3} size={16} />
-        </span>
+        {!readOnly && 
+          <span className='btn btn--sm btn--primary' onClick={handleAddSchedule}>
+            <Plus strokeWidth={3} size={16} />
+          </span>
+        }
       </div>
 
       {/* Schedule */}
@@ -70,6 +72,7 @@ export default function FnbField({ data, setData, errors, processing }) {
               className='mt-1 block w-full'
               placeholder='Date...'
               withTime={false}
+              isDisable={readOnly}
             />
           </FieldGroup>
 
@@ -93,6 +96,7 @@ export default function FnbField({ data, setData, errors, processing }) {
                     return schedules;
                   });
                 }}
+                isDisabled={readOnly}
               />
             </FieldGroup>
 
@@ -115,6 +119,7 @@ export default function FnbField({ data, setData, errors, processing }) {
                     return schedules;
                   });
                 }}
+                isDisabled={readOnly}
               />
             </FieldGroup>
 
@@ -137,6 +142,7 @@ export default function FnbField({ data, setData, errors, processing }) {
                     return schedules;
                   });
                 }}
+                isDisabled={readOnly}
               />
             </FieldGroup>
 
@@ -159,6 +165,7 @@ export default function FnbField({ data, setData, errors, processing }) {
                     return schedules;
                   });
                 }}
+                isDisabled={readOnly}
               />
             </FieldGroup>
 
@@ -181,6 +188,7 @@ export default function FnbField({ data, setData, errors, processing }) {
                     return schedules;
                   });
                 }}
+                isDisabled={readOnly}
               />
             </FieldGroup>
 
@@ -203,21 +211,26 @@ export default function FnbField({ data, setData, errors, processing }) {
                     return schedules;
                   });
                 }}
+                isDisabled={readOnly}
               />
             </FieldGroup>
           </div>
-          
-          <div className='flex justify-end'>
-            <span className='btn btn--sm btn--danger py-3' onClick={() => handleRemoveSchedule(index)}>
-              <Trash2 className='inline-block mb-1' strokeWidth={3} size={18}/> Remove Schedule
-            </span>
-          </div>
+
+          {!readOnly && 
+            <div className='flex justify-end'>
+              <span className='btn btn--sm btn--danger py-3' onClick={() => handleRemoveSchedule(index)}>
+                <Trash2 className='inline-block mb-1' strokeWidth={3} size={18}/> Remove Schedule
+              </span>
+            </div>
+          }
         </div>
       ))}
 
-      <LoadingButton disabled={processing}>
-        Submit
-      </LoadingButton>
+      {!readOnly && 
+        <LoadingButton disabled={processing}>
+          Submit
+        </LoadingButton>
+      }
     </div>
   );
 }

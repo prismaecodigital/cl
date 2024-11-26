@@ -8,7 +8,7 @@ import Select from 'react-select';
 import DateTimePicker from '@/Components/Form/DateTimePicker';
 import convertOptions from '@/utils/convertOptions';
 
-export default function MainField({ data, setData, errors, pageName, selectOption, readOnly }) {
+export default function MainField({ data, setData, errors, pageName, selectOption, readOnly=false }) {
   const { user } = usePage().props.auth;
   const [ phone, setPhone ] = useState(data.phone);
   const [ address, setAddress ] = useState(data.address);
@@ -114,7 +114,7 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
         <TextInput
           name='address'
           value={address}
-          disabled={true}
+          isDisabled={true}
           className='mt-1 block w-full'
           placeholder='Organization address...'
         />
@@ -147,7 +147,7 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
         <TextInput
           name='phone'
           value={phone}
-          disabled={true}
+          isDisabled={true}
           className='mt-1 block w-full'
           placeholder='PIC phone...'
         />
@@ -168,6 +168,7 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
           name='check_in'
           placeholder='Check In...'
           required
+          isDisable={readOnly}
         />
       </FieldGroup>
 
@@ -186,6 +187,7 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
           name='check_in'
           placeholder='Check Out...'
           required
+          isDisable={readOnly}
         />
       </FieldGroup>
 
@@ -245,7 +247,7 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
           placeholder='Estimated Attendance...'
           pattern='^[0-9]{0,10}$'
           onChange={handleAttendanceChange}
-          disabled={readOnly}
+          isDisabled={readOnly}
         />
       </FieldGroup>
 
@@ -279,7 +281,7 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
         <TextInput
           name='sales'
           value={user.fullname}
-          disabled={true}
+          isDisabled={true}
           className='mt-1 block w-full'
         />
       </FieldGroup>

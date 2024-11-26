@@ -86,7 +86,8 @@ class ConfirmLetterController extends Controller
      */
     public function show(Letter $letter): Response
     {
-        $letter->load('createdBy', 'organization', 'contact', 'event', 'room', 'hasNotes.notePackage', 'hasFnb');
+        $letter->load('createdBy', 'organization', 'contact', 'event', 'room', 'hasNotes.notePackage.package', 'hasFnb');
+        // dd(json_encode($letter));
 
         $letterResource = new ConfirmLetterDetailResource($letter);
         return Inertia::render('ConfirmLetter/Show', [

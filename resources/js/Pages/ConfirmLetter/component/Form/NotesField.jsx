@@ -10,9 +10,8 @@ import { PackageMinus, PackagePlus, Plus, Trash2 } from 'lucide-react';
 import addDotsCurrency from '@/utils/addDotsCurrency';
 import FormattedDateFlatpickr from '@/utils/DateFormatFlatpickr';
 
-export default function NotesField({ data, setData, errors, selectOption }) {
+export default function NotesField({ data, setData, errors, selectOption, readOnly=false }) {
   const { packages } = selectOption;
-  const [uom, setUom] = useState([]);
 
   // Reusable function to update `notes`
   const updateNotes = (updateFn) => {
@@ -27,6 +26,7 @@ export default function NotesField({ data, setData, errors, selectOption }) {
       lists: [{
         package: '',
         packageSelected: '',
+        uom: '',
         qty: '',
         price: '',
         note: ''
@@ -68,21 +68,15 @@ export default function NotesField({ data, setData, errors, selectOption }) {
   }
 
   const handlePackageChange = (option, noteIndex, packageIndex) => {
+    const uom = packages.find(item => item.id === option.value)?.uom || '';
     // Update `notes` data
     updateNotes((notes) => {
       notes[noteIndex].lists[packageIndex].package = option.value;
       notes[noteIndex].lists[packageIndex].packageSelected = option;
+      notes[noteIndex].lists[packageIndex].uom = uom;
+
       return notes;
     });
-
-    // Update `uom` state in a single step
-    setUom((prevUom) => ({
-      ...prevUom,
-      [noteIndex]: {
-        ...(prevUom[noteIndex] || {}),
-        [packageIndex]: packages.find(item => item.id === option.value)?.uom || '',
-      },
-    }));
   }
 
   return (
@@ -90,16 +84,18 @@ export default function NotesField({ data, setData, errors, selectOption }) {
       {/* Section Title */}
       <div className='flex flex-row items-center justify-between gap-2 mb-3'>
         <h2 className='text--sub-heading'>Notes</h2>
-        <span className='btn btn--sm btn--primary' onClick={handleAddNote}>
-          <Plus strokeWidth={3} size={16} />
-        </span>
+        {!readOnly && 
+          <span className='btn btn--sm btn--primary' onClick={handleAddNote}>
+            <Plus strokeWidth={3} size={16} />
+          </span>
+        }
       </div>
       
       {/* Notes */}
       {data.notes.map((note, noteIndex) => (
         <div 
           key={noteIndex} 
-          className='py-3 px-4 mb-4 shadow-md rounded-md border border-slate-200'
+          className='py-4 px-4 mb-4 shadow-md rounded-md border border-slate-200'
         >
           <div className='flex flex-row gap-2 items-start'>
             {/* Start Date */}
@@ -123,6 +119,7 @@ export default function NotesField({ data, setData, errors, selectOption }) {
                 className='mt-1 block w-full'
                 placeholder='Start Date...'
                 withTime={false}
+                isDisable={readOnly}
               />
             </FieldGroup>
 
@@ -147,13 +144,16 @@ export default function NotesField({ data, setData, errors, selectOption }) {
                 className='mt-1 block w-full'
                 placeholder='End Date...'
                 withTime={false}
+                isDisable={readOnly}
               />
             </FieldGroup>
           </div>
           <div className='flex justify-end my-2'>
-            <span className='btn btn--sm btn--success py-3' onClick={() => handleAddLists(noteIndex)}>
-              <PackagePlus className='inline-block mb-1' strokeWidth={3} size={18}/> Add Package
-            </span>
+            {!readOnly && 
+              <span className='btn btn--sm btn--success py-3' onClick={() => handleAddLists(noteIndex)}>
+                <PackagePlus className='inline-block mb-1' strokeWidth={3} size={18}/> Add Package
+              </span>
+            }
           </div>
               
           {/* Package Lists */}
@@ -174,6 +174,7 @@ export default function NotesField({ data, setData, errors, selectOption }) {
                     menuPortalTarget={document.body} 
                     menuPosition={'fixed'}
                     onChange={(option) => handlePackageChange(option, noteIndex, packageIndex)}
+                    isDisabled={readOnly}
                   />
                 </FieldGroup>
 
@@ -197,6 +198,7 @@ export default function NotesField({ data, setData, errors, selectOption }) {
                         return notes;
                       });
                     }}
+                    isDisabled={readOnly}
                   />
                 </FieldGroup>
 
@@ -207,8 +209,8 @@ export default function NotesField({ data, setData, errors, selectOption }) {
                   className='flex-[1-1-16.666667%] w-1/6'
                 >
                   <TextInput
-                    value={uom?.[noteIndex]?.[packageIndex] || ''}
-                    disabled={true}
+                    value={packageItem.uom || ''}
+                    isDisabled={true}
                     className='mt-1 block w-full'
                     placeholder='Unit...'
                   />
@@ -244,6 +246,7 @@ export default function NotesField({ data, setData, errors, selectOption }) {
                             return notes;
                           });
                         }}
+                        isDisabled={readOnly}
                       />
                     </FieldGroup>
                   </div>
@@ -270,18 +273,23 @@ export default function NotesField({ data, setData, errors, selectOption }) {
                       return notes;
                     });
                   }}
+                  isDisabled={readOnly}
                 />
               </FieldGroup>
-
-              <span className='btn btn--sm btn--danger py-3 mt-4 inline-block max-w-fit flex-none' onClick={() => handleRemoveLists(noteIndex, packageIndex)}>
-                <PackageMinus strokeWidth={3} size={18} className='mb-1 inline-block'/> Remove Package
-              </span>
+              
+              {!readOnly && 
+                <span className='btn btn--sm btn--danger py-3 mt-4 inline-block max-w-fit flex-none' onClick={() => handleRemoveLists(noteIndex, packageIndex)}>
+                  <PackageMinus strokeWidth={3} size={18} className='mb-1 inline-block'/> Remove Package
+                </span>
+              }
             </div>
           ))}
 
-          <span className='btn btn--sm btn--danger py-3 mt-4 block' onClick={() => handleRemoveNote(noteIndex)}>
-            <Trash2 strokeWidth={3} size={18} className='mb-1 inline-block'/> Delete Note
-          </span>
+          {!readOnly && 
+            <span className='btn btn--sm btn--danger py-3 mt-4 block' onClick={() => handleRemoveNote(noteIndex)}>
+              <Trash2 strokeWidth={3} size={18} className='mb-1 inline-block'/> Delete Note
+            </span>
+          }
         </div>
       ))}
     </div>
