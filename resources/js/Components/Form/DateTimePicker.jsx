@@ -13,6 +13,7 @@ export default function DateTimePicker({
   maxDate = '',
   currentDate = '',
   withTime = true,
+  isDisable = false, // Add a read-only prop
   ...props
 }) {
   const flatpickrRef = useRef(null);
@@ -24,7 +25,7 @@ export default function DateTimePicker({
   };
 
   return (
-    <div className='relative'>
+    <div className="relative">
       <Flatpickr
         {...props}
         data-enable-time
@@ -39,24 +40,29 @@ export default function DateTimePicker({
           maxDate: maxDate,
           defaultDate: currentDate,
           defaultHour: 10,
+          clickOpens: !isDisable
         }}
         value={value}
-        onChange={([selectedDate]) => onChange(selectedDate)}
+        onChange={([selectedDate]) => onChange(selectedDate)} // Prevent onChange if disabled or read-only
         ref={flatpickrRef}
-        className={
-          'border-gray-300 focus:border-ole focus:ring-ole rounded-md shadow-sm ' +
-          className
-        }
+        className={`${
+          isDisable
+            ? 'border-gray-300 bg-gray-100 text-gray-500 focus:border-gray-300 focus:ring-gray-300'
+            : 'border-gray-300 focus:border-ole focus:ring-ole'
+        } rounded-md shadow-sm ${className}`}
+        
       />
 
       {/* Add a button to clear the input */}
-      <button
-        type="button"
-        onClick={handleClear}
-        className="ml-2 px-3 py-1 text-gray-400 absolute top-1 right-1"
-      >
-        <Trash2 />
-      </button>
+      {!isDisable && (
+        <button
+          type="button"
+          onClick={handleClear}
+          className="ml-2 px-3 py-1 text-gray-400 absolute top-1 right-1"
+        >
+          <Trash2 />
+        </button>
+      )}
     </div>
   );
 }
