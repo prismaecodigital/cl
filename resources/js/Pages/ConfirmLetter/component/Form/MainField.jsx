@@ -163,7 +163,10 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
         <DateTimePicker
           minDate='today'
           value={data.check_in}
-          onChange={(value) => setData('check_in', value)}
+          onChange={(value) => {
+            const dateValue = new Date(value);
+            setData('check_in', dateValue.toISOString());
+          }}
           className='mt-1 block w-full'
           name='check_in'
           placeholder='Check In...'
@@ -182,7 +185,10 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
         <DateTimePicker
           minDate='today'
           value={data.check_out}
-          onChange={(value) => setData('check_out', value)}
+          onChange={(value) => {
+            const dateValue = new Date(value);
+            setData('check_out', dateValue.toISOString());
+          }}
           className='mt-1 block w-full'
           name='check_in'
           placeholder='Check Out...'

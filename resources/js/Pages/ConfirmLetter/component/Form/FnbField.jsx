@@ -219,7 +219,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
           {!readOnly && 
             <div className='flex justify-end'>
               <span className='btn btn--sm btn--danger py-3' onClick={() => handleRemoveSchedule(index)}>
-                <Trash2 className='inline-block mb-1' strokeWidth={3} size={18}/> Remove Schedule
+                <Trash2 className='inline-block mb-1' strokeWidth={3} size={18}/> Delete Schedule
               </span>
             </div>
           }

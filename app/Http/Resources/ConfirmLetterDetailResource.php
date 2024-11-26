@@ -39,7 +39,7 @@ class ConfirmLetterDetailResource extends JsonResource
             'room' => $this->room_id,
             'roomSelected' => [
                 'value' => $this->room->id,
-                'label' => $this->event->name,
+                'label' => $this->room->name,
             ],
             'attendance' => $this->attendance,
             'payment' => $this->payment,
@@ -47,13 +47,13 @@ class ConfirmLetterDetailResource extends JsonResource
                 'value' => $this->payment,
                 'label' => ucfirst($this->payment),
             ],
-            'sales' => $this->createdBy,
+            'sales' => $this->created_by,
             'notes' => $this->hasNotes ? 
                 $this->hasNotes->map(function ($note){
                     return [
                         'letter_id' => $note->letter_id,
-                        'start_date' => isset($note['start_date']) ? \Carbon\Carbon::parse($note['start_date'])->toISOString() : null,
-                        'end_date' => isset($note['end_date']) ? \Carbon\Carbon::parse($note['end_date'])->toISOString() : null,
+                        'start_date' => isset($note['start_date']) ? Carbon::parse($note['start_date'])->format('Y-m-d') : null,
+                        'end_date' => isset($note['end_date']) ? Carbon::parse($note['end_date'])->format('Y-m-d') : null,
                         'lists' => $note->notePackage ? 
                             $note->notePackage->map(function ($item){
                                 return [
@@ -76,7 +76,7 @@ class ConfirmLetterDetailResource extends JsonResource
                 $this->hasFnb->map(function ($schedule){
                     return [
                         'letter_id' => $schedule->letter_id,
-                        'date' => isset($schedule['date']) ? \Carbon\Carbon::parse($schedule['date'])->toISOString() : null,
+                        'date' => isset($schedule['date']) ? Carbon::parse($schedule['date'])->format('Y-m-d') : null,
                         'breakfast' => $schedule->breakfast,
                         'cb_morning' => $schedule->cb_morning,
                         'lunch' => $schedule->lunch,

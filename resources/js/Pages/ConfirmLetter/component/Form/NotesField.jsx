@@ -158,7 +158,7 @@ export default function NotesField({ data, setData, errors, selectOption, readOn
               
           {/* Package Lists */}
           {note.lists.map((packageItem, packageIndex) => (
-            <div key={packageIndex} className='flex flex-col shadow-md rounded-md border border-slate-200 bg-gray-50 p-4'>
+            <div key={packageIndex} className='flex flex-col shadow-md rounded-md border border-slate-200 bg-gray-50 p-4 mb-3'>
               <div className='flex flex-row gap-2'>
                 {/* Packages */}
                 <FieldGroup
@@ -279,16 +279,18 @@ export default function NotesField({ data, setData, errors, selectOption, readOn
               
               {!readOnly && 
                 <span className='btn btn--sm btn--danger py-3 mt-4 inline-block max-w-fit flex-none' onClick={() => handleRemoveLists(noteIndex, packageIndex)}>
-                  <PackageMinus strokeWidth={3} size={18} className='mb-1 inline-block'/> Remove Package
+                  <PackageMinus strokeWidth={3} size={18} className='mb-1 inline-block'/> Delete Package
                 </span>
               }
             </div>
           ))}
 
           {!readOnly && 
-            <span className='btn btn--sm btn--danger py-3 mt-4 block' onClick={() => handleRemoveNote(noteIndex)}>
-              <Trash2 strokeWidth={3} size={18} className='mb-1 inline-block'/> Delete Note
-            </span>
+            <div className='flex justify-end'>
+              <span className='btn btn--sm btn--danger py-3 mt-4' onClick={() => handleRemoveNote(noteIndex)}>
+                <Trash2 strokeWidth={3} size={18} className='mb-1 inline-block'/> Delete Note
+              </span>
+            </div>
           }
         </div>
       ))}

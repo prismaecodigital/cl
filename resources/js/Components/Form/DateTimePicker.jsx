@@ -22,6 +22,7 @@ export default function DateTimePicker({
     if (flatpickrRef.current) {
       flatpickrRef.current.flatpickr.clear();
     }
+    onChange(null); // Reset value to null or empty
   };
 
   return (

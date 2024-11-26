@@ -22,11 +22,9 @@ function Create({ auth, organizations, events, rooms, packages }) {
     paymentSelected: '',
     sales: auth.user.id,
     notes: [{
-      letter_id: '',
       start_date: '',
       end_date: '',
       lists: [{
-        note_id: '',
         package: '',
         packageSelected: '',
         uom: '',
@@ -37,7 +35,6 @@ function Create({ auth, organizations, events, rooms, packages }) {
       }],
     }],
     schedules: [{
-      letter_id: '',
       date: '',
       breakfast: '',
       cb_morning: '',

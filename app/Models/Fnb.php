@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Fnb extends Model
 {
     use HasFactory;
-    protected $fillable = ['breakfast', 'cb_morning', 'lunch', 'cb_evening', 'dinner', 'cb_night'];
+    protected $fillable = ['date', 'breakfast', 'cb_morning', 'lunch', 'cb_evening', 'dinner', 'cb_night'];
 
     public function confirmLetter(): BelongsTo
     {

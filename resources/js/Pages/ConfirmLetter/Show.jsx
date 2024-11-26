@@ -5,7 +5,7 @@ import LetterForm from './component/LetterForm';
 function Show({ letter, organizations, events, rooms, packages }) {
   const selectOption = { organizations, events, rooms, packages };
   const data = {...letter.data}
-  
+
   return (
     <LetterForm
       pageName='Detail'
