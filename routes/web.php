@@ -49,7 +49,8 @@ Route::middleware(['auth', 'verified'])->group(function() {
         'authorization/permissions' => PermissionController::class
     ]);
 
-    Route::get('/getContactOrganization', [OrganizationController::class, 'getContact'])->name('contactOrganization');
+    Route::get('/export-confirmation-letter/{letter}', [ConfirmLetterController::class, 'exportPDF'])->name('confirm-letter.export');
+    Route::get('/get-contact-organization', [OrganizationController::class, 'getContact'])->name('contactOrganization');
 });
 
 Route::middleware('auth')->group(function () {

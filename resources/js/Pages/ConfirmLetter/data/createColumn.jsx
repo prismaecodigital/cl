@@ -61,9 +61,13 @@ const createColumn = () => {
           </Link>
         }
         {permissionExport && 
-          <span className='py-2 px-3 rounded-md bg-sky-500 text-white'>
+          <a
+            target='_blank'
+            href={route('confirm-letter.export', item.id)}
+            className='py-2 px-3 rounded-md bg-sky-500 text-white'
+          >
             <FileText className='inline-block mb-1' strokeWidth={3} size={16} />
-          </span>
+          </a>
         }
         
         {permissionEdit &&

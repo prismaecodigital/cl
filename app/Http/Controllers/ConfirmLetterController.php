@@ -9,6 +9,7 @@ use App\Http\Resources\ConfirmLetterListResource;
 use App\Models\Letter;
 use App\Models\Organization;
 use App\Models\Package;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -225,6 +226,32 @@ class ConfirmLetterController extends Controller
             'qty' => $input['qty'],
             'price' => $input['price'],
             'note' => $input['note']
+        ];
+    }
+
+    public function exportPDF(Request $request, Letter $letter)
+    {
+        $letter->load('createdBy', 'organization', 'contact', 'event', 'room', 'hasNotes.notePackage.package', 'hasFnb');
+
+        if($request->has('preview')){
+            $css = asset('css/confirm-letter.css');
+            $logo = asset('ole-suites.png');
+            return view('generate-pdf', compact('letter', 'css', 'logo'));
+        }
+
+        $css = public_path('css\confirm-letter.css');
+        $logo = public_path('ole-suites.png');
+        Pdf::setOption($this->pdfOption());
+        
+        $pdf = Pdf::loadView('generate-pdf', compact('letter', 'css', 'logo'));
+        return $pdf->stream();
+    }
+
+    private function pdfOption(): array
+    {
+        return [
+            'dpi' => 150,
+            'isPhpEnabled' => true,
         ];
     }
 }

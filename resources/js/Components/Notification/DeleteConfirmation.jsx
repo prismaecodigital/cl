@@ -28,9 +28,9 @@ const DeleteConfirmation = ({ id, routeName, className='', withText=true }) => {
       <Trash2 
         className='inline-block mb-1' 
         size={withText ? 14 : 16} 
-        strokeWidth={withText ? 1 : 3}
+        strokeWidth={withText ? 2 : 3}
       /> 
-      {withText && 'Delete'}
+      {withText && ' Delete'}
     </button>
   );
 };
