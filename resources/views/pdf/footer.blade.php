@@ -1,3 +1,3 @@
-<footer class="footer">
-    <p>Footer</p>
+<footer class="footnote">
+    asd
 </footer>

@@ -6,6 +6,7 @@ use App\Http\Requests\CreateLetterRequest;
 use App\Http\Requests\UpdateLetterRequest;
 use App\Http\Resources\ConfirmLetterDetailResource;
 use App\Http\Resources\ConfirmLetterListResource;
+use App\Http\Resources\PDFConfirmLetterResource;
 use App\Models\Letter;
 use App\Models\Organization;
 use App\Models\Package;
@@ -232,26 +233,24 @@ class ConfirmLetterController extends Controller
     public function exportPDF(Request $request, Letter $letter)
     {
         $letter->load('createdBy', 'organization', 'contact', 'event', 'room', 'hasNotes.notePackage.package', 'hasFnb');
+        $data = json_encode(new PDFConfirmLetterResource($letter));
 
         if($request->has('preview')){
             $css = asset('css/confirm-letter.css');
             $logo = asset('ole-suites.png');
-            return view('generate-pdf', compact('letter', 'css', 'logo'));
+            return view('generate-pdf', compact('data', 'css', 'logo'));
         }
 
         $css = public_path('css\confirm-letter.css');
         $logo = public_path('ole-suites.png');
-        Pdf::setOption($this->pdfOption());
-        
-        $pdf = Pdf::loadView('generate-pdf', compact('letter', 'css', 'logo'));
-        return $pdf->stream();
-    }
 
-    private function pdfOption(): array
-    {
-        return [
-            'dpi' => 150,
-            'isPhpEnabled' => true,
-        ];
+        // $options = [
+            // 'isPhpEnabled' => true,
+            // 'isRemoteEnabled' => true, 
+        // ];
+        // $pdf = Pdf::setOptions($options)->loadView('generate-pdf', compact('data', 'css', 'logo'));
+
+        $pdf = Pdf::loadView('generate-pdf', compact('data', 'css', 'logo'));
+        return $pdf->stream();
     }
 }
