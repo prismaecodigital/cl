@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useRef } from 'react';
 
-export default forwardRef(function TextArea({ type = 'text', className = '', isFocused = false, disabled = false, ...props }, ref) {
+export default forwardRef(function TextArea({ type = 'text', className = '', isFocused = false, isDisabled = false, ...props }, ref) {
     const input = ref ? ref : useRef();
 
     const styleEnable = 'border-gray-300 focus:border-ole focus:ring-ole rounded-md shadow-sm';
@@ -16,10 +16,10 @@ export default forwardRef(function TextArea({ type = 'text', className = '', isF
         <textarea
             {...props}
             type={type}
-            className={`${(disabled ? styleDisable : styleEnable)} ${className}`}
+            className={`${(isDisabled ? styleDisable : styleEnable)} ${className}`}
             ref={input}
-            readOnly={disabled}
-            disabled={disabled}
+            readOnly={isDisabled}
+            disabled={isDisabled}
         />
     );
 });

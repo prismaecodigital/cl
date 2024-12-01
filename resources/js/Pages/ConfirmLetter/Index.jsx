@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from '@inertiajs/react';
+import { router, Link } from '@inertiajs/react';
 import createColumn from './data/createColumn';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';
 import MyTable from '@/Components/Table/MyTable';
 
-function Index({ auth, letters }) {
-  const { permissions } = auth;
+function Index({ letters }) {
   const columns = createColumn();
   const breadcrumb = [
     { link: route('dashboard'), text: 'Dashboard' }
@@ -20,11 +19,6 @@ function Index({ auth, letters }) {
       <MyTable
         data={letters.data}
         columns={columns}
-        {...(permissions.includes('letter_show') && {
-          handleClick: (item, index) => {
-            console.log('Row letter clicked:', item, index);
-          },
-        })}
       />
     </div>
   );

@@ -5,7 +5,15 @@ import MainField from './Form/MainField';
 import NotesField from './Form/NotesField';
 import FnbField from './Form/FnbField';
 
-export default function LetterForm({ method, initialValues, routeName, selectOption, letter='' }){  
+export default function LetterForm({
+  pageName,
+  method, 
+  initialValues, 
+  letter='', 
+  routeName='', 
+  selectOption='', 
+  readOnly=false 
+}) {  
   const { data, setData, post, patch, errors, processing } = useForm({
     ...initialValues,
   });
@@ -26,7 +34,9 @@ export default function LetterForm({ method, initialValues, routeName, selectOpt
         data={data}
         setData={setData}
         errors={errors}
+        pageName={pageName}
         selectOption={selectOption}
+        readOnly={readOnly}
       />
 
       {/* Note field */}
@@ -35,6 +45,7 @@ export default function LetterForm({ method, initialValues, routeName, selectOpt
         setData={setData}
         errors={errors}
         selectOption={selectOption}
+        readOnly={readOnly}
       />
 
       {/* FnB field */}
@@ -43,6 +54,7 @@ export default function LetterForm({ method, initialValues, routeName, selectOpt
         setData={setData}
         errors={errors}
         processing={processing}
+        readOnly={readOnly}
       />
     </form>
   );

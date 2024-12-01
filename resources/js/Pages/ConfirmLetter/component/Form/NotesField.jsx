@@ -7,10 +7,11 @@ import DateTimePicker from '@/Components/Form/DateTimePicker';
 import ConfirmDelete from '@/utils/confirmDelete';
 import convertOptions from '@/utils/convertOptions';
 import { PackageMinus, PackagePlus, Plus, Trash2 } from 'lucide-react';
+import addDotsCurrency from '@/utils/addDotsCurrency';
+import FormattedDateFlatpickr from '@/utils/DateFormatFlatpickr';
 
-export default function NotesField({ data, setData, errors, selectOption }) {
+export default function NotesField({ data, setData, errors, selectOption, readOnly=false }) {
   const { packages } = selectOption;
-  const [uom, setUom] = useState([]);
 
   // Reusable function to update `notes`
   const updateNotes = (updateFn) => {
@@ -25,6 +26,7 @@ export default function NotesField({ data, setData, errors, selectOption }) {
       lists: [{
         package: '',
         packageSelected: '',
+        uom: '',
         qty: '',
         price: '',
         note: ''
@@ -66,21 +68,15 @@ export default function NotesField({ data, setData, errors, selectOption }) {
   }
 
   const handlePackageChange = (option, noteIndex, packageIndex) => {
+    const uom = packages.find(item => item.id === option.value)?.uom || '';
     // Update `notes` data
     updateNotes((notes) => {
       notes[noteIndex].lists[packageIndex].package = option.value;
       notes[noteIndex].lists[packageIndex].packageSelected = option;
+      notes[noteIndex].lists[packageIndex].uom = uom;
+
       return notes;
     });
-
-    // Update `uom` state in a single step
-    setUom((prevUom) => ({
-      ...prevUom,
-      [noteIndex]: {
-        ...(prevUom[noteIndex] || {}),
-        [packageIndex]: packages.find(item => item.id === option.value)?.uom || '',
-      },
-    }));
   }
 
   return (
@@ -88,40 +84,42 @@ export default function NotesField({ data, setData, errors, selectOption }) {
       {/* Section Title */}
       <div className='flex flex-row items-center justify-between gap-2 mb-3'>
         <h2 className='text--sub-heading'>Notes</h2>
-        <span className='btn btn--sm btn--primary' onClick={handleAddNote}>
-          <Plus strokeWidth={3} size={16} />
-        </span>
+        {!readOnly && 
+          <span className='btn btn--sm btn--primary' onClick={handleAddNote}>
+            <Plus strokeWidth={3} size={16} />
+          </span>
+        }
       </div>
       
       {/* Notes */}
       {data.notes.map((note, noteIndex) => (
         <div 
           key={noteIndex} 
-          className='py-3 px-4 mb-4 shadow-md rounded-md border border-slate-200'
+          className='py-4 px-4 mb-4 shadow-md rounded-md border border-slate-200'
         >
-          <div className='flex flex-row gap-2 items-end'>
+          <div className='flex flex-row gap-2 items-start'>
             {/* Start Date */}
             <FieldGroup 
               label='Start Date'
               name={`notes.${noteIndex}.start_date`}
               error={errors[`notes.${noteIndex}.start_date`]}
-              isPrimary={true}
               className='flex-1 !mb-0'
             >
               <DateTimePicker
-                minDate='today'
+                minDate={data.check_in}
+                maxDate={data.check_out}
                 name={`notes.${noteIndex}.start_date`}
                 value={note.start_date}
                 onChange={(value) => {
                   updateNotes((notes) => {
-                    notes[noteIndex].start_date = value;
+                    notes[noteIndex].start_date = FormattedDateFlatpickr(value);
                     return notes;
                   });
                 }}
                 className='mt-1 block w-full'
                 placeholder='Start Date...'
                 withTime={false}
-                required
+                isDisable={readOnly}
               />
             </FieldGroup>
 
@@ -129,31 +127,38 @@ export default function NotesField({ data, setData, errors, selectOption }) {
             <FieldGroup 
               label='End Date'
               name={`notes.${noteIndex}.end_date`}
-              error={errors[`notes.${noteIndex}.start_date`]}
+              error={errors[`notes.${noteIndex}.end_date`]}
               className='flex-1 !mb-0'
             >
               <DateTimePicker
-                minDate='today'
+                minDate={data.check_in}
+                maxDate={data.check_out}
                 name={`notes.${noteIndex}.end_date`}
                 value={note.end_date}
                 onChange={(value) => {
-                  const notes = [...data.notes];
-                  notes[noteIndex].end_date = value;
-                  setData('notes', notes);
+                  updateNotes((notes) => {
+                    notes[noteIndex].end_date = FormattedDateFlatpickr(value);
+                    return notes;
+                  });
                 }}
                 className='mt-1 block w-full'
                 placeholder='End Date...'
                 withTime={false}
+                isDisable={readOnly}
               />
             </FieldGroup>
-            <span className='btn btn--sm btn--success py-3' onClick={() => handleAddLists(noteIndex)}>
-              <PackagePlus strokeWidth={3} size={18}/>
-            </span>
+          </div>
+          <div className='flex justify-end my-2'>
+            {!readOnly && 
+              <span className='btn btn--sm btn--success py-3' onClick={() => handleAddLists(noteIndex)}>
+                <PackagePlus className='inline-block mb-1' strokeWidth={3} size={18}/> Add Package
+              </span>
+            }
           </div>
               
           {/* Package Lists */}
           {note.lists.map((packageItem, packageIndex) => (
-            <div key={packageIndex} className='flex flex-col shadow-md rounded-md border border-slate-200 bg-gray-50 mt-4 p-4'>
+            <div key={packageIndex} className='flex flex-col shadow-md rounded-md border border-slate-200 bg-gray-50 p-4 mb-3'>
               <div className='flex flex-row gap-2'>
                 {/* Packages */}
                 <FieldGroup
@@ -169,6 +174,7 @@ export default function NotesField({ data, setData, errors, selectOption }) {
                     menuPortalTarget={document.body} 
                     menuPosition={'fixed'}
                     onChange={(option) => handlePackageChange(option, noteIndex, packageIndex)}
+                    isDisabled={readOnly}
                   />
                 </FieldGroup>
 
@@ -192,6 +198,7 @@ export default function NotesField({ data, setData, errors, selectOption }) {
                         return notes;
                       });
                     }}
+                    isDisabled={readOnly}
                   />
                 </FieldGroup>
 
@@ -202,35 +209,49 @@ export default function NotesField({ data, setData, errors, selectOption }) {
                   className='flex-[1-1-16.666667%] w-1/6'
                 >
                   <TextInput
-                    value={uom?.[noteIndex]?.[packageIndex] || ''}
-                    disabled={true}
+                    value={packageItem.uom || ''}
+                    isDisabled={true}
                     className='mt-1 block w-full'
                     placeholder='Unit...'
                   />
                 </FieldGroup>
 
                 {/* Price */}
-                <FieldGroup
-                  label='Price'
-                  name='name'
-                  error={errors.name}
-                  className='flex-[1-1-33.333333%] w-1/3'
-                >
-                  <TextInput
-                    id='name'
-                    name='name'
-                    className='mt-1 block w-full'
-                    value={packageItem.price}
-                    autoComplete='name'
-                    placeholder='Package Price...'
-                    onChange={(e) => {
-                      updateNotes((notes) => {
-                        notes[noteIndex].lists[packageIndex].price = e.target.value;
-                        return notes;
-                      });
-                    }}
-                  />
-                </FieldGroup>
+                <div className='flex-[1-1-33.333333%] w-1/3'>
+                  <label 
+                    className='form--label' 
+                    htmlFor={`notes.${noteIndex}.lists.${packageIndex}.price`}
+                  >
+                    Price
+                  </label>
+                  <div className='flex items-end'>
+                    <span className='rounded-l-md px-3 py-2 bg-gray-100 border border-gray-300 text-gray-500'>Rp.</span>
+                    <FieldGroup
+                      error={errors[`notes.${noteIndex}.lists.${packageIndex}.price`]}
+                      className='flex-1 !mb-0'
+                    >
+                      <TextInput
+                        type='number'
+                        id={`notes.${noteIndex}.lists.${packageIndex}.price`}
+                        name={`notes.${noteIndex}.lists.${packageIndex}.price`}
+                        className='mt-1 block w-full !rounded-l-none !rounded-r-md'
+                        value={packageItem.priceValue}
+                        placeholder='Package Price...'
+                        onChange={(e) => {
+                          // Remove existing dots
+                          const rawValue = e.target.value.replace(/\./g, '');
+                          updateNotes((notes) => {
+                            notes[noteIndex].lists[packageIndex].price = rawValue;
+                            notes[noteIndex].lists[packageIndex].priceValue = addDotsCurrency(rawValue);
+                            return notes;
+                          });
+                        }}
+                        isDisabled={readOnly}
+                      />
+                    </FieldGroup>
+                  </div>
+                </div>
+                
               </div>
 
               {/* Note */}
@@ -245,7 +266,6 @@ export default function NotesField({ data, setData, errors, selectOption }) {
                   name={`notes.${noteIndex}.lists.${packageIndex}.note`}
                   className='mt-1 block w-full'
                   value={packageItem.note}
-                  autoComplete='note'
                   placeholder='Package Note...'
                   onChange={(e) => {
                     updateNotes((notes) => {
@@ -253,18 +273,25 @@ export default function NotesField({ data, setData, errors, selectOption }) {
                       return notes;
                     });
                   }}
+                  isDisabled={readOnly}
                 />
               </FieldGroup>
-
-              <span className='btn btn--sm btn--danger py-3 mt-4 inline-block max-w-fit flex-none' onClick={() => handleRemoveLists(noteIndex, packageIndex)}>
-                <PackageMinus strokeWidth={3} size={18} className='mb-1 inline-block'/> Remove Package
-              </span>
+              
+              {!readOnly && 
+                <span className='btn btn--sm btn--danger py-3 mt-4 inline-block max-w-fit flex-none' onClick={() => handleRemoveLists(noteIndex, packageIndex)}>
+                  <PackageMinus strokeWidth={3} size={18} className='mb-1 inline-block'/> Delete Package
+                </span>
+              }
             </div>
           ))}
 
-          <span className='btn btn--sm btn--danger py-3 mt-4 block' onClick={() => handleRemoveNote(noteIndex)}>
-            <Trash2 strokeWidth={3} size={18} className='mb-1 inline-block'/> Delete Note
-          </span>
+          {!readOnly && 
+            <div className='flex justify-end'>
+              <span className='btn btn--sm btn--danger py-3 mt-4' onClick={() => handleRemoveNote(noteIndex)}>
+                <Trash2 strokeWidth={3} size={18} className='mb-1 inline-block'/> Delete Note
+              </span>
+            </div>
+          }
         </div>
       ))}
     </div>

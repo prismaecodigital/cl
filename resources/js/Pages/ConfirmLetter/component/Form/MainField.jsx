@@ -8,10 +8,10 @@ import Select from 'react-select';
 import DateTimePicker from '@/Components/Form/DateTimePicker';
 import convertOptions from '@/utils/convertOptions';
 
-export default function MainField({ data, setData, errors, selectOption }) {
+export default function MainField({ data, setData, errors, pageName, selectOption, readOnly=false }) {
   const { user } = usePage().props.auth;
-  const [ phone, setPhone ] = useState('');
-  const [ address, setAddress ] = useState('');
+  const [ phone, setPhone ] = useState(data.phone);
+  const [ address, setAddress ] = useState(data.address);
   const [ contacts, setContact ] = useState([]);
   const { organizations, events, rooms } = selectOption;
 
@@ -85,7 +85,7 @@ export default function MainField({ data, setData, errors, selectOption }) {
 
   return (
     <div className='content-box mb-2'>
-      <Breadcrumb title='Create Confirm Letter' pageName='Create' prevPage={letterBreadcrumb} />
+      <Breadcrumb title={`${pageName} Confirm Letter`} pageName={pageName} prevPage={letterBreadcrumb} />
 
       {/* Organization */}
       <FieldGroup
@@ -102,6 +102,7 @@ export default function MainField({ data, setData, errors, selectOption }) {
           required
           menuPortalTarget={document.body} 
           menuPosition={'fixed'}
+          isDisabled={readOnly}
         />
       </FieldGroup>
 
@@ -111,10 +112,9 @@ export default function MainField({ data, setData, errors, selectOption }) {
         name='address'
       >
         <TextInput
-          id='address'
           name='address'
           value={address}
-          disabled={true}
+          isDisabled={true}
           className='mt-1 block w-full'
           placeholder='Organization address...'
         />
@@ -135,6 +135,7 @@ export default function MainField({ data, setData, errors, selectOption }) {
           required
           menuPortalTarget={document.body} 
           menuPosition={'fixed'}
+          isDisabled={readOnly}
         />
       </FieldGroup>
 
@@ -144,10 +145,9 @@ export default function MainField({ data, setData, errors, selectOption }) {
         name='phone'
       >
         <TextInput
-          id='phone'
           name='phone'
           value={phone}
-          disabled={true}
+          isDisabled={true}
           className='mt-1 block w-full'
           placeholder='PIC phone...'
         />
@@ -163,11 +163,15 @@ export default function MainField({ data, setData, errors, selectOption }) {
         <DateTimePicker
           minDate='today'
           value={data.check_in}
-          onChange={(value) => setData('check_in', value)}
+          onChange={(value) => {
+            const dateValue = new Date(value);
+            setData('check_in', dateValue.toISOString());
+          }}
           className='mt-1 block w-full'
           name='check_in'
           placeholder='Check In...'
           required
+          isDisable={readOnly}
         />
       </FieldGroup>
 
@@ -181,11 +185,15 @@ export default function MainField({ data, setData, errors, selectOption }) {
         <DateTimePicker
           minDate='today'
           value={data.check_out}
-          onChange={(value) => setData('check_out', value)}
+          onChange={(value) => {
+            const dateValue = new Date(value);
+            setData('check_out', dateValue.toISOString());
+          }}
           className='mt-1 block w-full'
           name='check_in'
           placeholder='Check Out...'
           required
+          isDisable={readOnly}
         />
       </FieldGroup>
 
@@ -204,6 +212,7 @@ export default function MainField({ data, setData, errors, selectOption }) {
           required
           menuPortalTarget={document.body} 
           menuPosition={'fixed'}
+          isDisabled={readOnly}
         />
       </FieldGroup>
 
@@ -222,6 +231,7 @@ export default function MainField({ data, setData, errors, selectOption }) {
           required
           menuPortalTarget={document.body} 
           menuPosition={'fixed'}
+          isDisabled={readOnly}
         />
       </FieldGroup>
 
@@ -243,6 +253,7 @@ export default function MainField({ data, setData, errors, selectOption }) {
           placeholder='Estimated Attendance...'
           pattern='^[0-9]{0,10}$'
           onChange={handleAttendanceChange}
+          isDisabled={readOnly}
         />
       </FieldGroup>
 
@@ -264,6 +275,7 @@ export default function MainField({ data, setData, errors, selectOption }) {
           required
           menuPortalTarget={document.body} 
           menuPosition={'fixed'}
+          isDisabled={readOnly}
         />
       </FieldGroup>
 
@@ -273,10 +285,9 @@ export default function MainField({ data, setData, errors, selectOption }) {
         name='sales'
       >
         <TextInput
-          id='sales'
           name='sales'
           value={user.fullname}
-          disabled={true}
+          isDisabled={true}
           className='mt-1 block w-full'
         />
       </FieldGroup>
