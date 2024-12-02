@@ -70,7 +70,7 @@ class ConfirmLetterController extends Controller
                 }
 
                 foreach($note['lists'] as $package){
-                    if(isset($package['package'])){
+                    if(isset($package['package']) || isset($package['note'])){
                         $packageObject = $this->createNotePackageObject($package);
                         $notes->notePackage()->create($packageObject);
                     }
@@ -170,7 +170,7 @@ class ConfirmLetterController extends Controller
                     $notes->notePackage()->whereIn('id', $packageToDelete)->delete();
 
                     foreach($notePackage as $package){
-                        if(isset($package['package'])){
+                        if(isset($package['package']) || isset($package['note'])){
                             $packageObject = $this->createNotePackageObject($package);
                             $notes->notePackage()->updateOrCreate($packageObject);
                         }

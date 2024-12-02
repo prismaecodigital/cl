@@ -92,6 +92,8 @@ class Letter extends Model
     {
         return $this->hasNotes->flatMap(function ($note) {
             return $note->notePackage;
-        })->sum('price');
+        })->sum(function ($package) {
+            return $package->price * $package->qty; // Multiply price by qty
+        });
     }
 }

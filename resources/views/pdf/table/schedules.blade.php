@@ -1,6 +1,6 @@
-<h2>Jadwal Food and Bevarage</h2>
+<h2 class='text--sub-title'>Jadwal Food and Bevarage</h2>
 
-<table border="1" style="border-collapse: collapse; text-align: center; width: 100%;">
+<table class="schedule-table">
     @php
         $columns = ['date' => 'Day', 'breakfast' => 'Breakfast', 'cb_morning' => 'Coffee Break Pagi', 'lunch' => 'Lunch', 'cb_evening' => 'Coffee Break Sore', 'dinner' => 'Dinner', 'cb_night' => 'Coffee Break Malam'];
     @endphp
@@ -16,7 +16,7 @@
             <tr>
                 @foreach ($columns as $key => $label)
                     <td>
-                        {{ $label }}
+                        {{ $schedule[$key] }}
                     </td>
                 @endforeach
             </tr>

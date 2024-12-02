@@ -1,7 +1,7 @@
 <section>
     <div class='text--center'>
         <h1 class="text--heading">CONFIRMATION LETTER</h1>
-        <p>No: 076/CL/DARMAWANPARK/II/2024</p>
+        <p>No: {{ $letter['code'] }}</p>
     </div>
 
     <p>
@@ -10,6 +10,12 @@
     </p>
 
     @include('pdf.table.information', compact('letter'))
-    @include('pdf.table.notes', compact('letter'))
-    @include('pdf.table.schedules', ['schedules' => $letter['schedules']])
+
+    @if (!empty($letter['notes']))
+        @include('pdf.table.notes', ['notes' => $letter['notes']])
+    @endif
+
+    @if (!empty($letter['schedules']))
+        @include('pdf.table.schedules', ['schedules' => $letter['schedules']])
+    @endif
 </section>

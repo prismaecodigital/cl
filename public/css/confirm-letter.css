@@ -34,7 +34,7 @@ body {
   width: 100%;
   height: auto;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 .header-logo > img {
@@ -65,7 +65,8 @@ body {
 }
 
 .text--sub-title {
-
+  font-size: 1.15rem !important;
+  margin-bottom: .5rem !important;
 }
 
 .text--center{
@@ -104,6 +105,40 @@ flex-child {
   margin: 10px 0;
 }
 
+.schedule-table,
+.note-table {
+  border-collapse: collapse;
+  text-align: center;
+  width: 100%;
+}
+
+.note-table tr, 
+.note-table th, 
+.note-table td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.note-table .col-date {
+  width: 30% !important;
+}
+
+.note-table .col-package {
+  width: 50% !important;
+}
+
+.note-table .col-price {
+  width: 20% !important;
+}
+
+.schedule-table th,
+.schedule-table td {
+  padding: 2px;
+  border: 1px solid black;
+  width: 100% !important;
+  max-width: calc(100% / 6) !important;
+}
+
 .info-table th,
 .info-table td {
   border: 1px solid black;
@@ -113,7 +148,6 @@ flex-child {
 
 .info-table th {
   font-weight: bold;
-  background-color: #f2f2f2;
 }
 
 .info-table td:first-child {
