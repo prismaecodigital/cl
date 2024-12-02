@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('fnbs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('letter_id');
-            $table->date('date');
+            $table->date('date')->nullable();
             $table->string('breakfast', 10)->nullable();
             $table->string('cb_morning', 10)->nullable();
             $table->string('lunch', 10)->nullable();

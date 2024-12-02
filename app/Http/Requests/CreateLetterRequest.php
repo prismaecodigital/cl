@@ -28,8 +28,8 @@ class CreateLetterRequest extends FormRequest
             'contact' => ['required', 'integer', 'exists:contacts,id'],
             'event' => ['required', 'integer', 'exists:events,id'],
             'room' => ['required', 'integer', 'exists:rooms,id'],
-            'check_in' => ['required', 'date_format:Y-m-d\TH:i:s.v\Z'],
-            'check_out' => ['required', 'date_format:Y-m-d\TH:i:s.v\Z', 'after_or_equal:check_in'],
+            'check_in' => ['required', 'date_format:Y-m-d'],
+            'check_out' => ['required', 'date_format:Y-m-d', 'after_or_equal:check_in'],
             'attendance' => ['required', 'integer'],
             'payment' => ['required', 'string', 'in:cash,transfer'],
             'sales' => ['required', 'integer', 'exists:users,id'],
@@ -66,8 +66,8 @@ class CreateLetterRequest extends FormRequest
 
             if ($checkInDate && $checkOutDate) {
                 // Parse the check_in date and check_out date
-                $checkIn = Carbon::createFromFormat('Y-m-d\TH:i:s.v\Z', $checkInDate)->startOfDay();
-                $checkOut = Carbon::createFromFormat('Y-m-d\TH:i:s.v\Z', $checkOutDate)->endOfDay();
+                $checkIn = Carbon::createFromFormat('Y-m-d', $checkInDate);
+                $checkOut = Carbon::createFromFormat('Y-m-d', $checkOutDate);
 
                 // Validate notes.*.start_date and notes.*.end_date
                 foreach ($this->input('notes', []) as $key => $note) {

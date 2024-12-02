@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('letters', function (Blueprint $table) {
             $table->id();
+            $table->string('code', 100)->unique()->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('organization_id');
             $table->unsignedBigInteger('contact_id');
             $table->unsignedBigInteger('event_id');
             $table->unsignedBigInteger('room_id');
-            $table->timestamp('check_in');
-            $table->timestamp('check_out');
+            $table->date('check_in');
+            $table->date('check_out');
             $table->integer('attendance');
             $table->enum('payment', ['cash', 'transfer']);
             $table->timestamps();

@@ -17,6 +17,7 @@ class ConfirmLetterDetailResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'code' => $this->code,
             'organization' => $this->organization_id,
             'organizationSelected' => [
                 'value' => $this->organization->id,
@@ -48,13 +49,13 @@ class ConfirmLetterDetailResource extends JsonResource
                 'label' => ucfirst($this->payment),
             ],
             'sales' => $this->created_by,
-            'notes' => $this->hasNotes ? 
+            'notes' => count($this->hasNotes) > 0 ? 
                 $this->hasNotes->map(function ($note){
                     return [
                         'letter_id' => $note->letter_id,
                         'start_date' => isset($note['start_date']) ? Carbon::parse($note['start_date'])->format('Y-m-d') : null,
                         'end_date' => isset($note['end_date']) ? Carbon::parse($note['end_date'])->format('Y-m-d') : null,
-                        'lists' => $note->notePackage ? 
+                        'lists' => count($note->notePackage) > 0 ? 
                             $note->notePackage->map(function ($item){
                                 return [
                                     'note_id' => $item->note_id,
@@ -72,7 +73,7 @@ class ConfirmLetterDetailResource extends JsonResource
                             }) : [$this->notePackageDefault()],
                     ];
                 }) : [$this->noteObjectDefault()],
-            'schedules' => $this->hasFnb ? 
+            'schedules' => count($this->hasFnb) > 0 ? 
                 $this->hasFnb->map(function ($schedule){
                     return [
                         'letter_id' => $schedule->letter_id,
@@ -94,7 +95,7 @@ class ConfirmLetterDetailResource extends JsonResource
             'letter_id' => '',
             'start_date' => '',
             'end_date' => '',
-            'lists' => [
+            'lists' => [[
               'package' => '',
               'packageSelected' => '',
               'uom' => '',
@@ -102,7 +103,7 @@ class ConfirmLetterDetailResource extends JsonResource
               'price' => '',
               'priceValue' => '',
               'note' => '',
-            ]
+            ]]
         ];
     }
 

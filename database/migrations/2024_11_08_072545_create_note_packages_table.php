@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('note_id');
             $table->unsignedBigInteger('package_id')->nullable();
             $table->integer('qty')->nullable();
-            $table->integer('price')->nullable();
+            $table->bigInteger('price')->nullable();
             $table->text('note')->nullable();
             $table->timestamps();
 

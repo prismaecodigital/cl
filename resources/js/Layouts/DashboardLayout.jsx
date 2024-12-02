@@ -10,7 +10,7 @@ export default function DashboardLayout({ title, children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
-    const { 'toast-success': successMessage, 'toast-failed': failedMessage } = flash;
+    const { 'toast-success': successMessage, 'toast-error': failedMessage } = flash;
 
     if (successMessage) ToastContent.success(successMessage);
     if (failedMessage) ToastContent.error(failedMessage);

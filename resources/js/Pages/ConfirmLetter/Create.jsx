@@ -5,6 +5,7 @@ import LetterForm from './component/LetterForm';
 function Create({ auth, organizations, events, rooms, packages }) {
   const selectOption = { organizations, events, rooms, packages };
   const data = {
+    code: '',
     organization: '',
     organizationSelected: '',
     address: '',

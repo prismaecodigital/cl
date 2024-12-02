@@ -1,6 +1,6 @@
 import { usePage, Link } from '@inertiajs/react';
 import { Pencil, FileText, Eye } from 'lucide-react';
-import DeleteConfirmation from '@/Components/Notification/DeleteConfirmation';
+import ButtonDelete from '@/Components/Button/ButtonDelete';
 import formatToIDR from '@/utils/formatToIDR';
 
 const createColumn = () => {
@@ -79,7 +79,7 @@ const createColumn = () => {
           </Link>
         }
         {(permissionDelete && item.canDelete) &&
-          <DeleteConfirmation 
+          <ButtonDelete 
             id={item.id} 
             routeName='confirm-letter.destroy'
             className='!bg-danger !ml-0 text-white py-2 px-3 rounded-md'

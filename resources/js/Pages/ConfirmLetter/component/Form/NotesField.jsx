@@ -4,7 +4,7 @@ import Select from 'react-select';
 import TextInput from '@/Components/Form/TextInput';
 import TextArea from '@/Components/Form/TextArea';
 import DateTimePicker from '@/Components/Form/DateTimePicker';
-import ConfirmDelete from '@/utils/confirmDelete';
+import ConfirmDelete from '@/Components/Notification/confirmDelete';
 import convertOptions from '@/utils/convertOptions';
 import { PackageMinus, PackagePlus, Plus, Trash2 } from 'lucide-react';
 import addDotsCurrency from '@/utils/addDotsCurrency';
@@ -231,7 +231,7 @@ export default function NotesField({ data, setData, errors, selectOption, readOn
                       className='flex-1 !mb-0'
                     >
                       <TextInput
-                        type='number'
+                        type='text'
                         id={`notes.${noteIndex}.lists.${packageIndex}.price`}
                         name={`notes.${noteIndex}.lists.${packageIndex}.price`}
                         className='mt-1 block w-full !rounded-l-none !rounded-r-md'

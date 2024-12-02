@@ -1,6 +1,6 @@
 import { usePage, Link } from "@inertiajs/react";
 import { Pencil } from "lucide-react";
-import DeleteConfirmation from "@/Components/Notification/DeleteConfirmation";
+import ButtonDelete from "@/Components/Button/ButtonDelete";
 
 const createColumn = () => {
   const { permissions } = usePage().props.auth;
@@ -54,7 +54,7 @@ const createColumn = () => {
           </Link>
         }
         {(permissionDelete && item.canDelete) &&
-          <DeleteConfirmation id={item.id} routeName='users.destroy' />
+          <ButtonDelete id={item.id} routeName='users.destroy' />
         }
       </>
     ),

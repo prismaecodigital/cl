@@ -3,7 +3,7 @@ import FieldGroup from '@/Components/Form/FieldGroup';
 import DateTimePicker from '@/Components/Form/DateTimePicker';
 import TextInput from '@/Components/Form/TextInput';
 import LoadingButton from '@/Components/Button/LoadingButton';
-import ConfirmDelete from '@/utils/confirmDelete';
+import ConfirmDelete from '@/Components/Notification/confirmDelete';
 import { Plus, Trash2 } from 'lucide-react';
 import FormattedDateFlatpickr from '@/utils/DateFormatFlatpickr';
 

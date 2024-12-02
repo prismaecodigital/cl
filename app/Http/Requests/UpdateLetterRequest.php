@@ -28,8 +28,8 @@ class UpdateLetterRequest extends FormRequest
             'contact' => ['required', 'integer', 'exists:contacts,id'],
             'event' => ['required', 'integer', 'exists:events,id'],
             'room' => ['required', 'integer', 'exists:rooms,id'],
-            'check_in' => ['required', 'date_format:Y-m-d\TH:i:s.v\Z'],
-            'check_out' => ['required', 'date_format:Y-m-d\TH:i:s.v\Z', 'after_or_equal:check_in'],
+            'check_in' => ['required', 'date_format:Y-m-d'],
+            'check_out' => ['required', 'date_format:Y-m-d', 'after_or_equal:check_in'],
             'attendance' => ['required', 'integer'],
             'payment' => ['required', 'string', 'in:cash,transfer'],
             'sales' => ['required', 'integer', 'exists:users,id'],
@@ -66,60 +66,65 @@ class UpdateLetterRequest extends FormRequest
 
             if ($checkInDate && $checkOutDate) {
                 // Parse the check_in date and check_out date
-                $checkIn = Carbon::createFromFormat('Y-m-d\TH:i:s.v\Z', $checkInDate)->startOfDay();
-                $checkOut = Carbon::createFromFormat('Y-m-d\TH:i:s.v\Z', $checkOutDate)->endOfDay();
+                $checkIn = Carbon::createFromFormat('Y-m-d', $checkInDate)->startOfDay();
+                $checkOut = Carbon::createFromFormat('Y-m-d', $checkOutDate)->endOfDay();
 
-                // Validate notes.*.start_date and notes.*.end_date
-                foreach ($this->input('notes', []) as $key => $note) {
-                    $isStartDate = isset($note['start_date']);
-                    if ($isStartDate) {
-                        $startDate = Carbon::createFromFormat('Y-m-d', $note['start_date']);
-
-                        if ($startDate->lt($checkIn)) {
-                            $validator->errors()->add(
-                                "notes.$key.start_date",
-                                "Each note start date must be on or after the check-in date."
-                            );
+                if(count($this->input('notes')) > 0){
+                    // Validate notes.*.start_date and notes.*.end_date
+                    foreach ($this->input('notes', []) as $key => $note) {
+                        $isStartDate = isset($note['start_date']);
+                        if ($isStartDate) {
+                            $startDate = Carbon::createFromFormat('Y-m-d', $note['start_date']);
+    
+                            if ($startDate->lt($checkIn)) {
+                                $validator->errors()->add(
+                                    "notes.$key.start_date",
+                                    "Each note start date must be on or after the check-in date."
+                                );
+                            }
                         }
-                    }
-
-                    if ($isStartDate && isset($note['end_date'])) {
-                        $startDate = Carbon::createFromFormat('Y-m-d', $note['start_date']);
-                        $endDate = Carbon::createFromFormat('Y-m-d', $note['end_date']);
-
-                        if ($endDate->lt($startDate)) {
-                            $validator->errors()->add(
-                                "notes.$key.end_date",
-                                "Each note end date must be on or after the start date."
-                            );
-                        }
-
-                        if ($endDate->gt($checkOut)) {
-                            $validator->errors()->add(
-                                "notes.$key.end_date",
-                                "Each note end date must be on or before the check-out date."
-                            );
+    
+                        if ($isStartDate && isset($note['end_date'])) {
+                            $startDate = Carbon::createFromFormat('Y-m-d', $note['start_date']);
+                            $endDate = Carbon::createFromFormat('Y-m-d', $note['end_date']);
+    
+                            if ($endDate->lt($startDate)) {
+                                $validator->errors()->add(
+                                    "notes.$key.end_date",
+                                    "Each note end date must be on or after the start date."
+                                );
+                            }
+    
+                            if ($endDate->gt($checkOut)) {
+                                $validator->errors()->add(
+                                    "notes.$key.end_date",
+                                    "Each note end date must be on or before the check-out date."
+                                );
+                            }
                         }
                     }
                 }
+                
 
-                // Validate schedules.*.date
-                foreach ($this->input('schedules', []) as $key => $schedule) {
-                    if (isset($schedule['date'])) {
-                        $scheduleDate = Carbon::createFromFormat('Y-m-d', $schedule['date']);
+                if(count($this->input('schedules')) > 0){
+                    // Validate schedules.*.date
+                    foreach ($this->input('schedules', []) as $key => $schedule) {
+                        if (isset($schedule['date'])) {
+                            $scheduleDate = Carbon::createFromFormat('Y-m-d', $schedule['date']);
 
-                        if ($scheduleDate->lt($checkIn)) {
-                            $validator->errors()->add(
-                                "schedules.$key.date",
-                                "Each schedule date must be on or after the check-in date."
-                            );
-                        }
+                            if ($scheduleDate->lt($checkIn)) {
+                                $validator->errors()->add(
+                                    "schedules.$key.date",
+                                    "Each schedule date must be on or after the check-in date."
+                                );
+                            }
 
-                        if ($scheduleDate->gt($checkOut)) {
-                            $validator->errors()->add(
-                                "schedules.$key.date",
-                                "Each schedule date must be on or before the check-out date."
-                            );
+                            if ($scheduleDate->gt($checkOut)) {
+                                $validator->errors()->add(
+                                    "schedules.$key.date",
+                                    "Each schedule date must be on or before the check-out date."
+                                );
+                            }
                         }
                     }
                 }

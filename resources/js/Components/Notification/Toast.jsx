@@ -17,7 +17,7 @@ const ToastContent = {
     toast.success(message, toastConfig);
   },
   error: (message) => {
-    toast.success(message, toastConfig);
+    toast.error(message, toastConfig);
   }
 }
 

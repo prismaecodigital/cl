@@ -62,23 +62,29 @@ class ConfirmLetterController extends Controller
 
             $letter = Letter::create($letterObject);
             foreach($request->input('notes', []) as $note){
-                $notes = $letter->hasNotes()->create([
-                    'start_date' => $note['start_date'],
-                    'end_date' => $note['end_date'],
-                ]);
+                if(isset($note['start_date'])) {
+                    $notes = $letter->hasNotes()->create([
+                        'start_date' => $note['start_date'],
+                        'end_date' => $note['end_date'],
+                    ]);
+                }
 
                 foreach($note['lists'] as $package){
-                    $packageObject = $this->createNotePackageObject($package);
-                    $notes->notePackage()->create($packageObject);
+                    if(isset($package['package'])){
+                        $packageObject = $this->createNotePackageObject($package);
+                        $notes->notePackage()->create($packageObject);
+                    }
                 }
             }
 
             foreach($request->input('schedules', []) as $schedule){
-                $notes = $letter->hasFnb()->create($schedule);
+                if(isset($schedule['date'])){
+                    $notes = $letter->hasFnb()->create($schedule);
+                }
             }
 
             DB::commit();
-            return Redirect::route('confirm-letter.index')->with('success', 'Confirmation Letter Created!');
+            return Redirect::route('confirm-letter.index')->with('toast-success', 'Confirmation Letter Created!');
         } catch(\Exception $e) {
             DB::rollBack();
             return Redirect::back()->withErrors([
@@ -146,25 +152,29 @@ class ConfirmLetterController extends Controller
             $letter->hasNotes()->whereIn('id', $notesToDelete)->delete();
 
             foreach($notesData as $note){
-                $notes = $letter->hasNotes()->updateOrCreate([
-                    'start_date' => $note['start_date'],
-                    'end_date' => $note['end_date'],
-                ]);
+                if(isset($note['start_date'])) {
+                    $notes = $letter->hasNotes()->updateOrCreate([
+                        'start_date' => $note['start_date'],
+                        'end_date' => $note['end_date'],
+                    ]);
 
-                // Handle note package
-                $notePackage = $note['lists'] ?? [];
+                    // Handle note package
+                    $notePackage = $note['lists'] ?? [];
 
-                // Get the current package IDs for the note
-                $existingPackageIds = $notes->notePackage()->pluck('id')->toArray();
-                $newPackageIds = collect($notePackage)->pluck('id')->filter()->toArray();
+                    // Get the current package IDs for the note
+                    $existingPackageIds = $notes->notePackage()->pluck('id')->toArray();
+                    $newPackageIds = collect($notePackage)->pluck('id')->filter()->toArray();
 
-                // Delete subsections that are not in the update request
-                $packageToDelete = array_diff($existingPackageIds, $newPackageIds);
-                $notes->notePackage()->whereIn('id', $packageToDelete)->delete();
+                    // Delete subsections that are not in the update request
+                    $packageToDelete = array_diff($existingPackageIds, $newPackageIds);
+                    $notes->notePackage()->whereIn('id', $packageToDelete)->delete();
 
-                foreach($notePackage as $package){
-                    $packageObject = $this->createNotePackageObject($package);
-                    $notes->notePackage()->updateOrCreate($packageObject);
+                    foreach($notePackage as $package){
+                        if(isset($package['package'])){
+                            $packageObject = $this->createNotePackageObject($package);
+                            $notes->notePackage()->updateOrCreate($packageObject);
+                        }
+                    }
                 }
             }
 
@@ -180,14 +190,15 @@ class ConfirmLetterController extends Controller
             $letter->hasFnb()->whereIn('id', $schedulesToDelete)->delete();
 
             foreach($schedulesData as $schedule){
-                $notes = $letter->hasFnb()->updateOrCreate($schedule);
+                if(isset($schedule['date'])){
+                    $letter->hasFnb()->updateOrCreate($schedule);
+                }
             }
 
             DB::commit();
-            return Redirect::route('confirm-letter.index')->with('success', 'Confirmation Letter Updated!');
+            return Redirect::route('confirm-letter.index')->with('toast-success', 'Confirmation Letter Updated!');
         } catch(\Exception $e) {
             DB::rollBack();
-            dd($e);
             return Redirect::back()->withErrors([
                 'error' => $e->getMessage(),
             ])->withInput();

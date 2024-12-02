@@ -7,6 +7,7 @@ import TextInput from '@/Components/Form/TextInput';
 import Select from 'react-select';
 import DateTimePicker from '@/Components/Form/DateTimePicker';
 import convertOptions from '@/utils/convertOptions';
+import FormattedDateFlatpickr from '@/utils/DateFormatFlatpickr';
 
 export default function MainField({ data, setData, errors, pageName, selectOption, readOnly=false }) {
   const { user } = usePage().props.auth;
@@ -86,6 +87,20 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
   return (
     <div className='content-box mb-2'>
       <Breadcrumb title={`${pageName} Confirm Letter`} pageName={pageName} prevPage={letterBreadcrumb} />
+      {/* Code */}
+      {data.code && (
+        <FieldGroup
+          label='Code'
+          name='code'
+        >
+          <TextInput
+            name='code'
+            value={data.code}
+            isDisabled={true}
+            className='mt-1 block w-full'
+          />
+        </FieldGroup>
+      )}
 
       {/* Organization */}
       <FieldGroup
@@ -164,13 +179,13 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
           minDate='today'
           value={data.check_in}
           onChange={(value) => {
-            const dateValue = new Date(value);
-            setData('check_in', dateValue.toISOString());
+            setData('check_in', FormattedDateFlatpickr(value));
           }}
           className='mt-1 block w-full'
           name='check_in'
           placeholder='Check In...'
           required
+          withTime={false}
           isDisable={readOnly}
         />
       </FieldGroup>
@@ -186,13 +201,13 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
           minDate='today'
           value={data.check_out}
           onChange={(value) => {
-            const dateValue = new Date(value);
-            setData('check_out', dateValue.toISOString());
+            setData('check_out', FormattedDateFlatpickr(value));
           }}
           className='mt-1 block w-full'
           name='check_in'
           placeholder='Check Out...'
           required
+          withTime={false}
           isDisable={readOnly}
         />
       </FieldGroup>

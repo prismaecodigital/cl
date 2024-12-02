@@ -1,5 +1,5 @@
 import React from 'react';
-import { router, Link } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import createColumn from './data/createColumn';
 import DashboardLayout from '@/Layouts/DashboardLayout';
 import Breadcrumb from '@/Components/Breadcrumb/Breadcrumb';

@@ -17,6 +17,8 @@ export default function DateTimePicker({
   ...props
 }) {
   const flatpickrRef = useRef(null);
+  const minimumDate = minDate ? new Date(minDate) : null;
+  const maximumDate = maxDate ? new Date(maxDate) : null;
 
   const handleClear = () => {
     if (flatpickrRef.current) {
@@ -37,8 +39,8 @@ export default function DateTimePicker({
           locale: Indonesian,
           dateFormat: withTime ? 'Y-m-d H:i:S' : 'Y-m-d',
           altFormat: withTime ? 'j F Y H:i:S' : 'j F Y',
-          minDate: minDate,
-          maxDate: maxDate,
+          minDate: minimumDate,
+          maxDate: maximumDate,
           defaultDate: currentDate,
           defaultHour: 10,
           clickOpens: !isDisable

@@ -11,7 +11,42 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 class Letter extends Model
 {
     use HasFactory;
-    protected $fillable = ['created_by', 'organization_id', 'contact_id', 'event_id', 'room_id', 'check_in', 'check_out', 'attendance', 'payment'];
+    protected $fillable = ['code', 'created_by', 'organization_id', 'contact_id', 'event_id', 'room_id', 'check_in', 'check_out', 'attendance', 'payment'];
+
+    protected static function boot()
+{
+    parent::boot();
+
+    static::created(function ($confirmationLetter) {
+        // Generate the code after the record is created
+        $confirmationLetter->code = app()->make(self::class)->generateCode($confirmationLetter);
+
+        // Save the updated code to the database
+        $confirmationLetter->save();
+    });
+}
+
+    public function generateCode($confirmationLetter): string
+    {
+        $id = str_pad($confirmationLetter->id, 3, '0', STR_PAD_LEFT); // Ensures the ID is 3 digits
+        $prefix = 'CL';
+        $location = 'DARMAWANPARK';
+        $monthRoman = $this->convertToRoman(now()->month); // Convert the current month to Roman numerals
+        $year = now()->year;
+
+        return "{$id}/{$prefix}/{$location}/{$monthRoman}/{$year}";
+    }
+
+    private function convertToRoman($month): string
+    {
+        $map = [
+            1 => 'I', 2 => 'II', 3 => 'III', 4 => 'IV', 5 => 'V',
+            6 => 'VI', 7 => 'VII', 8 => 'VIII', 9 => 'IX', 10 => 'X',
+            11 => 'XI', 12 => 'XII'
+        ];
+
+        return $map[$month] ?? '';
+    }
 
     public function createdBy(): BelongsTo
     {
