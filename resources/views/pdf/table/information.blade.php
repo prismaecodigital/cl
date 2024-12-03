@@ -19,7 +19,13 @@
     @foreach ($details as $key => $value)
         <tr>
             <td>{{ $key }}</td>
-            <td>{{ $value }}</td>
+            <td>
+                @if ($key == ' Nama Organisasi')
+                    <b>{{ $value }}</b>
+                @else
+                    {{ $value }}                    
+                @endif
+            </td>
         </tr>
     @endforeach
 </table>

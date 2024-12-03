@@ -14,7 +14,7 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font-size: 14px;
+  font-size: 12px;
   font-family: 'Figtree', sans-serif;
 }
 
@@ -34,7 +34,7 @@ body {
   width: 100%;
   height: auto;
   text-align: center;
-  margin-bottom: .5rem;
+  margin-bottom: .5em;
 }
 
 .header-logo > img {
@@ -50,27 +50,31 @@ body {
 .text--heading,
 .text--title {
   font-family: 'Figtree', sans-serif;
-  font-size: 1.1rem;
   font-weight: bold;
 }
 
 .space{
-  padding: 0 1rem;
+  padding: 0 1em;
 }
 
 .text--heading {
-  margin-top: .5rem !important;
+  font-size: 1.15em !important;
+  margin-top: .5em !important;
   margin-bottom: 0px !important;
 }
 
 .text--heading ~ p {
   margin-top: 0px !important;
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 1.5em !important;
+}
+
+.text--title {
+  font-size: 1em !important;
 }
 
 .text--sub-title {
-  font-size: 1.15rem !important;
-  margin-bottom: .5rem !important;
+  font-size: 1.15em !important;
+  margin-bottom: .5em !important;
 }
 
 .text--center{
@@ -98,8 +102,9 @@ body {
   text-align: left;
 }
 
-.info-table th {
-  font-weight: bold;
+.info-table th,
+.info-table tr:first-child {
+  font-weight: bold !important;
 }
 
 .info-table td:first-child {
@@ -113,12 +118,12 @@ body {
 }
 
 .note-table thead th {
-  padding: 1rem .5rem;
+  padding: 1em .5em;
   border: solid 1px black;
 }
 
 .note-table tbody td {
-  padding: .5rem;
+  padding: .5em;
   border: solid 1px black;
 }
 
@@ -137,11 +142,11 @@ body {
 }
 
 .term-list li {
-  margin-bottom: .35rem;
+  margin-bottom: .35em;
 }
 
 .sign-table {
-  margin-top: 1rem;
+  margin-top: 1em;
   width: 100%;
   border-collapse: collapse;
 }
@@ -170,7 +175,7 @@ body {
   right: 0;
   height: 50px;
   text-align: center;
-  font-size: .8rem;
+  font-size: .8em;
   color: #666 !important;
 }
 
