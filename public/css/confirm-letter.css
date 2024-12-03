@@ -192,39 +192,3 @@ body {
   text-align: center;
   width: calc(100% / 3);
 }
-
-.footer {
-  position: fixed;
-  bottom: 0px;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  font-size: 12px;
-}
-
-.footer .page-number {
-  font-size: 12px;
-}
-
-.footer-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  display: flex;
-}
-
-.footer-bar div {
-  flex-grow: 1;
-}
-
-.footer-bar .teal { background-color: teal; }
-.footer-bar .blue { background-color: blue; }
-.footer-bar .yellow { background-color: gold; }
-.footer-bar .red { background-color: red; }
