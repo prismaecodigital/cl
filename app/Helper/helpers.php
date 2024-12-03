@@ -75,3 +75,10 @@ if (!function_exists('roleSelectOptions')) {
         })->toArray();
     }
 }
+
+if (!function_exists('addDotsCurrency')) {
+    function addDotsCurrency($value)
+    {
+        return $value ? number_format($value, 0, '', '.') : '';
+    }
+}

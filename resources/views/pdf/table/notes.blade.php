@@ -19,7 +19,9 @@
             @foreach ($note['packages'] as $package)
                 <tr>
                     <td>
-                        <span>{{ $package['name'] }}</span>
+                        <b>{{ $package['name'] }}</b><br>
+                        Rp.{{ addDotsCurrency($package['price']) }} x {{ $package['qty'] }} {{ $package['unit'] }} x 1 Night<br>
+                        {{ $package['note'] }}
                     </td>
                 </tr>
             @endforeach
