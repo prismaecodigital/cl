@@ -22,9 +22,9 @@ class PDFConfirmLetterResource extends JsonResource
             'organization' => $this->organization->name,
             'address' => $this->organization->address,
             'pic' => $this->contact->name,
-            'phone' => $this->contact->phone,
-            'fax' => $this->contact->fax,
-            'email' => $this->contact->email,
+            'pic_phone' => $this->contact->phone,
+            'pic_fax' => $this->contact->fax,
+            'pic_email' => $this->contact->email,
             'check_in' => Carbon::parse($this->check_in)->translatedFormat('d F Y'),
             'check_out' => Carbon::parse($this->check_out)->translatedFormat('d F Y'),
             'event' => $this->event->name,
@@ -32,8 +32,8 @@ class PDFConfirmLetterResource extends JsonResource
             'attendance' => $this->attendance,
             'payment' => ucfirst($this->payment),
             'sales' => $this->createdBy->fullname,
-            'phone' => $this->createdBy->phone,
-            'emai' => $this->createdBy->email,
+            'sales_phone' => $this->createdBy->phone,
+            'sales_email' => $this->createdBy->email,
             'notes' => $this->hasNotes ? 
                 $this->hasNotes->map(function ($note) {
                     return [

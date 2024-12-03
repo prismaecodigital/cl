@@ -3,7 +3,7 @@
     <table class="footnote-table">
         <tr>
             <td> 
-                Phone: <a href="http://wa.me/{{$phone}}" target="_blank">{{ $phone }}</a>
+                Phone: <a href="tel:+622187950137" target="_blank">+62-21-87950137</a>
             </td>
             <td> 
                 E-mail: <a href="mailto:{{$email}}" target="_blank">{{ $email }}</a>

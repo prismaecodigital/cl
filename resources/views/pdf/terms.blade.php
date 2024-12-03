@@ -7,7 +7,7 @@
             "<b> Bank BCA Cabang Aeon Mall Sentul (Ole Suites & Cottage)</b> <br> <b> A / C No.  7475-717171 </b> <br> <b> A / N PT. Ole Maju Sejahtera </b>",
             "Pembayaran melalui Bank Transfer baru dianggap diterima setelah dilengkapi dengan dokumen bukti transfer.",
             "HOTEL berhak untuk menyesuaikan harga yang telah disepakati jika ada perubahan perpajakan dari pemerintah yang terjadi sebelum periode kontrak berlalu.",
-            "Uang muka (Down Payment) sebesar 50% dari total penawaran 1 bulan sebelum acara, perlu dibayar untuk mengikat reservasi (Uang muka yang telah dibayar tidak dapat dikembalikan ).",
+            "Uang muka (Down Payment) sebesar 50% dari total penawaran 1 bulan sebelum acara, perlu dibayar untuk mengikat reservasi (Uang muka yang telah dibayar tidak dapat dikembalikan).",
             "Jika reservasi dibatalkan setelah kontrak ini ditandatangani kedua belah pihak, maka dikenakan biaya 100% dari total penawaran.",
             "Pembatalan sepihak dapat dilakukan apabila tidak ada konfirmasi selama 7 hari setelah kontrak ini diterima.",
             "Pembatalan H-14 dikenakan biaya 30% dari Down Payment, Pembatalan H-7 dikenakan 50% dari Down Payment, Pembatalan H-3 dikenakan 100% dari Down Payment.",
@@ -48,7 +48,7 @@
                     {{ $letter['sales'] }}<br>
                     <b>Darmawan Park</b><br>
                     <b>PT. Ole Maju Sejahtera</b><br>
-                    <b>Please sign and scan by email or re-fax after signing to 021- 8795-1524</b><br>
+                    <b>Please sign and scan by email or re-fax after signing <br/> to 021- 8795-1524</b><br>
                 </td>
                 <td>
                     <b>( {{ $letter['pic'] }} )</b>
