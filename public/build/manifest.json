@@ -3,105 +3,97 @@
     "file": "assets/DashboardLayout-d9e3f7bd.css",
     "src": "DashboardLayout.css"
   },
-  "DateTimePicker.css": {
-    "file": "assets/DateTimePicker-0f64132a.css",
-    "src": "DateTimePicker.css"
+  "DateFormatFlatpickr.css": {
+    "file": "assets/DateFormatFlatpickr-0f64132a.css",
+    "src": "DateFormatFlatpickr.css"
   },
-  "_Breadcrumb-7c4540a4.js": {
-    "file": "assets/Breadcrumb-7c4540a4.js",
+  "_Breadcrumb-8f5e167c.js": {
+    "file": "assets/Breadcrumb-8f5e167c.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_DashboardLayout-6755273a.js": {
+  "_ButtonDelete-3598a239.js": {
+    "file": "assets/ButtonDelete-3598a239.js",
+    "imports": [
+      "_createLucideIcon-2f722a4f.js",
+      "resources/js/app.jsx",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
+    ]
+  },
+  "_DashboardLayout-72efd710.js": {
     "css": [
       "assets/DashboardLayout-d9e3f7bd.css"
     ],
-    "file": "assets/DashboardLayout-6755273a.js",
+    "file": "assets/DashboardLayout-72efd710.js",
     "imports": [
       "resources/js/app.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js"
     ]
   },
-  "_DateFormatFlatpickr-8eecee38.js": {
-    "file": "assets/DateFormatFlatpickr-8eecee38.js",
-    "imports": [
-      "_createLucideIcon-2e9d75c9.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_DateTimePicker-5f6ffdc5.js"
-    ]
-  },
-  "_DateTimePicker-5f6ffdc5.js": {
+  "_DateFormatFlatpickr-9fdf4350.js": {
     "css": [
-      "assets/DateTimePicker-0f64132a.css"
+      "assets/DateFormatFlatpickr-0f64132a.css"
     ],
-    "file": "assets/DateTimePicker-5f6ffdc5.js",
+    "file": "assets/DateFormatFlatpickr-9fdf4350.js",
     "imports": [
       "resources/js/app.jsx",
-      "_trash-2-e45ac675.js"
+      "_trash-2-2ff67458.js"
     ]
   },
-  "_DeleteConfirmation-172a66cd.js": {
-    "file": "assets/DeleteConfirmation-172a66cd.js",
-    "imports": [
-      "_createLucideIcon-2e9d75c9.js",
-      "resources/js/app.jsx",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
-    ]
-  },
-  "_FieldGroup-fbb64179.js": {
-    "file": "assets/FieldGroup-fbb64179.js",
+  "_FieldGroup-66e526ac.js": {
+    "file": "assets/FieldGroup-66e526ac.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_InputError-943a9c1f.js": {
-    "file": "assets/InputError-943a9c1f.js",
+  "_InputError-323fb258.js": {
+    "file": "assets/InputError-323fb258.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_InputLabel-2b0c8590.js": {
-    "file": "assets/InputLabel-2b0c8590.js",
+  "_InputLabel-46e7e217.js": {
+    "file": "assets/InputLabel-46e7e217.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_LandingLayout-ccbbf722.js": {
-    "file": "assets/LandingLayout-ccbbf722.js",
+  "_LandingLayout-6025b261.js": {
+    "file": "assets/LandingLayout-6025b261.js",
     "imports": [
       "resources/js/app.jsx",
-      "_mails-9dcc1bee.js"
+      "_mails-a92aa1b4.js"
     ]
   },
-  "_LoadingButton-ff8df0b9.js": {
-    "file": "assets/LoadingButton-ff8df0b9.js",
+  "_LoadingButton-6821160a.js": {
+    "file": "assets/LoadingButton-6821160a.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_MyTable-01b2c9f3.js": {
-    "file": "assets/MyTable-01b2c9f3.js",
+  "_MyTable-1c5ec02f.js": {
+    "file": "assets/MyTable-1c5ec02f.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_PrimaryButton-4817b674.js": {
-    "file": "assets/PrimaryButton-4817b674.js",
+  "_PrimaryButton-a8cfadf8.js": {
+    "file": "assets/PrimaryButton-a8cfadf8.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_TextArea-e01ace18.js": {
-    "file": "assets/TextArea-e01ace18.js",
+  "_TextArea-b689c7a5.js": {
+    "file": "assets/TextArea-b689c7a5.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_TextInput-a083b950.js": {
-    "file": "assets/TextInput-a083b950.js",
+  "_TextInput-a017f3b3.js": {
+    "file": "assets/TextInput-a017f3b3.js",
     "imports": [
       "resources/js/app.jsx"
     ]
@@ -109,1013 +101,1026 @@
   "_breadcrumbContent-e73bf562.js": {
     "file": "assets/breadcrumbContent-e73bf562.js"
   },
+  "_confirmDelete-b1c43200.js": {
+    "css": [
+      "assets/confirmDelete-4b180b7d.css"
+    ],
+    "file": "assets/confirmDelete-b1c43200.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
   "_convertOptions-49a86ad9.js": {
     "file": "assets/convertOptions-49a86ad9.js"
   },
-  "_createLucideIcon-2e9d75c9.js": {
-    "file": "assets/createLucideIcon-2e9d75c9.js",
+  "_createLucideIcon-2f722a4f.js": {
+    "file": "assets/createLucideIcon-2f722a4f.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_eye-46b9f665.js": {
-    "file": "assets/eye-46b9f665.js",
+  "_eye-d7d4d047.js": {
+    "file": "assets/eye-d7d4d047.js",
     "imports": [
-      "_createLucideIcon-2e9d75c9.js"
+      "_createLucideIcon-2f722a4f.js"
     ]
   },
-  "_mails-9dcc1bee.js": {
-    "file": "assets/mails-9dcc1bee.js",
+  "_mails-a92aa1b4.js": {
+    "file": "assets/mails-a92aa1b4.js",
     "imports": [
-      "_createLucideIcon-2e9d75c9.js"
+      "_createLucideIcon-2f722a4f.js"
     ]
   },
-  "_react-select.esm-c59424fd.js": {
-    "file": "assets/react-select.esm-c59424fd.js",
+  "_plus-6acc23ca.js": {
+    "file": "assets/plus-6acc23ca.js",
+    "imports": [
+      "_createLucideIcon-2f722a4f.js"
+    ]
+  },
+  "_react-select.esm-c6a27ed3.js": {
+    "file": "assets/react-select.esm-c6a27ed3.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_sweetalert2-react-content.es-9259e178.js": {
-    "file": "assets/sweetalert2-react-content.es-9259e178.js",
+  "_transition-1cbf6bb5.js": {
+    "file": "assets/transition-1cbf6bb5.js",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_transition-9e688651.js": {
-    "file": "assets/transition-9e688651.js",
+  "_trash-2-2ff67458.js": {
+    "file": "assets/trash-2-2ff67458.js",
     "imports": [
-      "resources/js/app.jsx"
+      "_createLucideIcon-2f722a4f.js"
     ]
   },
-  "_trash-2-e45ac675.js": {
-    "file": "assets/trash-2-e45ac675.js",
-    "imports": [
-      "_createLucideIcon-2e9d75c9.js"
-    ]
+  "confirmDelete.css": {
+    "file": "assets/confirmDelete-4b180b7d.css",
+    "src": "confirmDelete.css"
   },
   "resources/assets/loading.svg": {
     "file": "assets/loading-85c77a12.svg",
     "src": "resources/assets/loading.svg"
   },
   "resources/js/Pages/Auth/ConfirmPassword.jsx": {
-    "file": "assets/ConfirmPassword-7d4f8350.js",
+    "file": "assets/ConfirmPassword-dbf8bd01.js",
     "imports": [
       "resources/js/app.jsx",
-      "_LandingLayout-ccbbf722.js",
-      "_InputError-943a9c1f.js",
-      "_InputLabel-2b0c8590.js",
-      "_PrimaryButton-4817b674.js",
-      "_TextInput-a083b950.js",
-      "_mails-9dcc1bee.js",
-      "_createLucideIcon-2e9d75c9.js"
+      "_LandingLayout-6025b261.js",
+      "_InputError-323fb258.js",
+      "_InputLabel-46e7e217.js",
+      "_PrimaryButton-a8cfadf8.js",
+      "_TextInput-a017f3b3.js",
+      "_mails-a92aa1b4.js",
+      "_createLucideIcon-2f722a4f.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/ConfirmPassword.jsx"
   },
   "resources/js/Pages/Auth/ForgotPassword.jsx": {
-    "file": "assets/ForgotPassword-7c622594.js",
+    "file": "assets/ForgotPassword-13c071ac.js",
     "imports": [
       "resources/js/app.jsx",
-      "_LandingLayout-ccbbf722.js",
-      "_InputError-943a9c1f.js",
-      "_PrimaryButton-4817b674.js",
-      "_TextInput-a083b950.js",
-      "_mails-9dcc1bee.js",
-      "_createLucideIcon-2e9d75c9.js"
+      "_LandingLayout-6025b261.js",
+      "_InputError-323fb258.js",
+      "_PrimaryButton-a8cfadf8.js",
+      "_TextInput-a017f3b3.js",
+      "_mails-a92aa1b4.js",
+      "_createLucideIcon-2f722a4f.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/ForgotPassword.jsx"
   },
   "resources/js/Pages/Auth/Login.jsx": {
-    "file": "assets/Login-6758b55a.js",
+    "file": "assets/Login-b3453ae6.js",
     "imports": [
       "resources/js/app.jsx",
-      "_LandingLayout-ccbbf722.js",
-      "_InputError-943a9c1f.js",
-      "_InputLabel-2b0c8590.js",
-      "_PrimaryButton-4817b674.js",
-      "_TextInput-a083b950.js",
-      "_eye-46b9f665.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js"
+      "_LandingLayout-6025b261.js",
+      "_InputError-323fb258.js",
+      "_InputLabel-46e7e217.js",
+      "_PrimaryButton-a8cfadf8.js",
+      "_TextInput-a017f3b3.js",
+      "_eye-d7d4d047.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/Login.jsx"
   },
   "resources/js/Pages/Auth/Register.jsx": {
-    "file": "assets/Register-d441610e.js",
+    "file": "assets/Register-f0d81439.js",
     "imports": [
       "resources/js/app.jsx",
-      "_LandingLayout-ccbbf722.js",
-      "_InputError-943a9c1f.js",
-      "_InputLabel-2b0c8590.js",
-      "_PrimaryButton-4817b674.js",
-      "_TextInput-a083b950.js",
-      "_mails-9dcc1bee.js",
-      "_createLucideIcon-2e9d75c9.js"
+      "_LandingLayout-6025b261.js",
+      "_InputError-323fb258.js",
+      "_InputLabel-46e7e217.js",
+      "_PrimaryButton-a8cfadf8.js",
+      "_TextInput-a017f3b3.js",
+      "_mails-a92aa1b4.js",
+      "_createLucideIcon-2f722a4f.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/Register.jsx"
   },
   "resources/js/Pages/Auth/ResetPassword.jsx": {
-    "file": "assets/ResetPassword-98bd772d.js",
+    "file": "assets/ResetPassword-9b10d2bd.js",
     "imports": [
       "resources/js/app.jsx",
-      "_LandingLayout-ccbbf722.js",
-      "_InputError-943a9c1f.js",
-      "_InputLabel-2b0c8590.js",
-      "_PrimaryButton-4817b674.js",
-      "_TextInput-a083b950.js",
-      "_mails-9dcc1bee.js",
-      "_createLucideIcon-2e9d75c9.js"
+      "_LandingLayout-6025b261.js",
+      "_InputError-323fb258.js",
+      "_InputLabel-46e7e217.js",
+      "_PrimaryButton-a8cfadf8.js",
+      "_TextInput-a017f3b3.js",
+      "_mails-a92aa1b4.js",
+      "_createLucideIcon-2f722a4f.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/ResetPassword.jsx"
   },
   "resources/js/Pages/Auth/VerifyEmail.jsx": {
-    "file": "assets/VerifyEmail-57159a1e.js",
+    "file": "assets/VerifyEmail-72298a8b.js",
     "imports": [
       "resources/js/app.jsx",
-      "_LandingLayout-ccbbf722.js",
-      "_PrimaryButton-4817b674.js",
-      "_mails-9dcc1bee.js",
-      "_createLucideIcon-2e9d75c9.js"
+      "_LandingLayout-6025b261.js",
+      "_PrimaryButton-a8cfadf8.js",
+      "_mails-a92aa1b4.js",
+      "_createLucideIcon-2f722a4f.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Auth/VerifyEmail.jsx"
   },
   "resources/js/Pages/ConfirmLetter/Create.jsx": {
-    "file": "assets/Create-86dd7912.js",
+    "file": "assets/Create-635f18d3.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
+      "_DashboardLayout-72efd710.js",
       "resources/js/Pages/ConfirmLetter/component/LetterForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
       "resources/js/Pages/ConfirmLetter/component/Form/MainField.jsx",
-      "_Breadcrumb-7c4540a4.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_react-select.esm-c59424fd.js",
-      "_DateTimePicker-5f6ffdc5.js",
-      "_trash-2-e45ac675.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_react-select.esm-c6a27ed3.js",
+      "_DateFormatFlatpickr-9fdf4350.js",
+      "_trash-2-2ff67458.js",
       "_convertOptions-49a86ad9.js",
       "resources/js/Pages/ConfirmLetter/component/Form/NotesField.jsx",
-      "_TextArea-e01ace18.js",
-      "_DateFormatFlatpickr-8eecee38.js",
-      "_sweetalert2-react-content.es-9259e178.js",
+      "_TextArea-b689c7a5.js",
+      "_confirmDelete-b1c43200.js",
+      "_plus-6acc23ca.js",
       "resources/js/Pages/ConfirmLetter/component/Form/FnbField.jsx",
-      "_LoadingButton-ff8df0b9.js"
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/ConfirmLetter/Create.jsx"
   },
   "resources/js/Pages/ConfirmLetter/Edit.jsx": {
-    "file": "assets/Edit-06ac5160.js",
+    "file": "assets/Edit-a9a6f053.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
+      "_DashboardLayout-72efd710.js",
       "resources/js/Pages/ConfirmLetter/component/LetterForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
       "resources/js/Pages/ConfirmLetter/component/Form/MainField.jsx",
-      "_Breadcrumb-7c4540a4.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_react-select.esm-c59424fd.js",
-      "_DateTimePicker-5f6ffdc5.js",
-      "_trash-2-e45ac675.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_react-select.esm-c6a27ed3.js",
+      "_DateFormatFlatpickr-9fdf4350.js",
+      "_trash-2-2ff67458.js",
       "_convertOptions-49a86ad9.js",
       "resources/js/Pages/ConfirmLetter/component/Form/NotesField.jsx",
-      "_TextArea-e01ace18.js",
-      "_DateFormatFlatpickr-8eecee38.js",
-      "_sweetalert2-react-content.es-9259e178.js",
+      "_TextArea-b689c7a5.js",
+      "_confirmDelete-b1c43200.js",
+      "_plus-6acc23ca.js",
       "resources/js/Pages/ConfirmLetter/component/Form/FnbField.jsx",
-      "_LoadingButton-ff8df0b9.js"
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/ConfirmLetter/Edit.jsx"
   },
   "resources/js/Pages/ConfirmLetter/Index.jsx": {
-    "file": "assets/Index-fb5c5066.js",
+    "file": "assets/Index-8b3d8d2e.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/ConfirmLetter/data/createColumn.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
-      "_MyTable-01b2c9f3.js",
-      "_DeleteConfirmation-172a66cd.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js",
-      "_eye-46b9f665.js",
-      "_mails-9dcc1bee.js"
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
+      "_MyTable-1c5ec02f.js",
+      "_ButtonDelete-3598a239.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js",
+      "_eye-d7d4d047.js",
+      "_mails-a92aa1b4.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/ConfirmLetter/Index.jsx"
   },
   "resources/js/Pages/ConfirmLetter/Show.jsx": {
-    "file": "assets/Show-ab54e7c4.js",
+    "file": "assets/Show-a2894c42.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
+      "_DashboardLayout-72efd710.js",
       "resources/js/Pages/ConfirmLetter/component/LetterForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
       "resources/js/Pages/ConfirmLetter/component/Form/MainField.jsx",
-      "_Breadcrumb-7c4540a4.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_react-select.esm-c59424fd.js",
-      "_DateTimePicker-5f6ffdc5.js",
-      "_trash-2-e45ac675.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_react-select.esm-c6a27ed3.js",
+      "_DateFormatFlatpickr-9fdf4350.js",
+      "_trash-2-2ff67458.js",
       "_convertOptions-49a86ad9.js",
       "resources/js/Pages/ConfirmLetter/component/Form/NotesField.jsx",
-      "_TextArea-e01ace18.js",
-      "_DateFormatFlatpickr-8eecee38.js",
-      "_sweetalert2-react-content.es-9259e178.js",
+      "_TextArea-b689c7a5.js",
+      "_confirmDelete-b1c43200.js",
+      "_plus-6acc23ca.js",
       "resources/js/Pages/ConfirmLetter/component/Form/FnbField.jsx",
-      "_LoadingButton-ff8df0b9.js"
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/ConfirmLetter/Show.jsx"
   },
   "resources/js/Pages/ConfirmLetter/component/Form/FnbField.jsx": {
-    "file": "assets/FnbField-845ecb85.js",
+    "file": "assets/FnbField-f7ac74a9.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FieldGroup-fbb64179.js",
-      "_DateTimePicker-5f6ffdc5.js",
-      "_TextInput-a083b950.js",
-      "_LoadingButton-ff8df0b9.js",
-      "_DateFormatFlatpickr-8eecee38.js",
-      "_trash-2-e45ac675.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_sweetalert2-react-content.es-9259e178.js"
+      "_FieldGroup-66e526ac.js",
+      "_DateFormatFlatpickr-9fdf4350.js",
+      "_TextInput-a017f3b3.js",
+      "_LoadingButton-6821160a.js",
+      "_confirmDelete-b1c43200.js",
+      "_plus-6acc23ca.js",
+      "_trash-2-2ff67458.js",
+      "_createLucideIcon-2f722a4f.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/ConfirmLetter/component/Form/FnbField.jsx"
   },
   "resources/js/Pages/ConfirmLetter/component/Form/MainField.jsx": {
-    "file": "assets/MainField-7aa3812f.js",
+    "file": "assets/MainField-3630a62e.js",
     "imports": [
       "resources/js/app.jsx",
-      "_Breadcrumb-7c4540a4.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_react-select.esm-c59424fd.js",
-      "_DateTimePicker-5f6ffdc5.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_react-select.esm-c6a27ed3.js",
+      "_DateFormatFlatpickr-9fdf4350.js",
       "_convertOptions-49a86ad9.js",
-      "_trash-2-e45ac675.js",
-      "_createLucideIcon-2e9d75c9.js"
+      "_trash-2-2ff67458.js",
+      "_createLucideIcon-2f722a4f.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/ConfirmLetter/component/Form/MainField.jsx"
   },
   "resources/js/Pages/ConfirmLetter/component/Form/NotesField.jsx": {
-    "file": "assets/NotesField-47b90288.js",
+    "file": "assets/NotesField-b6b86807.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FieldGroup-fbb64179.js",
-      "_react-select.esm-c59424fd.js",
-      "_TextInput-a083b950.js",
-      "_TextArea-e01ace18.js",
-      "_DateTimePicker-5f6ffdc5.js",
-      "_DateFormatFlatpickr-8eecee38.js",
+      "_FieldGroup-66e526ac.js",
+      "_react-select.esm-c6a27ed3.js",
+      "_TextInput-a017f3b3.js",
+      "_TextArea-b689c7a5.js",
+      "_DateFormatFlatpickr-9fdf4350.js",
+      "_confirmDelete-b1c43200.js",
       "_convertOptions-49a86ad9.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_trash-2-e45ac675.js",
-      "_sweetalert2-react-content.es-9259e178.js"
+      "_plus-6acc23ca.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/ConfirmLetter/component/Form/NotesField.jsx"
   },
   "resources/js/Pages/ConfirmLetter/component/LetterForm.jsx": {
-    "file": "assets/LetterForm-ea72b407.js",
+    "file": "assets/LetterForm-2b57a5e3.js",
     "imports": [
       "resources/js/app.jsx",
       "resources/js/Pages/ConfirmLetter/component/Form/MainField.jsx",
       "resources/js/Pages/ConfirmLetter/component/Form/NotesField.jsx",
       "resources/js/Pages/ConfirmLetter/component/Form/FnbField.jsx",
-      "_Breadcrumb-7c4540a4.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_react-select.esm-c59424fd.js",
-      "_DateTimePicker-5f6ffdc5.js",
-      "_trash-2-e45ac675.js",
-      "_createLucideIcon-2e9d75c9.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_react-select.esm-c6a27ed3.js",
+      "_DateFormatFlatpickr-9fdf4350.js",
+      "_trash-2-2ff67458.js",
+      "_createLucideIcon-2f722a4f.js",
       "_convertOptions-49a86ad9.js",
-      "_TextArea-e01ace18.js",
-      "_DateFormatFlatpickr-8eecee38.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_TextArea-b689c7a5.js",
+      "_confirmDelete-b1c43200.js",
+      "_plus-6acc23ca.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/ConfirmLetter/component/LetterForm.jsx"
   },
   "resources/js/Pages/ConfirmLetter/data/createColumn.jsx": {
-    "file": "assets/createColumn-ad732754.js",
+    "file": "assets/createColumn-ddbed59c.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DeleteConfirmation-172a66cd.js",
-      "_eye-46b9f665.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_ButtonDelete-3598a239.js",
+      "_eye-d7d4d047.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/ConfirmLetter/data/createColumn.jsx"
   },
   "resources/js/Pages/Contact/Create.jsx": {
-    "file": "assets/Create-c2fe6884.js",
+    "file": "assets/Create-c4e3cf9f.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/Contact/component/ContactForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_react-select.esm-c59424fd.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_react-select.esm-c6a27ed3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Contact/Create.jsx"
   },
   "resources/js/Pages/Contact/Edit.jsx": {
-    "file": "assets/Edit-be4a5f4f.js",
+    "file": "assets/Edit-ed8f7b62.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/Contact/component/ContactForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_react-select.esm-c59424fd.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_react-select.esm-c6a27ed3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Contact/Edit.jsx"
   },
   "resources/js/Pages/Contact/Index.jsx": {
-    "file": "assets/Index-67c11f6f.js",
+    "file": "assets/Index-63a3dd06.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
-      "_MyTable-01b2c9f3.js",
+      "_MyTable-1c5ec02f.js",
       "resources/js/Pages/Contact/data/createColumn.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_DeleteConfirmation-172a66cd.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_ButtonDelete-3598a239.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Contact/Index.jsx"
   },
   "resources/js/Pages/Contact/component/ContactForm.jsx": {
-    "file": "assets/ContactForm-43d9ebe9.js",
+    "file": "assets/ContactForm-d11c55bf.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_react-select.esm-c59424fd.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_react-select.esm-c6a27ed3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Contact/component/ContactForm.jsx"
   },
   "resources/js/Pages/Contact/data/createColumn.jsx": {
-    "file": "assets/createColumn-59ff320b.js",
+    "file": "assets/createColumn-fee864fa.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DeleteConfirmation-172a66cd.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_ButtonDelete-3598a239.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Contact/data/createColumn.jsx"
   },
   "resources/js/Pages/Dashboard.jsx": {
-    "file": "assets/Dashboard-c48506bb.js",
+    "file": "assets/Dashboard-339807eb.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js"
+      "_DashboardLayout-72efd710.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Dashboard.jsx"
   },
   "resources/js/Pages/Event/Create.jsx": {
-    "file": "assets/Create-599f2e09.js",
+    "file": "assets/Create-61193499.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/Event/component/EventForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Event/Create.jsx"
   },
   "resources/js/Pages/Event/Edit.jsx": {
-    "file": "assets/Edit-d50b396d.js",
+    "file": "assets/Edit-6f913b3a.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/Event/component/EventForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Event/Edit.jsx"
   },
   "resources/js/Pages/Event/Index.jsx": {
-    "file": "assets/Index-74e27977.js",
+    "file": "assets/Index-8e7093f0.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
-      "_MyTable-01b2c9f3.js",
+      "_MyTable-1c5ec02f.js",
       "resources/js/Pages/Event/data/createColumn.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_DeleteConfirmation-172a66cd.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_ButtonDelete-3598a239.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Event/Index.jsx"
   },
   "resources/js/Pages/Event/component/EventForm.jsx": {
-    "file": "assets/EventForm-84a6adad.js",
+    "file": "assets/EventForm-de099c1e.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Event/component/EventForm.jsx"
   },
   "resources/js/Pages/Event/data/createColumn.jsx": {
-    "file": "assets/createColumn-10707f78.js",
+    "file": "assets/createColumn-14b1edbc.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DeleteConfirmation-172a66cd.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_ButtonDelete-3598a239.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Event/data/createColumn.jsx"
   },
   "resources/js/Pages/Organization/Create.jsx": {
-    "file": "assets/Create-2329bab3.js",
+    "file": "assets/Create-087c9945.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/Organization/component/OrganizationForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_TextArea-e01ace18.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_TextArea-b689c7a5.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Organization/Create.jsx"
   },
   "resources/js/Pages/Organization/Edit.jsx": {
-    "file": "assets/Edit-ad11b3df.js",
+    "file": "assets/Edit-11ca6c59.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/Organization/component/OrganizationForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_TextArea-e01ace18.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_TextArea-b689c7a5.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Organization/Edit.jsx"
   },
   "resources/js/Pages/Organization/Index.jsx": {
-    "file": "assets/Index-d836156d.js",
+    "file": "assets/Index-06b5db61.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
-      "_MyTable-01b2c9f3.js",
+      "_MyTable-1c5ec02f.js",
       "resources/js/Pages/Organization/data/createColumn.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_DeleteConfirmation-172a66cd.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_ButtonDelete-3598a239.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Organization/Index.jsx"
   },
   "resources/js/Pages/Organization/component/OrganizationForm.jsx": {
-    "file": "assets/OrganizationForm-1e40b359.js",
+    "file": "assets/OrganizationForm-26ac46eb.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_TextArea-e01ace18.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_TextArea-b689c7a5.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Organization/component/OrganizationForm.jsx"
   },
   "resources/js/Pages/Organization/data/createColumn.jsx": {
-    "file": "assets/createColumn-ef9c0e86.js",
+    "file": "assets/createColumn-b970dfa2.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DeleteConfirmation-172a66cd.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_ButtonDelete-3598a239.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Organization/data/createColumn.jsx"
   },
   "resources/js/Pages/Package/Create.jsx": {
-    "file": "assets/Create-36c9adea.js",
+    "file": "assets/Create-6712605d.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/Package/component/PackageForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Package/Create.jsx"
   },
   "resources/js/Pages/Package/Edit.jsx": {
-    "file": "assets/Edit-477558bb.js",
+    "file": "assets/Edit-7ea5de6a.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/Package/component/PackageForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Package/Edit.jsx"
   },
   "resources/js/Pages/Package/Index.jsx": {
-    "file": "assets/Index-ada5f7df.js",
+    "file": "assets/Index-b726eca3.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
-      "_MyTable-01b2c9f3.js",
+      "_MyTable-1c5ec02f.js",
       "resources/js/Pages/Package/data/createColumn.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_DeleteConfirmation-172a66cd.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_ButtonDelete-3598a239.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Package/Index.jsx"
   },
   "resources/js/Pages/Package/component/PackageForm.jsx": {
-    "file": "assets/PackageForm-c4829359.js",
+    "file": "assets/PackageForm-ab530304.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Package/component/PackageForm.jsx"
   },
   "resources/js/Pages/Package/data/createColumn.jsx": {
-    "file": "assets/createColumn-7eebba46.js",
+    "file": "assets/createColumn-3ca55cda.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DeleteConfirmation-172a66cd.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_ButtonDelete-3598a239.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Package/data/createColumn.jsx"
   },
   "resources/js/Pages/Permission/Create.jsx": {
-    "file": "assets/Create-bbeece51.js",
+    "file": "assets/Create-02d69cc6.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/Permission/component/PermissionForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Permission/Create.jsx"
   },
   "resources/js/Pages/Permission/Edit.jsx": {
-    "file": "assets/Edit-54ef848f.js",
+    "file": "assets/Edit-886820e5.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/Permission/component/PermissionForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Permission/Edit.jsx"
   },
   "resources/js/Pages/Permission/Index.jsx": {
-    "file": "assets/Index-76a979f9.js",
+    "file": "assets/Index-03268c5d.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
-      "_MyTable-01b2c9f3.js",
+      "_MyTable-1c5ec02f.js",
       "resources/js/Pages/Permission/data/createColumn.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_DeleteConfirmation-172a66cd.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_ButtonDelete-3598a239.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Permission/Index.jsx"
   },
   "resources/js/Pages/Permission/component/PermissionForm.jsx": {
-    "file": "assets/PermissionForm-d8ee6eb5.js",
+    "file": "assets/PermissionForm-fbe95073.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Permission/component/PermissionForm.jsx"
   },
   "resources/js/Pages/Permission/data/createColumn.jsx": {
-    "file": "assets/createColumn-9861da14.js",
+    "file": "assets/createColumn-c8a35782.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DeleteConfirmation-172a66cd.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_ButtonDelete-3598a239.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Permission/data/createColumn.jsx"
   },
   "resources/js/Pages/Profile/Edit.jsx": {
-    "file": "assets/Edit-817f4f6f.js",
+    "file": "assets/Edit-ec41b16a.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
+      "_DashboardLayout-72efd710.js",
       "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx",
       "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx",
       "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_InputError-943a9c1f.js",
-      "_InputLabel-2b0c8590.js",
-      "_transition-9e688651.js",
-      "_TextInput-a083b950.js",
-      "_PrimaryButton-4817b674.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_InputError-323fb258.js",
+      "_InputLabel-46e7e217.js",
+      "_transition-1cbf6bb5.js",
+      "_TextInput-a017f3b3.js",
+      "_PrimaryButton-a8cfadf8.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Edit.jsx"
   },
   "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx": {
-    "file": "assets/DeleteUserForm-c695fed9.js",
+    "file": "assets/DeleteUserForm-166b35aa.js",
     "imports": [
       "resources/js/app.jsx",
-      "_InputError-943a9c1f.js",
-      "_InputLabel-2b0c8590.js",
-      "_transition-9e688651.js",
-      "_TextInput-a083b950.js"
+      "_InputError-323fb258.js",
+      "_InputLabel-46e7e217.js",
+      "_transition-1cbf6bb5.js",
+      "_TextInput-a017f3b3.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx"
   },
   "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx": {
-    "file": "assets/UpdatePasswordForm-8ab1c1a5.js",
+    "file": "assets/UpdatePasswordForm-b1c0aa69.js",
     "imports": [
       "resources/js/app.jsx",
-      "_InputError-943a9c1f.js",
-      "_InputLabel-2b0c8590.js",
-      "_PrimaryButton-4817b674.js",
-      "_TextInput-a083b950.js",
-      "_transition-9e688651.js"
+      "_InputError-323fb258.js",
+      "_InputLabel-46e7e217.js",
+      "_PrimaryButton-a8cfadf8.js",
+      "_TextInput-a017f3b3.js",
+      "_transition-1cbf6bb5.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx"
   },
   "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx": {
-    "file": "assets/UpdateProfileInformationForm-f6f29c2c.js",
+    "file": "assets/UpdateProfileInformationForm-68c999ab.js",
     "imports": [
       "resources/js/app.jsx",
-      "_InputError-943a9c1f.js",
-      "_InputLabel-2b0c8590.js",
-      "_PrimaryButton-4817b674.js",
-      "_TextInput-a083b950.js",
-      "_transition-9e688651.js"
+      "_InputError-323fb258.js",
+      "_InputLabel-46e7e217.js",
+      "_PrimaryButton-a8cfadf8.js",
+      "_TextInput-a017f3b3.js",
+      "_transition-1cbf6bb5.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx"
   },
   "resources/js/Pages/Role/Create.jsx": {
-    "file": "assets/Create-d16085d6.js",
+    "file": "assets/Create-9090dc04.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/Role/component/RoleForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_react-select.esm-c59424fd.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_react-select.esm-c6a27ed3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Role/Create.jsx"
   },
   "resources/js/Pages/Role/Edit.jsx": {
-    "file": "assets/Edit-a84a377c.js",
+    "file": "assets/Edit-fdf8462e.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/Role/component/RoleForm.jsx",
       "_convertOptions-49a86ad9.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_react-select.esm-c59424fd.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_react-select.esm-c6a27ed3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Role/Edit.jsx"
   },
   "resources/js/Pages/Role/Index.jsx": {
-    "file": "assets/Index-5652252b.js",
+    "file": "assets/Index-6e96796a.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
-      "_MyTable-01b2c9f3.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
+      "_MyTable-1c5ec02f.js",
       "resources/js/Pages/Role/data/createColumn.jsx",
       "_breadcrumbContent-e73bf562.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_DeleteConfirmation-172a66cd.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_ButtonDelete-3598a239.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Role/Index.jsx"
   },
   "resources/js/Pages/Role/component/RoleForm.jsx": {
-    "file": "assets/RoleForm-47afc4b8.js",
+    "file": "assets/RoleForm-e82d5f81.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_react-select.esm-c59424fd.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_react-select.esm-c6a27ed3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Role/component/RoleForm.jsx"
   },
   "resources/js/Pages/Role/data/createColumn.jsx": {
-    "file": "assets/createColumn-21e274c4.js",
+    "file": "assets/createColumn-de19130a.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DeleteConfirmation-172a66cd.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_ButtonDelete-3598a239.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Role/data/createColumn.jsx"
   },
   "resources/js/Pages/Room/Create.jsx": {
-    "file": "assets/Create-e2ebe7fb.js",
+    "file": "assets/Create-965d7e23.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/Room/component/RoomForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Room/Create.jsx"
   },
   "resources/js/Pages/Room/Edit.jsx": {
-    "file": "assets/Edit-fc143e5c.js",
+    "file": "assets/Edit-2a547a9a.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/Room/component/RoomForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Room/Edit.jsx"
   },
   "resources/js/Pages/Room/Index.jsx": {
-    "file": "assets/Index-e40cbcab.js",
+    "file": "assets/Index-523118b6.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
-      "_MyTable-01b2c9f3.js",
+      "_MyTable-1c5ec02f.js",
       "resources/js/Pages/Room/data/createColumn.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_DeleteConfirmation-172a66cd.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_ButtonDelete-3598a239.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Room/Index.jsx"
   },
   "resources/js/Pages/Room/component/RoomForm.jsx": {
-    "file": "assets/RoomForm-6377d6ef.js",
+    "file": "assets/RoomForm-970fa7cc.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Room/component/RoomForm.jsx"
   },
   "resources/js/Pages/Room/data/createColumn.jsx": {
-    "file": "assets/createColumn-63cc1a97.js",
+    "file": "assets/createColumn-185c30a2.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DeleteConfirmation-172a66cd.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_ButtonDelete-3598a239.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/Room/data/createColumn.jsx"
   },
   "resources/js/Pages/User/Create.jsx": {
-    "file": "assets/Create-27026d5e.js",
+    "file": "assets/Create-f6b73d47.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/User/component/UserForm.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_react-select.esm-c59424fd.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_react-select.esm-c6a27ed3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/User/Create.jsx"
   },
   "resources/js/Pages/User/Edit.jsx": {
-    "file": "assets/Edit-e355c895.js",
+    "file": "assets/Edit-9888a736.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
       "resources/js/Pages/User/component/UserForm.jsx",
       "_convertOptions-49a86ad9.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_react-select.esm-c59424fd.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_react-select.esm-c6a27ed3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/User/Edit.jsx"
   },
   "resources/js/Pages/User/Index.jsx": {
-    "file": "assets/Index-bad4420c.js",
+    "file": "assets/Index-d4efced5.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DashboardLayout-6755273a.js",
-      "_Breadcrumb-7c4540a4.js",
+      "_DashboardLayout-72efd710.js",
+      "_Breadcrumb-8f5e167c.js",
       "_breadcrumbContent-e73bf562.js",
-      "_MyTable-01b2c9f3.js",
+      "_MyTable-1c5ec02f.js",
       "resources/js/Pages/User/data/createColumn.jsx",
-      "_createLucideIcon-2e9d75c9.js",
-      "_mails-9dcc1bee.js",
-      "_DeleteConfirmation-172a66cd.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_createLucideIcon-2f722a4f.js",
+      "_mails-a92aa1b4.js",
+      "_ButtonDelete-3598a239.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/User/Index.jsx"
   },
   "resources/js/Pages/User/component/UserForm.jsx": {
-    "file": "assets/UserForm-78bdd80d.js",
+    "file": "assets/UserForm-2d0dddef.js",
     "imports": [
       "resources/js/app.jsx",
-      "_FieldGroup-fbb64179.js",
-      "_TextInput-a083b950.js",
-      "_react-select.esm-c59424fd.js",
-      "_LoadingButton-ff8df0b9.js"
+      "_FieldGroup-66e526ac.js",
+      "_TextInput-a017f3b3.js",
+      "_react-select.esm-c6a27ed3.js",
+      "_LoadingButton-6821160a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/User/component/UserForm.jsx"
   },
   "resources/js/Pages/User/data/createColumn.jsx": {
-    "file": "assets/createColumn-4a3f019a.js",
+    "file": "assets/createColumn-ec570c45.js",
     "imports": [
       "resources/js/app.jsx",
-      "_DeleteConfirmation-172a66cd.js",
-      "_createLucideIcon-2e9d75c9.js",
-      "_sweetalert2-react-content.es-9259e178.js",
-      "_trash-2-e45ac675.js"
+      "_ButtonDelete-3598a239.js",
+      "_createLucideIcon-2f722a4f.js",
+      "_confirmDelete-b1c43200.js",
+      "_trash-2-2ff67458.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/User/data/createColumn.jsx"
   },
   "resources/js/Pages/Welcome.jsx": {
-    "file": "assets/Welcome-c4279204.js",
+    "file": "assets/Welcome-be51b429.js",
     "imports": [
       "resources/js/app.jsx"
     ],
@@ -1123,7 +1128,7 @@
     "src": "resources/js/Pages/Welcome.jsx"
   },
   "resources/js/app.css": {
-    "file": "assets/app-1f12ab38.css",
+    "file": "assets/app-7e5630f5.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.jsx": {
@@ -1131,7 +1136,7 @@
       "assets/loading-85c77a12.svg"
     ],
     "css": [
-      "assets/app-1f12ab38.css"
+      "assets/app-7e5630f5.css"
     ],
     "dynamicImports": [
       "resources/js/Pages/Auth/ConfirmPassword.jsx",
@@ -1196,7 +1201,7 @@
       "resources/js/Pages/User/data/createColumn.jsx",
       "resources/js/Pages/Welcome.jsx"
     ],
-    "file": "assets/app-66a2c661.js",
+    "file": "assets/app-391300e3.js",
     "isEntry": true,
     "src": "resources/js/app.jsx"
   }
