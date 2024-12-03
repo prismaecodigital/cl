@@ -15,10 +15,10 @@ class ContactSeeder extends Seeder
     {
         Contact::create([
             'organization_id' => 1,
-            'name' => 'Contact 1',
-            'phone' => '0987654321',
+            'name' => 'Bapak Lyonardo Edipurtta',
+            'phone' => '081234567890',
             'fax' => '-',
-            'email' => 'contact1@email.com'
+            'email' => '-'
         ]);
 
         Contact::create([

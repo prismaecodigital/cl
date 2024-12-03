@@ -14,13 +14,29 @@ class NoteSeeder extends Seeder
     {
         Note::create([
            'letter_id' => 1,
-           'start_date' => '2024-12-01',
+           'start_date' => '2024-02-04',
+           'end_date' => '2024-02-05',
         ]);
 
         Note::create([
             'letter_id' => 1,
-            'start_date' => '2024-12-02',
-            'end_date' => '2024-12-03',
-         ]);
+            'start_date' => '2024-02-05',
+        ]);
+
+        Note::create([
+            'letter_id' => 1,
+            'start_date' => '2024-02-05',
+            'end_date' => '2024-02-06',
+        ]);
+
+        Note::create([
+            'letter_id' => 1,
+            'start_date' => '2024-02-06',
+        ]);
+
+        Note::create([
+            'letter_id' => 1,
+            'start_date' => '2024-02-05',
+        ]);
     }
 }

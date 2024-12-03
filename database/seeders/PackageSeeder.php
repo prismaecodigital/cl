@@ -13,11 +13,11 @@ class PackageSeeder extends Seeder
     public function run(): void
     {
         $packages = [
-            ['name' => 'Room Breakfast', 'uom' => 'room'],
-            ['name' => 'Cluster', 'uom' => 'cluster'],
-            ['name' => 'Live Music', 'uom' => 'pax'],
-            ['name' => 'Additional Breakfast', 'uom' => 'pax'],
-            ['name' => 'Fullboard Meeting Package Twinshare', 'uom' => 'pax'],
+            ['name' => 'Room Breakfast', 'uom' => 'room'], // 1
+            ['name' => 'Cluster', 'uom' => 'cluster'],// 2
+            ['name' => 'Additional Breakfast', 'uom' => 'pax'], // 3
+            ['name' => 'Fullboard Meeting Package Twinshare', 'uom' => 'pax'], // 4
+            ['name' => 'Live Music', 'uom' => 'pax'], // 5
         ];
 
         foreach ($packages as $package) {

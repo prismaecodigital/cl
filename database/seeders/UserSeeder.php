@@ -28,5 +28,15 @@ class UserSeeder extends Seeder
             'phone' => '081234567891',
             'password' => Hash::make('password'),
         ]);
+
+        User::create([
+            'username' => 'Dita',
+            'fullname' => 'Dita Safitri',
+            'email' => 'dita.safitri@olesuites.com',
+            'phone' => '+628112323123',
+            'password' => Hash::make('password'),
+        ]);
+
+        
     }
 }
