@@ -12,7 +12,10 @@
     @include('pdf.table.information', compact('letter'))
 
     @if (!empty($letter['notes']))
-        @include('pdf.table.notes', ['notes' => $letter['notes']])
+        @include('pdf.table.notes', [
+            'notes' => $letter['notes'],
+            'amount' => $letter['total_amount']
+        ])
     @endif
 
     @if (!empty($letter['schedules']))

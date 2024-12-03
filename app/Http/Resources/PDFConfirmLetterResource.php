@@ -15,6 +15,8 @@ class PDFConfirmLetterResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        Carbon::setLocale('id');
+
         return [
             'code' => $this->code,
             'organization' => $this->organization->name,
@@ -23,25 +25,28 @@ class PDFConfirmLetterResource extends JsonResource
             'phone' => $this->contact->phone,
             'fax' => $this->contact->fax,
             'email' => $this->contact->email,
-            'check_in' => Carbon::parse($this->check_in)->locale('id')->translatedFormat('d F Y'),
-            'check_out' => Carbon::parse($this->check_out)->locale('id')->translatedFormat('d F Y'),
+            'check_in' => Carbon::parse($this->check_in)->translatedFormat('d F Y'),
+            'check_out' => Carbon::parse($this->check_out)->translatedFormat('d F Y'),
             'event' => $this->event->name,
             'room' => $this->room->name,
             'attendance' => $this->attendance,
             'payment' => ucfirst($this->payment),
             'sales' => $this->createdBy->fullname,
+            'phone' => $this->createdBy->phone,
+            'emai' => $this->createdBy->email,
             'notes' => $this->hasNotes ? 
                 $this->hasNotes->map(function ($note) {
                     return [
                         'date' => $this->generateDateNote($note['start_date'], $note['end_date']),
-                        'packages' => $this->hasPackages ? 
-                            $this->hasPackages->map(function ($item) {
+                        'packages' => $note->notePackage ? 
+                            $note->notePackage->map(function ($item) {
                                 return [
-                                    'name' => $item->package->name,
+                                    'name' => $item->package_id ? $item->package->name : '',
                                     'price' => $item->price,
                                     'qty' => $item->qty,
-                                    'unit' => $item->package->uom,
+                                    'unit' => $item->package_id ? $item->package->uom : '',
                                     'note' => $item->note,
+                                    'total_price' => intval($item->qty) * intval($item->price)
                                 ];
                             }) : [],
                     ];
@@ -59,6 +64,8 @@ class PDFConfirmLetterResource extends JsonResource
                     'cb_night' => $schedule->cb_night,
                 ];
             }) : [],
+            'total_amount' => $this->calculateAmount() ? 'Rp'.addDotsCurrency($this->calculateAmount()) : '',
+            'current_date' => Carbon::now()->translatedFormat('d F Y'),
         ];  
     }
 

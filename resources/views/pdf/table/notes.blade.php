@@ -1,30 +1,52 @@
 <h2 class="text--sub-title">Catatan</h2>
-@php
-    print_r($notes)
-@endphp
 
 <table class="note-table">
     <thead>
         <tr>
-            <th class="col-date">Tanggal</th>
-            <th class="col-package">Paket</th>
-            <th class="col-price">Harga</th>
+            <th>Tanggal</th>
+            <th>Paket</th>
+            <th>Harga</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($notes as $note)
             <tr>
-                <td rowspan="{{ count($note['packages']) + 1 }}" class="col-date"> {{ $note['date'] }} </td>
+                <td rowspan="{{ count($note['packages']) }}" class="text--center">
+                    <b>{{ $note['date'] }}</b>
+                </td>
+                @foreach ($note['packages'] as $index => $package)
+                    @if ($index > 0)
+                        <tr>
+                    @endif
+                        <td>
+                            @if ($package['name'])
+                                <strong>{{ $package['name'] }}</strong><br>
+                                Rp{{ addDotsCurrency($package['price']) }} <span class="space">x</span> {{ $package['qty'] }} {{ $package['unit'] }} <span class="space">x</span> 1 Night<br>    
+                            @endif
+                            
+                            @if ($package['note'])
+                                {!! nl2br(e($package['note'])) !!}   
+                            @endif
+                        </td>
+                        <td class="text--center">
+                            @if ($package['name'])
+                                Rp{{ addDotsCurrency($package['total_price']) }}
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
             </tr>
-            @foreach ($note['packages'] as $package)
-                <tr>
-                    <td>
-                        <b>{{ $package['name'] }}</b><br>
-                        Rp.{{ addDotsCurrency($package['price']) }} x {{ $package['qty'] }} {{ $package['unit'] }} x 1 Night<br>
-                        {{ $package['note'] }}
-                    </td>
-                </tr>
-            @endforeach
         @endforeach
+
+        @if ($amount)
+            <tr>
+                <td colspan="2" class="text--center">
+                    <b>TOTAL</b>
+                </td>
+                <td class="text--center">
+                    <b>{{ $amount }}</b>
+                </td>
+            </tr>    
+        @endif
     </tbody>
 </table>

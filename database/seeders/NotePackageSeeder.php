@@ -20,6 +20,13 @@ class NotePackageSeeder extends Seeder
             'price' => 600000,
             'note' => ''
         ]);
+        NotePackage::create([
+            'note_id' => 1,
+            'package_id' => 2,
+            'qty' => 3,
+            'price' => 300000,
+            'note' => ''
+        ]);
 
         NotePackage::create([
             'note_id' => 2,
@@ -27,6 +34,13 @@ class NotePackageSeeder extends Seeder
             'qty' => 5,
             'price' => 650000,
             'note' => 'asd'
+        ]);
+        NotePackage::create([
+            'note_id' => 2,
+            'package_id' => null,
+            'qty' => null,
+            'price' => null,
+            'note' => 'test just description'
         ]);
     }
 }

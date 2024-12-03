@@ -237,7 +237,7 @@ class ConfirmLetterController extends Controller
             'package_id' => $input['package'],
             'qty' => $input['qty'],
             'price' => $input['price'],
-            'note' => $input['note']
+            'note' => $input['note'],
         ];
     }
 
@@ -255,13 +255,13 @@ class ConfirmLetterController extends Controller
         $css = public_path('css\confirm-letter.css');
         $logo = public_path('ole-suites.png');
 
-        // $options = [
-            // 'isPhpEnabled' => true,
-            // 'isRemoteEnabled' => true, 
-        // ];
-        // $pdf = Pdf::setOptions($options)->loadView('generate-pdf', compact('data', 'css', 'logo'));
-
         $pdf = Pdf::loadView('generate-pdf', compact('data', 'css', 'logo'));
-        return $pdf->stream();
+        
+        $pdf->set_option('isHtml5ParserEnabled', true);
+        $pdf->set_option('isPhpEnabled', true);
+        $pdf->setPaper('A4', 'portrait');
+        //ConfirmationLetter_
+        $filename = 'CL'.$letter->id.'-'.$letter->organization->name;
+        return $pdf->stream("$filename.pdf");
     }
 }

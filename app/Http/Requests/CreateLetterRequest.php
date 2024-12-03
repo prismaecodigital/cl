@@ -65,16 +65,27 @@ class CreateLetterRequest extends FormRequest
             $checkOutDate = $this->input('check_out');
 
             if ($checkInDate && $checkOutDate) {
-                // Parse the check_in date and check_out date
                 $checkIn = Carbon::createFromFormat('Y-m-d', $checkInDate);
                 $checkOut = Carbon::createFromFormat('Y-m-d', $checkOutDate);
 
-                // Validate notes.*.start_date and notes.*.end_date
                 foreach ($this->input('notes', []) as $key => $note) {
-                    $isStartDate = isset($note['start_date']);
-                    if ($isStartDate) {
-                        $startDate = Carbon::createFromFormat('Y-m-d', $note['start_date']);
+                    // Validate start_date when package or note is filled
+                    if (isset($note['lists'])) {
+                        foreach ($note['lists'] as $listKey => $list) {
+                            if (!empty($list['package']) || !empty($list['note'])) {
+                                if (empty($note['start_date'])) {
+                                    $validator->errors()->add(
+                                        "notes.$key.start_date",
+                                        "The start date is required when a package or note is filled."
+                                    );
+                                }
+                            }
+                        }
+                    }
 
+                    // Validate start_date and end_date ranges
+                    if (isset($note['start_date'])) {
+                        $startDate = Carbon::createFromFormat('Y-m-d', $note['start_date']);
                         if ($startDate->lt($checkIn)) {
                             $validator->errors()->add(
                                 "notes.$key.start_date",
@@ -83,7 +94,7 @@ class CreateLetterRequest extends FormRequest
                         }
                     }
 
-                    if ($isStartDate && isset($note['end_date'])) {
+                    if (isset($note['start_date']) && isset($note['end_date'])) {
                         $startDate = Carbon::createFromFormat('Y-m-d', $note['start_date']);
                         $endDate = Carbon::createFromFormat('Y-m-d', $note['end_date']);
 
@@ -103,18 +114,15 @@ class CreateLetterRequest extends FormRequest
                     }
                 }
 
-                // Validate schedules.*.date
                 foreach ($this->input('schedules', []) as $key => $schedule) {
                     if (isset($schedule['date'])) {
                         $scheduleDate = Carbon::createFromFormat('Y-m-d', $schedule['date']);
-
                         if ($scheduleDate->lt($checkIn)) {
                             $validator->errors()->add(
                                 "schedules.$key.date",
                                 "Each schedule date must be on or after the check-in date."
                             );
                         }
-
                         if ($scheduleDate->gt($checkOut)) {
                             $validator->errors()->add(
                                 "schedules.$key.date",
@@ -126,6 +134,7 @@ class CreateLetterRequest extends FormRequest
             }
         });
     }
+
 
     /**
      * Get the custom messages for validation errors.

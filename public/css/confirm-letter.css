@@ -54,6 +54,10 @@ body {
   font-weight: bold;
 }
 
+.space{
+  padding: 0 1rem;
+}
+
 .text--heading {
   margin-top: .5rem !important;
   margin-bottom: 0px !important;
@@ -73,70 +77,18 @@ body {
   text-align: center;
 }
 
-.term-list li{
-  margin-bottom: .35rem;
+.text--left{
+  text-align: left;
 }
 
-flex-wrapper {
-  display: flex;
-  flex-flow: row wrap;
-  width: 100%;
-  padding: 0 .5rem;
-}
-
-flex-child {
-
-}
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50px;
-  text-align: center;
-  font-size: 12px;
-  color: #666;
+.text--right{
+  text-align: right;
 }
 
 .info-table {
   width: 100%;
   border-collapse: collapse;
   margin: 10px 0;
-}
-
-.schedule-table,
-.note-table {
-  border-collapse: collapse;
-  text-align: center;
-  width: 100%;
-}
-
-.note-table tr, 
-.note-table th, 
-.note-table td {
-  border: 1px solid black;
-  text-align: center;
-}
-
-.note-table .col-date {
-  width: 30% !important;
-}
-
-.note-table .col-package {
-  width: 50% !important;
-}
-
-.note-table .col-price {
-  width: 20% !important;
-}
-
-.schedule-table th,
-.schedule-table td {
-  padding: 2px;
-  border: 1px solid black;
-  width: 100% !important;
-  max-width: calc(100% / 6) !important;
 }
 
 .info-table th,
@@ -154,3 +106,125 @@ flex-child {
   font-weight: bold;
   width: 200px !important;
 }
+
+.note-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.note-table thead th {
+  padding: 1rem .5rem;
+  border: solid 1px black;
+}
+
+.note-table tbody td {
+  padding: .5rem;
+  border: solid 1px black;
+}
+
+.schedule-table {
+  border-collapse: collapse;
+  text-align: center;
+  width: 100%;
+}
+
+.schedule-table th,
+.schedule-table td {
+  padding: 2px;
+  border: 1px solid black;
+  width: 100% !important;
+  max-width: calc(100% / 6) !important;
+}
+
+.term-list li {
+  margin-bottom: .35rem;
+}
+
+.sign-table {
+  margin-top: 1rem;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sign-table td {
+  vertical-align: top;
+  width: calc(100% / 2);
+}
+
+.sign-table td:nth-child(1) {
+  text-align: left;
+}
+
+.sign-table td:nth-child(2) {
+  text-align: right;
+}
+
+.sign-image {
+  height: 80px !important;
+}
+
+.footnote {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  text-align: center;
+  font-size: .8rem;
+  color: #666 !important;
+}
+
+.footnote a {
+  color: inherit !important;
+}
+
+.footnote > p {
+  margin-top: 0px !important;
+  margin-bottom: 2px !important;
+}
+
+.footnote-table{
+  width: 100%;
+  border-collapse: collapse;
+}
+.footnote-table td {
+  vertical-align: top;
+  text-align: center;
+  width: calc(100% / 3);
+}
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 12px;
+}
+
+.footer .page-number {
+  font-size: 12px;
+}
+
+.footer-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  display: flex;
+}
+
+.footer-bar div {
+  flex-grow: 1;
+}
+
+.footer-bar .teal { background-color: teal; }
+.footer-bar .blue { background-color: blue; }
+.footer-bar .yellow { background-color: gold; }
+.footer-bar .red { background-color: red; }

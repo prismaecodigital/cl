@@ -28,4 +28,32 @@
             </li>
         @endforeach
     </ul>
+
+    <table class="sign-table">
+        <tbody>
+            <tr>
+                <td>
+                    Sentul, {{ $letter['current_date'] }}
+                </td>
+                <td>
+                    <b>{{ $letter['organization'] }}</b>
+                </td>
+            </tr>
+            <tr class="sign-image">
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    {{ $letter['sales'] }}<br>
+                    <b>Darmawan Park</b><br>
+                    <b>PT. Ole Maju Sejahtera</b><br>
+                    <b>Please sign and scan by email or re-fax after signing to 021- 8795-1524</b><br>
+                </td>
+                <td>
+                    <b>( {{ $letter['pic'] }} )</b>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>

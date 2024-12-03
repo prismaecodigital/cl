@@ -57,14 +57,15 @@ class ConfirmLetterDetailResource extends JsonResource
                         'end_date' => isset($note['end_date']) ? Carbon::parse($note['end_date'])->format('Y-m-d') : null,
                         'lists' => count($note->notePackage) > 0 ? 
                             $note->notePackage->map(function ($item){
+                                $hasPackage = $this->package_id;
                                 return [
                                     'note_id' => $item->note_id,
                                     'package' => $item->package_id,
-                                    'packageSelected' => [
+                                    'packageSelected' => $hasPackage ? [
                                         'value' => $item->package->id,
                                         'label' => $item->package->name,
-                                    ],
-                                    'uom' => $item->package->uom,
+                                    ] : [],
+                                    'uom' => $hasPackage ? $item->package->uom : '',
                                     'qty' => $item->qty,
                                     'price' => $item->price,
                                     'priceValue' => number_format($item->price, 0, '', '.'),

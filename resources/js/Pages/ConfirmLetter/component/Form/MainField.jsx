@@ -176,7 +176,7 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
         isPrimary={true}
       >
         <DateTimePicker
-          minDate='today'
+          minDate={new Date()}
           value={data.check_in}
           onChange={(value) => {
             setData('check_in', FormattedDateFlatpickr(value));
@@ -198,7 +198,7 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
         isPrimary={true}
       >
         <DateTimePicker
-          minDate='today'
+          minDate={new Date()}
           value={data.check_out}
           onChange={(value) => {
             setData('check_out', FormattedDateFlatpickr(value));

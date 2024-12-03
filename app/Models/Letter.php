@@ -14,17 +14,17 @@ class Letter extends Model
     protected $fillable = ['code', 'created_by', 'organization_id', 'contact_id', 'event_id', 'room_id', 'check_in', 'check_out', 'attendance', 'payment'];
 
     protected static function boot()
-{
-    parent::boot();
+    {
+        parent::boot();
 
-    static::created(function ($confirmationLetter) {
-        // Generate the code after the record is created
-        $confirmationLetter->code = app()->make(self::class)->generateCode($confirmationLetter);
+        static::created(function ($confirmationLetter) {
+            // Generate the code after the record is created
+            $confirmationLetter->code = app()->make(self::class)->generateCode($confirmationLetter);
 
-        // Save the updated code to the database
-        $confirmationLetter->save();
-    });
-}
+            // Save the updated code to the database
+            $confirmationLetter->save();
+        });
+    }
 
     public function generateCode($confirmationLetter): string
     {
