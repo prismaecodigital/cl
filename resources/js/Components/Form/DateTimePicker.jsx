@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import Flatpickr from 'react-flatpickr';
 import { Indonesian } from 'flatpickr/dist/l10n/id.js';
-import 'flatpickr/dist/themes/airbnb.css'; // Import a Flatpickr theme
-import 'flatpickr/dist/flatpickr.css'; // Import Flatpickr base CSS
+import 'flatpickr/dist/themes/airbnb.css'; 
+import 'flatpickr/dist/flatpickr.css'; 
 import { Trash2 } from 'lucide-react';
 
 export default function DateTimePicker({
@@ -13,7 +13,7 @@ export default function DateTimePicker({
   maxDate = '',
   currentDate = '',
   withTime = true,
-  isDisable = false, // Add a read-only prop
+  isDisable = false, 
   ...props
 }) {
   const flatpickrRef = useRef(null);
@@ -24,7 +24,7 @@ export default function DateTimePicker({
     if (flatpickrRef.current) {
       flatpickrRef.current.flatpickr.clear();
     }
-    onChange(null); // Reset value to null or empty
+    onChange(null); 
   };
 
   return (
@@ -43,20 +43,18 @@ export default function DateTimePicker({
           maxDate: maximumDate,
           defaultDate: currentDate,
           defaultHour: 10,
-          clickOpens: !isDisable
+          clickOpens: !isDisable,
         }}
         value={value}
-        onChange={([selectedDate]) => onChange(selectedDate)} // Prevent onChange if disabled or read-only
+        onChange={([selectedDate]) => onChange(selectedDate || null)} 
         ref={flatpickrRef}
         className={`${
           isDisable
             ? 'border-gray-300 bg-gray-100 text-gray-500 focus:border-gray-300 focus:ring-gray-300'
             : 'border-gray-300 focus:border-ole focus:ring-ole'
         } rounded-md shadow-sm ${className}`}
-        
       />
 
-      {/* Add a button to clear the input */}
       {!isDisable && (
         <button
           type="button"

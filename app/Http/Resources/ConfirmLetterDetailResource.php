@@ -30,8 +30,8 @@ class ConfirmLetterDetailResource extends JsonResource
                 'label' => $this->contact->name
             ],
             'phone' => $this->contact->phone,
-            'check_in' => $this->check_in,
-            'check_out' => $this->check_out,
+            'check_in' => Carbon::parse($this->check_in)->format('Y-m-d'),
+            'check_out' => Carbon::parse($this->check_out)->format('Y-m-d'),
             'event' => $this->event_id,
             'eventSelected' => [
                 'value' => $this->event->id,
@@ -57,7 +57,7 @@ class ConfirmLetterDetailResource extends JsonResource
                         'end_date' => isset($note['end_date']) ? Carbon::parse($note['end_date'])->format('Y-m-d') : null,
                         'lists' => count($note->notePackage) > 0 ? 
                             $note->notePackage->map(function ($item){
-                                $hasPackage = $this->package_id;
+                                $hasPackage = $item->package_id;
                                 return [
                                     'note_id' => $item->note_id,
                                     'package' => $item->package_id,

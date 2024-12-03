@@ -109,10 +109,11 @@ export default function NotesField({ data, setData, errors, selectOption, readOn
                 minDate={data.check_in}
                 maxDate={data.check_out}
                 name={`notes.${noteIndex}.start_date`}
-                value={note.start_date}
+                value={note.start_date ? new Date(note.start_date) : ''}
                 onChange={(value) => {
+                  const dateValue = FormattedDateFlatpickr(value);
                   updateNotes((notes) => {
-                    notes[noteIndex].start_date = FormattedDateFlatpickr(value);
+                    notes[noteIndex].start_date = dateValue == '1970-01-01' ? '' : dateValue;
                     return notes;
                   });
                 }}
@@ -136,8 +137,9 @@ export default function NotesField({ data, setData, errors, selectOption, readOn
                 name={`notes.${noteIndex}.end_date`}
                 value={note.end_date}
                 onChange={(value) => {
+                  const dateValue = FormattedDateFlatpickr(value);
                   updateNotes((notes) => {
-                    notes[noteIndex].end_date = FormattedDateFlatpickr(value);
+                    notes[noteIndex].end_date = dateValue == '1970-01-01' ? '' : dateValue;
                     return notes;
                   });
                 }}
@@ -189,7 +191,7 @@ export default function NotesField({ data, setData, errors, selectOption, readOn
                     id={`notes.${noteIndex}.lists.${packageIndex}.qty`}
                     name={`notes.${noteIndex}.lists.${packageIndex}.qty`}
                     className='mt-1 block w-full'
-                    value={packageItem.qty}
+                    value={packageItem.qty || ''}
                     autoComplete='name'
                     placeholder='Qty...'
                     onChange={(e) => {
@@ -265,7 +267,7 @@ export default function NotesField({ data, setData, errors, selectOption, readOn
                   id={`notes.${noteIndex}.lists.${packageIndex}.note`}
                   name={`notes.${noteIndex}.lists.${packageIndex}.note`}
                   className='mt-1 block w-full'
-                  value={packageItem.note}
+                  value={packageItem.note || ''}
                   placeholder='Package Note...'
                   onChange={(e) => {
                     updateNotes((notes) => {

@@ -115,6 +115,22 @@ class CreateLetterRequest extends FormRequest
                 }
 
                 foreach ($this->input('schedules', []) as $key => $schedule) {
+                    // Check if any of the meal fields are filled
+                    $hasMeal = !empty($schedule['breakfast']) || 
+                               !empty($schedule['cb_morning']) || 
+                               !empty($schedule['lunch']) || 
+                               !empty($schedule['cb_evening']) || 
+                               !empty($schedule['dinner']) || 
+                               !empty($schedule['cb_night']);
+        
+                    // If any meal field is filled, ensure the date is required
+                    if ($hasMeal && empty($schedule['date'])) {
+                        $validator->errors()->add(
+                            "schedules.$key.date",
+                            "Schedule date field is required when any schedule is filled."
+                        );
+                    }
+
                     if (isset($schedule['date'])) {
                         $scheduleDate = Carbon::createFromFormat('Y-m-d', $schedule['date']);
                         if ($scheduleDate->lt($checkIn)) {

@@ -72,10 +72,23 @@ class UpdateLetterRequest extends FormRequest
                 if(count($this->input('notes')) > 0){
                     // Validate notes.*.start_date and notes.*.end_date
                     foreach ($this->input('notes', []) as $key => $note) {
-                        $isStartDate = isset($note['start_date']);
-                        if ($isStartDate) {
-                            $startDate = Carbon::createFromFormat('Y-m-d', $note['start_date']);
+                        // Validate start_date when package or note is filled
+                        if (isset($note['lists'])) {
+                            foreach ($note['lists'] as $listKey => $list) {
+                                if (!empty($list['package']) || !empty($list['note'])) {
+                                    if (empty($note['start_date'])) {
+                                        $validator->errors()->add(
+                                            "notes.$key.start_date",
+                                            "The start date is required when a package or note is filled."
+                                        );
+                                    }
+                                }
+                            }
+                        }
     
+                        // Validate start_date and end_date ranges
+                        if (isset($note['start_date'])) {
+                            $startDate = Carbon::createFromFormat('Y-m-d', $note['start_date']);
                             if ($startDate->lt($checkIn)) {
                                 $validator->errors()->add(
                                     "notes.$key.start_date",
@@ -84,7 +97,7 @@ class UpdateLetterRequest extends FormRequest
                             }
                         }
     
-                        if ($isStartDate && isset($note['end_date'])) {
+                        if (isset($note['start_date']) && isset($note['end_date'])) {
                             $startDate = Carbon::createFromFormat('Y-m-d', $note['start_date']);
                             $endDate = Carbon::createFromFormat('Y-m-d', $note['end_date']);
     
@@ -109,6 +122,22 @@ class UpdateLetterRequest extends FormRequest
                 if(count($this->input('schedules')) > 0){
                     // Validate schedules.*.date
                     foreach ($this->input('schedules', []) as $key => $schedule) {
+                        // Check if any of the meal fields are filled
+                        $hasMeal = !empty($schedule['breakfast']) || 
+                                   !empty($schedule['cb_morning']) || 
+                                   !empty($schedule['lunch']) || 
+                                   !empty($schedule['cb_evening']) || 
+                                   !empty($schedule['dinner']) || 
+                                   !empty($schedule['cb_night']);
+            
+                        // If any meal field is filled, ensure the date is required
+                        if ($hasMeal && empty($schedule['date'])) {
+                            $validator->errors()->add(
+                                "schedules.$key.date",
+                                "Schedule date field is required when any schedule is filled."
+                            );
+                        }
+
                         if (isset($schedule['date'])) {
                             $scheduleDate = Carbon::createFromFormat('Y-m-d', $schedule['date']);
 

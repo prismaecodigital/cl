@@ -176,10 +176,11 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
         isPrimary={true}
       >
         <DateTimePicker
-          minDate={new Date()}
+          minDate={pageName === 'Create' ? new Date() : ''}
           value={data.check_in}
           onChange={(value) => {
-            setData('check_in', FormattedDateFlatpickr(value));
+            const dateValue = FormattedDateFlatpickr(value);
+            setData('check_in', dateValue == '1970-01-01' ? '' : dateValue);
           }}
           className='mt-1 block w-full'
           name='check_in'
@@ -198,10 +199,11 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
         isPrimary={true}
       >
         <DateTimePicker
-          minDate={new Date()}
+          minDate={pageName === 'Create' ? new Date() : ''}
           value={data.check_out}
           onChange={(value) => {
-            setData('check_out', FormattedDateFlatpickr(value));
+            const dateValue = FormattedDateFlatpickr(value);
+            setData('check_out', dateValue == '1970-01-01' ? '' : dateValue);
           }}
           className='mt-1 block w-full'
           name='check_in'

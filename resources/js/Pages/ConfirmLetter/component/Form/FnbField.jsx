@@ -64,8 +64,9 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               name={`schedules.${index}.date`}
               value={item.date}
               onChange={(value) => {
+                const dateValue = FormattedDateFlatpickr(value);
                 updateSchedule((schedules) => {
-                  schedules[index].date = FormattedDateFlatpickr(value);
+                  schedules[index].date = dateValue == '1970-01-01' ? '' : dateValue;
                   return schedules;
                 });
               }}
@@ -87,7 +88,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               <TextInput
                 name={`schedules.${index}.breakfast`}
                 type='text'
-                value={item.breakfast}
+                value={item.breakfast || ''}
                 className='mt-1 block w-full'
                 placeholder='Breakfast...'
                 onChange={(e) => {
@@ -110,7 +111,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               <TextInput
                 name={`schedules.${index}.cb_morning`}
                 type='text'
-                value={item.cb_morning}
+                value={item.cb_morning || ''}
                 className='mt-1 block w-full'
                 placeholder='Morning Coffe Break...'
                 onChange={(e) => {
@@ -133,7 +134,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               <TextInput
                 name={`schedules.${index}.lunch`}
                 type='text'
-                value={item.lunch}
+                value={item.lunch || ''}
                 className='mt-1 block w-full'
                 placeholder='Lunch...'
                 onChange={(e) => {
@@ -156,7 +157,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               <TextInput
                 name={`schedules.${index}.cb_evening`}
                 type='text'
-                value={item.cb_evening}
+                value={item.cb_evening || ''}
                 className='mt-1 block w-full'
                 placeholder='Evening Coffee Break...'
                 onChange={(e) => {
@@ -179,7 +180,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               <TextInput
                 name={`schedules.${index}.dinner`}
                 type='text'
-                value={item.dinner}
+                value={item.dinner || ''}
                 className='mt-1 block w-full'
                 placeholder='Dinner...'
                 onChange={(e) => {
@@ -202,7 +203,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               <TextInput
                 name={`schedules.${index}.cb_night`}
                 type='text'
-                value={item.cb_night}
+                value={item.cb_night || ''}
                 className='mt-1 block w-full'
                 placeholder='Night Coffee Break...'
                 onChange={(e) => {
