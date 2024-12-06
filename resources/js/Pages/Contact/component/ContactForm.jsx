@@ -52,6 +52,7 @@ export default function ContactForm({ method, initialValues, routeName, organiza
         error={errors.name}
         isPrimary={true}
         maxLength='60'
+        valueLength={data.name.length}
       >
         <TextInput
           id='name'
@@ -71,6 +72,7 @@ export default function ContactForm({ method, initialValues, routeName, organiza
         error={errors.phone}
         isPrimary={true}
         maxLength='16'
+        valueLength={data.phone.length}
       >
         <TextInput
           id='phone'
@@ -90,6 +92,7 @@ export default function ContactForm({ method, initialValues, routeName, organiza
         error={errors.fax}
         isPrimary={true}
         maxLength='25'
+        valueLength={data.fax.length}
       >
         <TextInput
           id='fax'
@@ -109,6 +112,7 @@ export default function ContactForm({ method, initialValues, routeName, organiza
         error={errors.email}
         isPrimary={true}
         maxLength='50'
+        valueLength={data.email.length}
       >
         <TextInput
           id='email'

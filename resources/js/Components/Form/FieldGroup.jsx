@@ -7,9 +7,10 @@ export default function FieldGroup({
   children, 
   className='', 
   error='', 
-  maxLength='' 
+  maxLength='',
+  valueLength=0
 }) {
-  const [currentLength, setCurrentLength] = useState(0);
+  const [currentLength, setCurrentLength] = useState(valueLength);
 
   // Handle input change and enforce maxLength
   const handleInputChange = (e) => {

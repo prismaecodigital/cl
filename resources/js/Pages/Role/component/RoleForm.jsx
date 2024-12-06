@@ -37,6 +37,7 @@ export default function RoleForm({ method, initialValues, routeName, permissions
 					error={errors.name}
 					isPrimary={true}
           maxLength='20'
+          valueLength={data.name.length}
         >
           <TextInput
             id='name'

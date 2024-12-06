@@ -20,7 +20,7 @@ function Edit({ contact, organizations }) {
   
   return (
     <div className='content-box'>
-			<Breadcrumb title='Contact Edit' pageName='Edit' prevPage={picBreadcrumb} />
+			<Breadcrumb title='PIC Edit' pageName='Edit' prevPage={picBreadcrumb} />
       
       <ContactForm
         method='patch'

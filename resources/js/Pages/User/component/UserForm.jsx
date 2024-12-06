@@ -37,6 +37,7 @@ export default function UserForm({ method, initialValues, routeName, roles, user
         error={errors.username}
         isPrimary={true}
         maxLength='25'
+        valueLength={data.username.length}
       >
         <TextInput
           id='username'
@@ -75,6 +76,7 @@ export default function UserForm({ method, initialValues, routeName, roles, user
         error={errors.fullname}
         isPrimary={true}
         maxLength='60'
+        valueLength={data.fullname.length}
       >
         <TextInput
           id='fullname'
@@ -94,6 +96,7 @@ export default function UserForm({ method, initialValues, routeName, roles, user
         error={errors.email}
         isPrimary={true}
         maxLength='50'
+        valueLength={data.email.length}
       >
         <TextInput
           id='email'
@@ -114,6 +117,7 @@ export default function UserForm({ method, initialValues, routeName, roles, user
         error={errors.phone}
         isPrimary={true}
         maxLength='16'
+        valueLength={data.phone.length}
       >
         <TextInput
           id='phone'

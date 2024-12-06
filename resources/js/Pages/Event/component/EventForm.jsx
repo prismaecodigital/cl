@@ -26,6 +26,7 @@ export default function EventForm ({ method, initialValues, routeName, event='' 
         error={errors.name}
         isPrimary={true}
         maxLength='100'
+        valueLength={data.name.length}
       >
         <TextInput
           id='name'

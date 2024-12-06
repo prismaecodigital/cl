@@ -26,6 +26,7 @@ export default function PermissionForm({ method, initialValues, routeName, permi
         error={errors.name}
         isPrimary={true}
         maxLength='100'
+        valueLength={data.name.length}
       >
         <TextInput
           id='name'

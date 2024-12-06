@@ -27,6 +27,7 @@ export default function OrganizationForm ({ method, initialValues, routeName, or
         error={errors.name}
         isPrimary={true}
         maxLength='100'
+        valueLength={data.name.length}
       >
         <TextInput
           id='name'

@@ -27,6 +27,7 @@ export default function PackageForm ({ method, initialValues, routeName, package
 					error={errors.name}
 					isPrimary={true}
           maxLength='70'
+          valueLength={data.name.length}
         >
           <TextInput
             id='name'
@@ -48,6 +49,7 @@ export default function PackageForm ({ method, initialValues, routeName, package
 					error={errors.uom}
 					isPrimary={true}
           maxLength='10'
+          valueLength={data.uom.length}
         >
           <TextInput
             id='uom'
