@@ -248,19 +248,19 @@ class ConfirmLetterController extends Controller
 
         if($request->has('preview')){
             $css = asset('css/confirm-letter.css');
-            $logo = asset('ole-suites.png');
+            $logo = asset('ole-suites-hotel-cottage.png');
             return view('generate-pdf', compact('data', 'css', 'logo'));
         }
 
         $css = public_path('css\confirm-letter.css');
-        $logo = public_path('ole-suites.png');
+        $logo = public_path('ole-suites-hotel-cottage.png');
 
         $pdf = Pdf::loadView('generate-pdf', compact('data', 'css', 'logo'));
         
         $pdf->set_option('isHtml5ParserEnabled', true);
         $pdf->set_option('isPhpEnabled', true);
         $pdf->setPaper('A4', 'portrait');
-        //ConfirmationLetter_
+        
         $filename = 'CL'.$letter->id.'-'.$letter->organization->name;
         return $pdf->stream("$filename.pdf");
     }

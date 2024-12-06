@@ -14,7 +14,9 @@
     @if (!empty($letter['notes']))
         @include('pdf.table.notes', [
             'notes' => $letter['notes'],
-            'amount' => $letter['total_amount']
+            'amount' => $letter['total_amount'],
+            'deposit' => $letter['deposit'],
+            'payment' => $letter['outstanding_payment'],
         ])
     @endif
 

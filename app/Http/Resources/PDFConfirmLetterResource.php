@@ -23,11 +23,11 @@ class PDFConfirmLetterResource extends JsonResource
             'address' => $this->organization->address,
             'pic' => $this->contact->name,
             'pic_phone' => $this->contact->phone,
-            'pic_fax' => $this->contact->fax,
             'pic_email' => $this->contact->email,
             'check_in' => Carbon::parse($this->check_in)->translatedFormat('d F Y'),
             'check_out' => Carbon::parse($this->check_out)->translatedFormat('d F Y'),
             'event' => $this->event->name,
+            'hotel' => $this->hotel,
             'room' => $this->room->name,
             'attendance' => $this->attendance,
             'payment' => ucfirst($this->payment),
@@ -65,6 +65,8 @@ class PDFConfirmLetterResource extends JsonResource
                 ];
             }) : [],
             'total_amount' => $this->calculateAmount() ? 'Rp'.addDotsCurrency($this->calculateAmount()) : '',
+            'deposit' => $this->deposit ? 'Rp'.addDotsCurrency($this->deposit) : '',
+            'outstanding_payment' => 'Rp'.addDotsCurrency($this->calculateAmount() - $this->deposit),
             'current_date' => Carbon::now()->translatedFormat('d F Y'),
         ];  
     }

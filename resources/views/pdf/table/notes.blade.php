@@ -37,16 +37,29 @@
                 @endforeach
             </tr>
         @endforeach
-
-        @if ($amount)
-            <tr>
-                <td colspan="2" class="text--center">
-                    <b>TOTAL</b>
-                </td>
-                <td class="text--center">
-                    <b>{{ $amount }}</b>
-                </td>
-            </tr>    
-        @endif
+        <tr>
+            <td colspan="2" class="text--right">
+                <b>SUBTOTAL</b>
+            </td>
+            <td class="text--center">
+                <b>{{ $amount }}</b>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text--right">
+                <b>DEPOSIT</b>
+            </td>
+            <td class="text--center">
+                <b>{{ $deposit }}</b>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text--right">
+                <b>OUTSTANDING PAYMENT</b>
+            </td>
+            <td class="text--center">
+                <b>{{ $payment }}</b>
+            </td>
+        </tr>
     </tbody>
 </table>
