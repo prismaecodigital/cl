@@ -21,7 +21,10 @@ class LetterSeeder extends Seeder
             'check_in' => '2024-02-04',
             'check_out' => '2024-02-06',
             'attendance' => 55,
-            'payment' => 'transfer'
+            'payment' => 'transfer',
+            'deposit' => 5000000,
+            'hotel' => 'Ole Suites Hotel, RUKUN',
+            'status' => 'progress',
         ]);
     }
 }

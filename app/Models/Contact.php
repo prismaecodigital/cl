@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Contact extends Model
 {
     use HasFactory;
-    protected $fillable = ['organization_id', 'name', 'phone', 'fax', 'email'];
+    protected $fillable = ['organization_id', 'name', 'phone', 'email'];
 
     public function organization(): BelongsTo
     {

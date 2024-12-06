@@ -84,6 +84,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               name={`schedules.${index}.breakfast`}
               error={errors[`schedules.${index}.breakfast`]}
               maxLength='10'
+              valueLength={item.breakfast.length}
             >
               <TextInput
                 name={`schedules.${index}.breakfast`}
@@ -107,6 +108,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               name={`schedules.${index}.cb_morning`}
               error={errors[`schedules.${index}.cb_morning`]}
               maxLength='10'
+              valueLength={item.cb_morning.length}
             >
               <TextInput
                 name={`schedules.${index}.cb_morning`}
@@ -130,6 +132,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               name={`schedules.${index}.lunch`}
               error={errors[`schedules.${index}.lunch`]}
               maxLength='10'
+              valueLength={item.lunch.length}
             >
               <TextInput
                 name={`schedules.${index}.lunch`}
@@ -153,6 +156,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               name={`schedules.${index}.cb_evening`}
               error={errors[`schedules.${index}.cb_evening`]}
               maxLength='10'
+              valueLength={item.cb_evening.length}
             >
               <TextInput
                 name={`schedules.${index}.cb_evening`}
@@ -176,6 +180,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               name={`schedules.${index}.dinner`}
               error={errors[`schedules.${index}.dinner`]}
               maxLength='10'
+              valueLength={item.dinner.length}
             >
               <TextInput
                 name={`schedules.${index}.dinner`}
@@ -199,6 +204,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               name={`schedules.${index}.cb_night`}
               error={errors[`schedules.${index}.cb_night`]}
               maxLength='10'
+              valueLength={item.cb_night.length}
             >
               <TextInput
                 name={`schedules.${index}.cb_night`}

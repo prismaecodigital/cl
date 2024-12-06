@@ -27,12 +27,14 @@ class CreateLetterRequest extends FormRequest
             'organization' => ['required', 'integer', 'exists:organizations,id'],
             'contact' => ['required', 'integer', 'exists:contacts,id'],
             'event' => ['required', 'integer', 'exists:events,id'],
+            'hotel' => ['required', 'string', 'max:90'],
             'room' => ['required', 'integer', 'exists:rooms,id'],
             'check_in' => ['required', 'date_format:Y-m-d'],
             'check_out' => ['required', 'date_format:Y-m-d', 'after_or_equal:check_in'],
             'attendance' => ['required', 'integer'],
             'payment' => ['required', 'string', 'in:cash,transfer'],
             'sales' => ['required', 'integer', 'exists:users,id'],
+            'deposit' => ['nullable', 'integer'],
 
             // Notes
             'notes' => ['nullable', 'array'],

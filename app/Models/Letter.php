@@ -11,30 +11,37 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 class Letter extends Model
 {
     use HasFactory;
-    protected $fillable = ['code', 'created_by', 'organization_id', 'contact_id', 'event_id', 'room_id', 'check_in', 'check_out', 'attendance', 'payment'];
+    protected $fillable = ['code', 'created_by', 'organization_id', 'contact_id', 'event_id', 'hotel', 'room_id', 'check_in', 'check_out', 'attendance', 'payment', 'deposit', 'status'];
 
     protected static function boot()
     {
         parent::boot();
 
-        static::created(function ($confirmationLetter) {
-            // Generate the code after the record is created
-            $confirmationLetter->code = app()->make(self::class)->generateCode($confirmationLetter);
-
-            // Save the updated code to the database
-            $confirmationLetter->save();
+        static::creating(function ($confirmationLetter) {
+            // Generate the code before the record is saved
+            $confirmationLetter->code = $confirmationLetter->generateCode();
         });
     }
 
-    public function generateCode($confirmationLetter): string
+    public function generateCode(): string
     {
-        $id = str_pad($confirmationLetter->id, 3, '0', STR_PAD_LEFT); // Ensures the ID is 3 digits
         $prefix = 'CL';
-        $location = 'DARMAWANPARK';
-        $monthRoman = $this->convertToRoman(now()->month); // Convert the current month to Roman numerals
+        $location = 'OSHC';
+        $monthRoman = $this->convertToRoman(now()->month);
         $year = now()->year;
 
-        return "{$id}/{$prefix}/{$location}/{$monthRoman}/{$year}";
+        // Get the last letter for the current month
+        $lastLetter = self::whereMonth('created_at', now()->month)
+                        ->whereYear('created_at', now()->year)
+                        ->latest('id')
+                        ->first();
+
+        // Extract and increment the ID
+        $id = $lastLetter 
+            ? (int)explode('/', $lastLetter->code)[0] + 1 
+            : 1;
+
+        return sprintf('%03d/%s/%s/%s/%d', $id, $prefix, $location, $monthRoman, $year);
     }
 
     private function convertToRoman($month): string

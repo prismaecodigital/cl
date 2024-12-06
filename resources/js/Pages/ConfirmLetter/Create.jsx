@@ -6,6 +6,7 @@ function Create({ auth, organizations, events, rooms, packages }) {
   const selectOption = { organizations, events, rooms, packages };
   const data = {
     code: '',
+    sales: auth.user.id,
     organization: '',
     organizationSelected: '',
     address: '',
@@ -14,6 +15,8 @@ function Create({ auth, organizations, events, rooms, packages }) {
     phone: '',
     event: '',
     eventSelected: '',
+    hotel: '',
+    hotelSelected: '',
     room: '',
     roomSelected: '',
     check_in: '',
@@ -21,7 +24,8 @@ function Create({ auth, organizations, events, rooms, packages }) {
     attendance: '',
     payment: '',
     paymentSelected: '',
-    sales: auth.user.id,
+    deposit: '',
+    depositValue: '',
     notes: [{
       start_date: '',
       end_date: '',

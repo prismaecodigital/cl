@@ -17,7 +17,6 @@ class ContactSeeder extends Seeder
             'organization_id' => 1,
             'name' => 'Bapak Lyonardo Edipurtta',
             'phone' => '081234567890',
-            'fax' => '-',
             'email' => '-'
         ]);
 
@@ -25,7 +24,6 @@ class ContactSeeder extends Seeder
             'organization_id' => 1,
             'name' => 'Contact 2',
             'phone' => '0987654322',
-            'fax' => '-',
             'email' => 'contact2@email.com'
         ]);
 
@@ -33,7 +31,6 @@ class ContactSeeder extends Seeder
             'organization_id' => 2,
             'name' => 'Contact 3',
             'phone' => '0987654323',
-            'fax' => '-',
             'email' => 'contact3@email.com'
         ]);
     }

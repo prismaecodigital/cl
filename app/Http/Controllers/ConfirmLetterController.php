@@ -58,6 +58,8 @@ class ConfirmLetterController extends Controller
         DB::beginTransaction();
         try{
             $validated = $request->validated();
+            dd(json_encode($validated));
+            
             $letterObject = $this->createLetterObject($validated);
 
             $letter = Letter::create($letterObject);

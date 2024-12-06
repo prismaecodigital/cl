@@ -23,6 +23,9 @@ return new class extends Migration
             $table->date('check_out');
             $table->integer('attendance');
             $table->enum('payment', ['cash', 'transfer']);
+            $table->bigInteger('deposit')->nullable();
+            $table->string('hotel', 90);
+            $table->enum('status', ['progress', 'won', 'lost']);
             $table->timestamps();
 
             // Added foreign key constraint

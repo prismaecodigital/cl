@@ -5,7 +5,7 @@ import { picBreadcrumb } from '@/utils/breadcrumbContent';
 import ContactForm from './component/ContactForm';
 
 function Edit({ contact, organizations }) {
-  const { name, phone, fax, email, organization } = contact;
+  const { name, phone, email, organization } = contact;
   const data = {
     organization: organization.id,
     organizationSelected: {
@@ -14,7 +14,6 @@ function Edit({ contact, organizations }) {
     },
 		name: name,
     phone: phone,
-    fax: fax,
     email: email
 	};
   

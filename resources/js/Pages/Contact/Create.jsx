@@ -10,7 +10,6 @@ function Create({ organizations }) {
     organizationSelected: '',
 		name: '',
     phone: '',
-    fax: '',
     email: ''
 	};
 

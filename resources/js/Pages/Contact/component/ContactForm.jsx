@@ -85,26 +85,6 @@ export default function ContactForm({ method, initialValues, routeName, organiza
         />
       </FieldGroup>
 
-      {/* FAX */}
-      <FieldGroup
-        label='FAX'
-        name='fax'
-        error={errors.fax}
-        isPrimary={true}
-        maxLength='25'
-        valueLength={data.fax.length}
-      >
-        <TextInput
-          id='fax'
-          name='fax'
-          className='mt-1 block w-full'
-          value={data.fax}
-          autoComplete='fax'
-          placeholder='FAX...'
-          onChange={(e) => setData('fax', e.target.value)}
-        />
-      </FieldGroup>
-
       {/* Email */}
       <FieldGroup
         label='Email'

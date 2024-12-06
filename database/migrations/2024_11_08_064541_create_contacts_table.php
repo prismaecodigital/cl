@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('organization_id');
             $table->string('name', 60);
             $table->string('phone', 16);
-            $table->string('fax', 25);
             $table->string('email', 50);
             $table->timestamps();
 
