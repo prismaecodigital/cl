@@ -26,6 +26,7 @@ class UpdateLetterRequest extends FormRequest
         return [
             'organization' => ['required', 'integer', 'exists:organizations,id'],
             'contact' => ['required', 'integer', 'exists:contacts,id'],
+            'hotel' => ['required', 'string', 'max:90'],
             'event' => ['required', 'integer', 'exists:events,id'],
             'room' => ['required', 'integer', 'exists:rooms,id'],
             'check_in' => ['required', 'date_format:Y-m-d'],
@@ -33,6 +34,7 @@ class UpdateLetterRequest extends FormRequest
             'attendance' => ['required', 'integer'],
             'payment' => ['required', 'string', 'in:cash,transfer'],
             'sales' => ['required', 'integer', 'exists:users,id'],
+            'deposit' => ['nullable', 'integer'],
 
             // Notes
             'notes' => ['nullable', 'array'],

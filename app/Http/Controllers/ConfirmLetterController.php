@@ -10,6 +10,7 @@ use App\Http\Resources\PDFConfirmLetterResource;
 use App\Models\Letter;
 use App\Models\Organization;
 use App\Models\Package;
+use App\Services\LetterService;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -21,6 +22,13 @@ use Inertia\Response;
 
 class ConfirmLetterController extends Controller
 {
+    protected $letterService;
+
+    public function __construct(LetterService $letterService)
+    {
+        $this->letterService = $letterService;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -58,32 +66,7 @@ class ConfirmLetterController extends Controller
         DB::beginTransaction();
         try{
             $validated = $request->validated();
-            // dd(json_encode($validated));
-            
-            $letterObject = $this->createLetterObject($validated);
-
-            $letter = Letter::create($letterObject);
-            foreach($request->input('notes', []) as $note){
-                if(isset($note['start_date'])) {
-                    $notes = $letter->hasNotes()->create([
-                        'start_date' => $note['start_date'],
-                        'end_date' => $note['end_date'],
-                    ]);
-                }
-
-                foreach($note['lists'] as $package){
-                    if(isset($package['package']) || isset($package['note'])){
-                        $packageObject = $this->createNotePackageObject($package);
-                        $notes->notePackage()->create($packageObject);
-                    }
-                }
-            }
-
-            foreach($request->input('schedules', []) as $schedule){
-                if(isset($schedule['date'])){
-                    $notes = $letter->hasFnb()->create($schedule);
-                }
-            }
+            $this->letterService->createLetter($validated);
 
             DB::commit();
             return Redirect::route('confirm-letter.index')->with('toast-success', 'Confirmation Letter Created!');
@@ -136,66 +119,8 @@ class ConfirmLetterController extends Controller
     {
         DB::beginTransaction();
         try{
-            $validated = $request->validated();
-            $letterObject = $this->createLetterObject($validated);
-
-            $letter->fill($letterObject);
-            $letter->save();
-
-            // Handle note
-            $notesData = $request->input('notes', []);
-
-            // Get the current note IDs
-            $existingNoteIds = $letter->hasNotes()->pluck('id')->toArray();
-            $newNoteIds = collect($notesData)->pluck('id')->filter()->toArray(); // Only keep non-null IDs
-
-            // Delete notes that are not in the update request
-            $notesToDelete = array_diff($existingNoteIds, $newNoteIds);
-            $letter->hasNotes()->whereIn('id', $notesToDelete)->delete();
-
-            foreach($notesData as $note){
-                if(isset($note['start_date'])) {
-                    $notes = $letter->hasNotes()->updateOrCreate([
-                        'start_date' => $note['start_date'],
-                        'end_date' => $note['end_date'],
-                    ]);
-
-                    // Handle note package
-                    $notePackage = $note['lists'] ?? [];
-
-                    // Get the current package IDs for the note
-                    $existingPackageIds = $notes->notePackage()->pluck('id')->toArray();
-                    $newPackageIds = collect($notePackage)->pluck('id')->filter()->toArray();
-
-                    // Delete subsections that are not in the update request
-                    $packageToDelete = array_diff($existingPackageIds, $newPackageIds);
-                    $notes->notePackage()->whereIn('id', $packageToDelete)->delete();
-
-                    foreach($notePackage as $package){
-                        if(isset($package['package']) || isset($package['note'])){
-                            $packageObject = $this->createNotePackageObject($package);
-                            $notes->notePackage()->updateOrCreate($packageObject);
-                        }
-                    }
-                }
-            }
-
-            // Handle schedule
-            $schedulesData = $request->input('schedules', []);
-
-            // Get the current note IDs
-            $existingScheduleIds = $letter->hasFnb()->pluck('id')->toArray();
-            $newScheduleIds = collect($schedulesData)->pluck('id')->filter()->toArray(); // Only keep non-null IDs
-
-            // Delete notes that are not in the update request
-            $schedulesToDelete = array_diff($existingScheduleIds, $newScheduleIds);
-            $letter->hasFnb()->whereIn('id', $schedulesToDelete)->delete();
-
-            foreach($schedulesData as $schedule){
-                if(isset($schedule['date'])){
-                    $letter->hasFnb()->updateOrCreate($schedule);
-                }
-            }
+            $validated = $request->validated();            
+            $this->letterService->updateLetter($letter, $validated);
 
             DB::commit();
             return Redirect::route('confirm-letter.index')->with('toast-success', 'Confirmation Letter Updated!');
@@ -216,33 +141,6 @@ class ConfirmLetterController extends Controller
 
         $letter->delete();
         return Redirect::back()->with('toast-success', 'Confirmation Letter Deleted!');
-    }
-
-    private function createLetterObject(array $input): array
-    {
-        return [
-            'created_by' => $input['sales'],
-            'organization_id' => $input['organization'],
-            'contact_id' => $input['contact'],
-            'event_id' => $input['event'],
-            'hotel' => $input['hotel'],
-            'room_id' => $input['room'],
-            'check_in' => convertToJakartaTime($input['check_in']),
-            'check_out' => convertToJakartaTime($input['check_out']),
-            'attendance' => $input['attendance'],
-            'payment' => $input['payment'],
-            'deposit' => $input['deposit'],
-        ];
-    }
-
-    private function createNotePackageObject(array $input): array
-    {
-        return [
-            'package_id' => $input['package'],
-            'qty' => $input['qty'],
-            'price' => $input['price'],
-            'note' => $input['note'],
-        ];
     }
 
     public function exportPDF(Request $request, Letter $letter)

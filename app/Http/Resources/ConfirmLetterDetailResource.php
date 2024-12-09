@@ -38,7 +38,10 @@ class ConfirmLetterDetailResource extends JsonResource
                 'label' => $this->event->name,
             ],
             'hotel' => $this->hotel,
-            'hotelSelected' => explode($this->hotel, ','),
+            'hotelSelected' => array_map(
+                fn($hotel) => ['value' => $hotel, 'label' => $hotel], 
+                explode(', ', $this->hotel) ?: [$this->hotel]
+            ),
             'room' => $this->room_id,
             'roomSelected' => [
                 'value' => $this->room->id,

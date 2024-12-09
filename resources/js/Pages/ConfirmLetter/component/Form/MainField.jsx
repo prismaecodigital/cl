@@ -91,11 +91,11 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
     const value = e.target.value.replace(/\./g, '');
 
     // Set data if value matches the regex, otherwise do nothing
-    if (/^[0-9]{0,10}$/.test(value)) {
+    if (/^[0-9.]{0,12}$/.test(value)) {
       setData((prevData) => ({
         ...prevData,
         deposit: value ? parseInt(value, 10) : '',
-        depositValue: value ? addDotsCurrency(parseInt(value, 12)) : '',
+        depositValue: value ? addDotsCurrency(parseInt(value, 10)) : '',
       }));
     }
   };
