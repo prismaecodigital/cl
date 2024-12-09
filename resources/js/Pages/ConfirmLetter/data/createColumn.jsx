@@ -26,8 +26,8 @@ const createColumn = () => {
     },
   };
 
-  const handleProgress = async ( status, letter ) => {
-    const confirmed = await ConfirmProgess(status);
+  const handleProgress = async ({ code, status, letter }) => {
+    const confirmed = await ConfirmProgess({ code, status });
 
     if (confirmed) {
       const url = route('confirm-letter.progress', { letter }) + `?status=${confirmed}`;
@@ -52,7 +52,11 @@ const createColumn = () => {
         return (
           <span
             className={`p-2 rounded text-white cursor-pointer ${color}`}
-            onClick={permissionEdit ? () => handleProgress(item.status, item) : null} 
+            onClick={permissionEdit ? () => handleProgress({
+              code: item.code, 
+              status: item.status,
+              letter: item
+            }) : null} 
             style={{ cursor: permissionEdit ? 'pointer' : 'not-allowed' }}
           >
             {icon}
