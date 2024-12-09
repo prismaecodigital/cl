@@ -133,6 +133,19 @@ class ConfirmLetterController extends Controller
     }
 
     /**
+     * Update progress from specified confirmation letter
+     */
+    public function updateProgress(Request $request, Letter $letter): RedirectResponse
+    {
+        Gate::authorize('letter_edit');
+
+        $letter->fill(['status' => $request->query('status')]);
+        $letter->save();
+
+        return Redirect::back()->with('toast-success', 'Confirmation Letter Updated!');
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Letter $letter): RedirectResponse

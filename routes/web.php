@@ -33,10 +33,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function() {
-    // Change default param from {confirm_leter} to {letter}
-    Route::resource('confirm-letter', ConfirmLetterController::class)
-           ->parameters(['confirm-letter' => 'letter']);
-        
     Route::resources([
         'database/organizations' => OrganizationController::class,
         'database/contacts' => ContactController::class,
@@ -49,6 +45,11 @@ Route::middleware(['auth', 'verified'])->group(function() {
         'authorization/permissions' => PermissionController::class
     ]);
 
+    // Change default param from {confirm_leter} to {letter}
+    Route::resource('confirm-letter', ConfirmLetterController::class)
+           ->parameters(['confirm-letter' => 'letter']);
+
+    Route::patch('/update-progress/{letter}', [ConfirmLetterController::class, 'updateProgress'])->name('confirm-letter.progress');
     Route::get('/export-confirmation-letter/{letter}', [ConfirmLetterController::class, 'exportPDF'])->name('confirm-letter.export');
     Route::get('/get-contact-organization', [OrganizationController::class, 'getContact'])->name('contactOrganization');
 });

@@ -1,7 +1,8 @@
-import { usePage, Link } from '@inertiajs/react';
-import { Pencil, FileText, Eye } from 'lucide-react';
+import { usePage, Link, router } from '@inertiajs/react';
 import ButtonDelete from '@/Components/Button/ButtonDelete';
 import formatToIDR from '@/utils/formatToIDR';
+import { Pencil, FileText, Eye, Loader, PartyPopper, HeartCrack } from 'lucide-react';
+import ConfirmProgess from '@/Components/Notification/confirmProgress';
 
 const createColumn = () => {
   const { permissions } = usePage().props.auth;
@@ -10,6 +11,30 @@ const createColumn = () => {
   const permissionExport = permissions.includes('letter_export');
   const permissionDelete = permissions.includes('letter_delete');
 
+  const statusConfig = {
+    progress: {
+      color: 'bg-slate-500',
+      icon: <Loader className="inline-block mb-[3px]" strokeWidth={3} size={18} />,
+    },
+    won: {
+      color: 'bg-orange-500',
+      icon: <PartyPopper className="inline-block mb-[3px]" strokeWidth={3} size={18} />,
+    },
+    lost: {
+      color: 'bg-rose-800',
+      icon: <HeartCrack className="inline-block mb-[3px]" strokeWidth={3} size={18} />,
+    },
+  };
+
+  const handleProgress = async ( status, letter ) => {
+    const confirmed = await ConfirmProgess(status);
+
+    if (confirmed) {
+      const url = route('confirm-letter.progress', { letter }) + `?status=${confirmed}`;
+      router.patch(url);
+    }
+  };
+
   const columns = [
     {
       key: 'id',
@@ -17,6 +42,23 @@ const createColumn = () => {
       classHead: 'table--number',
       classBody: 'text-center',
       render: (_, index) => index + 1,
+    },
+    {
+      key: 'status',
+      label: '',
+      render: item => {
+        const { color, icon } = statusConfig[item.status];
+  
+        return (
+          <span
+            className={`p-2 rounded text-white cursor-pointer ${color}`}
+            onClick={permissionEdit ? () => handleProgress(item.status, item) : null} 
+            style={{ cursor: permissionEdit ? 'pointer' : 'not-allowed' }}
+          >
+            {icon}
+          </span>
+        );
+      },
     },
     {
       key: 'code',

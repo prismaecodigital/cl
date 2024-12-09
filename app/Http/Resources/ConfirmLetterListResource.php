@@ -17,6 +17,7 @@ class ConfirmLetterListResource extends JsonResource
         // return parent::toArray($request);
         return [
             'id' => $this->id,
+            'status' => $this->status,
             'code' => $this->code,
             'check_in' => $this->check_in,
             'organization' => $this->organization->name,
