@@ -58,7 +58,7 @@ class ConfirmLetterController extends Controller
         DB::beginTransaction();
         try{
             $validated = $request->validated();
-            dd(json_encode($validated));
+            // dd(json_encode($validated));
             
             $letterObject = $this->createLetterObject($validated);
 
@@ -225,11 +225,13 @@ class ConfirmLetterController extends Controller
             'organization_id' => $input['organization'],
             'contact_id' => $input['contact'],
             'event_id' => $input['event'],
+            'hotel' => $input['hotel'],
             'room_id' => $input['room'],
             'check_in' => convertToJakartaTime($input['check_in']),
             'check_out' => convertToJakartaTime($input['check_out']),
             'attendance' => $input['attendance'],
             'payment' => $input['payment'],
+            'deposit' => $input['deposit'],
         ];
     }
 

@@ -15,7 +15,7 @@ function Create({ organizations }) {
 
   return (
     <div className='content-box'>
-			<Breadcrumb title='Room Create' pageName='Create' prevPage={picBreadcrumb} />
+			<Breadcrumb title='PIC Create' pageName='Create' prevPage={picBreadcrumb} />
       
       <ContactForm
         method='post'
@@ -28,7 +28,7 @@ function Create({ organizations }) {
 }
 
 Create.layout = page => (
-  <DashboardLayout title='Room Create' children={page} />
+  <DashboardLayout title='PIC Create' children={page} />
 );
 
 export default Create;

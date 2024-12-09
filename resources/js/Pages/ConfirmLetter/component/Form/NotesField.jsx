@@ -233,7 +233,6 @@ export default function NotesField({ data, setData, errors, selectOption, readOn
                       className='flex-1 !mb-0'
                     >
                       <TextInput
-                        type='text'
                         id={`notes.${noteIndex}.lists.${packageIndex}.price`}
                         name={`notes.${noteIndex}.lists.${packageIndex}.price`}
                         className='mt-1 block w-full !rounded-l-none !rounded-r-md'
@@ -243,11 +242,14 @@ export default function NotesField({ data, setData, errors, selectOption, readOn
                           // Remove existing dots
                           const rawValue = e.target.value.replace(/\./g, '');
                           updateNotes((notes) => {
-                            notes[noteIndex].lists[packageIndex].price = rawValue;
-                            notes[noteIndex].lists[packageIndex].priceValue = addDotsCurrency(rawValue);
+                            if (/^[0-9]{0,10}$/.test(rawValue)) {
+                              notes[noteIndex].lists[packageIndex].price = rawValue;
+                              notes[noteIndex].lists[packageIndex].priceValue = addDotsCurrency(rawValue);
+                            }
                             return notes;
                           });
                         }}
+                        pattern='^[0-9]{0,10}$'
                         isDisabled={readOnly}
                       />
                     </FieldGroup>

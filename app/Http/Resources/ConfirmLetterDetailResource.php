@@ -37,6 +37,8 @@ class ConfirmLetterDetailResource extends JsonResource
                 'value' => $this->event->id,
                 'label' => $this->event->name,
             ],
+            'hotel' => $this->hotel,
+            'hotelSelected' => explode($this->hotel, ','),
             'room' => $this->room_id,
             'roomSelected' => [
                 'value' => $this->room->id,
@@ -48,6 +50,8 @@ class ConfirmLetterDetailResource extends JsonResource
                 'value' => $this->payment,
                 'label' => ucfirst($this->payment),
             ],
+            'deposit' => $this->deposit,
+            'depositValue' => number_format($this->deposit, 0, '', '.'),
             'sales' => $this->created_by,
             'notes' => count($this->hasNotes) > 0 ? 
                 $this->hasNotes->map(function ($note){

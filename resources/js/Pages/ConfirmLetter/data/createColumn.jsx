@@ -19,6 +19,10 @@ const createColumn = () => {
       render: (_, index) => index + 1,
     },
     {
+      key: 'code',
+      label: 'Code',
+    },
+    {
       key: 'check_in',
       label: 'Check In',
     },
@@ -29,10 +33,6 @@ const createColumn = () => {
     {
       key: 'pic',
       label: 'PIC',
-    },
-    {
-      key: 'event',
-      label: 'Event',
     },
     {
       key: 'sales',

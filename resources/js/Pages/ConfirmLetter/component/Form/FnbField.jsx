@@ -77,7 +77,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
             />
           </FieldGroup>
 
-          <div className='flex flex-row gap-2 mt-3 items-end'>
+          <div className='flex flex-col lg:flex-row gap-2 mt-3 items-end'>
             {/* Breakfast */}
             <FieldGroup 
               label='Breakfast'
@@ -85,6 +85,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               error={errors[`schedules.${index}.breakfast`]}
               maxLength='10'
               valueLength={item.breakfast.length}
+              className='flex-1 w-full'
             >
               <TextInput
                 name={`schedules.${index}.breakfast`}
@@ -109,6 +110,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               error={errors[`schedules.${index}.cb_morning`]}
               maxLength='10'
               valueLength={item.cb_morning.length}
+              className='flex-1 w-full'
             >
               <TextInput
                 name={`schedules.${index}.cb_morning`}
@@ -133,6 +135,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               error={errors[`schedules.${index}.lunch`]}
               maxLength='10'
               valueLength={item.lunch.length}
+              className='flex-1 w-full'
             >
               <TextInput
                 name={`schedules.${index}.lunch`}
@@ -157,6 +160,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               error={errors[`schedules.${index}.cb_evening`]}
               maxLength='10'
               valueLength={item.cb_evening.length}
+              className='flex-1 w-full'
             >
               <TextInput
                 name={`schedules.${index}.cb_evening`}
@@ -181,6 +185,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               error={errors[`schedules.${index}.dinner`]}
               maxLength='10'
               valueLength={item.dinner.length}
+              className='flex-1 w-full'
             >
               <TextInput
                 name={`schedules.${index}.dinner`}
@@ -205,6 +210,7 @@ export default function FnbField({ data, setData, errors, processing, readOnly=f
               error={errors[`schedules.${index}.cb_night`]}
               maxLength='10'
               valueLength={item.cb_night.length}
+              className='flex-1 w-full'
             >
               <TextInput
                 name={`schedules.${index}.cb_night`}

@@ -88,14 +88,14 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
   };
 
   const handleDepositChange = (e) => {
-    const value = e.target.value;
+    const value = e.target.value.replace(/\./g, '');
 
     // Set data if value matches the regex, otherwise do nothing
     if (/^[0-9]{0,10}$/.test(value)) {
       setData((prevData) => ({
         ...prevData,
         deposit: value ? parseInt(value, 10) : '',
-        depositValue: value ? addDotsCurrency(parseInt(value, 10)) : '',
+        depositValue: value ? addDotsCurrency(parseInt(value, 12)) : '',
       }));
     }
   };
@@ -368,14 +368,13 @@ export default function MainField({ data, setData, errors, pageName, selectOptio
             className='flex-1 !mb-0'
           >
             <TextInput
-              type='text'
               id='deposit'
               name='deposit'
               className='mt-1 block w-full !rounded-l-none !rounded-r-md'
               value={data.depositValue || ''}
               placeholder='Deposit...'
               onChange={handleDepositChange}
-              pattern='^[0-9]{0,10}$'
+              pattern='^[0-9.]{0,12}$'
               isDisabled={readOnly}
             />
           </FieldGroup>
