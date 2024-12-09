@@ -3,9 +3,9 @@ import { router } from '@inertiajs/react';
 import { Trash2 } from 'lucide-react';
 import ConfirmDelete from '@/Components/Notification/confirmDelete';
 
-const ButtonDelete = ({ id, routeName, className='', withText=true }) => {
+const ButtonDelete = ({ id, routeName, className='', withText=true, name='' }) => {
   const handleDelete = async () => {
-    const confirmed = await ConfirmDelete();
+    const confirmed = await ConfirmDelete(name);
     if (confirmed) {
       router.delete(route(routeName, id));
     }

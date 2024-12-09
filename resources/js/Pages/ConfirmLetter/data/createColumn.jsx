@@ -126,7 +126,8 @@ const createColumn = () => {
         }
         {(permissionDelete && item.canDelete) &&
           <ButtonDelete 
-            id={item.id} 
+            id={item.id}
+            name={item.code}
             routeName='confirm-letter.destroy'
             className='!bg-danger !ml-0 text-white py-2 px-3 rounded-md'
             withText={false}

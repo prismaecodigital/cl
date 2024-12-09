@@ -38,7 +38,7 @@ const createColumn = () => {
           </Link>
         }
         {(permissionDelete && item.canDelete) &&
-          <ButtonDelete id={item.id} routeName='organizations.destroy' />
+          <ButtonDelete id={item.id} name={item.name} routeName='organizations.destroy' />
         }
       </>
     ),
