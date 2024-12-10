@@ -11,6 +11,8 @@ function Create({ roles }) {
     email: '',
     phone: '',
     password: '',
+    sign: '',
+    signPreview: '',
     role: '',
     roleSelected: '',
 	};

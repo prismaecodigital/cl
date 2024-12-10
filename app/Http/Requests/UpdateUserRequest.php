@@ -33,6 +33,7 @@ class UpdateUserRequest extends FormRequest
             'password' => ['nullable', 'string'],
             'role' => ['required', 'array', 'min:1'],
             'role.*' => ['integer', 'exists:roles,id'],
+            'sign' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
         ];
     }
 }

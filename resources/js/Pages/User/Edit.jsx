@@ -5,7 +5,7 @@ import { userBreadcrumb } from '@/utils/breadcrumbContent';
 import UserForm from './component/UserForm';
 import convertOptions from '@/utils/convertOptions';
 
-function Edit({ roles, user }) {
+function Edit({ roles, user, sign }) {
   const { username, fullname, email, phone, has_roles } = user;
   const data = {
 		username: username,
@@ -13,7 +13,9 @@ function Edit({ roles, user }) {
     email: email,
     phone: phone,
     password: '',
-    role: has_roles.map(item => item.value),
+    sign: '',
+    signPreview: sign,
+    role: has_roles.map(item => item.id),
     roleSelected: convertOptions(has_roles),
 	};
 
