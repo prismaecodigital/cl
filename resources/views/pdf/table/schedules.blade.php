@@ -1,4 +1,4 @@
-<h2 class='text--sub-title'>Jadwal Food and Bevarage</h2>
+<h2 class='text--sub-title'>Jadwal Food and Beverage</h2>
 
 <table class="schedule-table">
     @php
