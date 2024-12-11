@@ -41,7 +41,9 @@
                 </td>
             </tr>
             <tr class="sign-image">
-                <td></td>
+                <td>
+                    <img src="{{ $sign }}" alt="Sales sign">
+                </td>
                 <td></td>
             </tr>
             <tr>

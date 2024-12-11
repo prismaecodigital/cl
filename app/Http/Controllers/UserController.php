@@ -57,7 +57,7 @@ class UserController extends Controller
             $user = User::create($validated);
             $user->hasRoles()->sync($validated['role']);
             if($validated['sign']){
-                $user->addMedia($validated['sign'])->toMediaCollection('signs');
+                $user->addMedia($validated['sign'], 'media')->toMediaCollection('signs');
             }
 
             DB::commit();

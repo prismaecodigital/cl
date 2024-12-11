@@ -160,6 +160,7 @@ class ConfirmLetterController extends Controller
     {
         $letter->load('createdBy', 'organization', 'contact', 'event', 'room', 'hasNotes.notePackage.package', 'hasFnb');
         $data = json_encode(new PDFConfirmLetterResource($letter));
+        $sign = $letter->createdBy->getFirstMedia('signs')->getPath();
 
         if($request->has('preview')){
             $css = asset('css/confirm-letter.css');
@@ -170,7 +171,7 @@ class ConfirmLetterController extends Controller
         $css = public_path('css\confirm-letter.css');
         $logo = public_path('ole-suites-hotel-cottage.png');
 
-        $pdf = Pdf::loadView('generate-pdf', compact('data', 'css', 'logo'));
+        $pdf = Pdf::loadView('generate-pdf', compact('data', 'css', 'logo', 'sign'));
         
         $pdf->set_option('isHtml5ParserEnabled', true);
         $pdf->set_option('isPhpEnabled', true);
