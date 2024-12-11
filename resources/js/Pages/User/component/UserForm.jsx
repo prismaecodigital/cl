@@ -7,7 +7,7 @@ import LoadingButton from '@/Components/Button/LoadingButton';
 import FileInput from '@/Components/Form/FileInput';
 
 export default function UserForm({ method, initialValues, routeName, roles, user='' }) {
-  const { data, setData, post, patch, errors, processing } = useForm({
+  const { data, setData, post, errors, processing } = useForm({
     ...initialValues
   });
 
@@ -28,17 +28,18 @@ export default function UserForm({ method, initialValues, routeName, roles, user
 		}));
   }
 
-  const submit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    
     if (method === 'post') {
       post(route(routeName));
     } else if (method === 'patch') {
-      patch(route(routeName, user));
+      post(route(routeName, user));
     }
   };
 
   return (
-    <form onSubmit={submit} encType='multipart/form-data' className='w-full'>
+    <form onSubmit={handleSubmit} className='w-full'>
       {/* Username */}
       <FieldGroup
         label='Username'
@@ -177,7 +178,10 @@ export default function UserForm({ method, initialValues, routeName, roles, user
         />
       </FieldGroup>
 
-      <LoadingButton disabled={processing}>
+      <LoadingButton
+        type='submit'
+        disabled={processing}
+      >
         Submit
       </LoadingButton>
     </form>

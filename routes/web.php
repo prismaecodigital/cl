@@ -49,6 +49,7 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::resource('confirm-letter', ConfirmLetterController::class)
            ->parameters(['confirm-letter' => 'letter']);
 
+    Route::post('authorization/users/{user}', [UserController::class, 'update'])->name('users.post.update');
     Route::patch('/update-progress/{letter}', [ConfirmLetterController::class, 'updateProgress'])->name('confirm-letter.progress');
     Route::get('/export-confirmation-letter/{letter}', [ConfirmLetterController::class, 'exportPDF'])->name('confirm-letter.export');
     Route::get('/get-contact-organization', [OrganizationController::class, 'getContact'])->name('contactOrganization');

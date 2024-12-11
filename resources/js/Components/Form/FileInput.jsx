@@ -33,7 +33,10 @@ export default forwardRef(function FileInput({
 
   const handleClear = () => {
     setPreview('');
-    onFileChange(null, '');
+    onFileChange(null, ''); // Clear the file data in parent state
+    if (input.current) {
+      input.current.value = ''; // Reset the file input field
+    }
   };
 
   return (

@@ -26,7 +26,7 @@ function Edit({ roles, user, sign }) {
       <UserForm
         method='patch'
         initialValues={data}
-        routeName='users.update'
+        routeName='users.post.update'
         roles={roles}
         user={user}
       />
