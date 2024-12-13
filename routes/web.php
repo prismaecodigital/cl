@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ConfirmLetterController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\PackageController;
@@ -28,11 +29,9 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware(['auth', 'verified'])->group(function() {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
     Route::resources([
         'database/organizations' => OrganizationController::class,
         'database/contacts' => ContactController::class,
@@ -45,21 +44,29 @@ Route::middleware(['auth', 'verified'])->group(function() {
         'authorization/permissions' => PermissionController::class
     ]);
 
-    // Change default param from {confirm_leter} to {letter}
+    // Change default param from {confirm-leter} to {letter}
     Route::resource('confirm-letter', ConfirmLetterController::class)
            ->parameters(['confirm-letter' => 'letter']);
 
+    // Issues when sending file with multipart/form-data can't use method PUT/PATCH
     Route::post('authorization/users/{user}', [UserController::class, 'update'])->name('users.post.update');
+    // Update confirmation letter progress
     Route::patch('/update-progress/{letter}', [ConfirmLetterController::class, 'updateProgress'])->name('confirm-letter.progress');
+    // Render PDF of confirmation letter
     Route::get('/export-confirmation-letter/{letter}', [ConfirmLetterController::class, 'exportPDF'])->name('confirm-letter.export');
+    // Get PIC from selected organization
     Route::get('/get-contact-organization', [OrganizationController::class, 'getContact'])->name('contactOrganization');
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile/{user}', [ProfileController::class, 'index'])->name('profile.index');
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Route::get('/dashboard', function () {
+//     return Inertia::render('Dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
