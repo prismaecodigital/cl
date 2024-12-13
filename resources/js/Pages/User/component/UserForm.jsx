@@ -6,8 +6,8 @@ import Select from 'react-select';
 import LoadingButton from '@/Components/Button/LoadingButton';
 import FileInput from '@/Components/Form/FileInput';
 
-export default function UserForm({ method, initialValues, routeName, roles, user='' }) {
-  const { data, setData, post, errors, processing } = useForm({
+export default function UserForm({ method, initialValues, routeName, roles, user='', page='User' }) {
+  const { data, setData, post, put, errors, processing } = useForm({
     ...initialValues
   });
 
@@ -28,15 +28,17 @@ export default function UserForm({ method, initialValues, routeName, roles, user
 		}));
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    if (method === 'post') {
-      post(route(routeName));
-    } else if (method === 'patch') {
-      post(route(routeName, user));
-    }
-  };
+const handleSubmit = (e) => {
+  e.preventDefault();
+  
+  if (method === 'post') {
+    post(route(routeName));
+  } else if (method === 'patch') {
+    post(route(routeName, {user, page}));
+  } else if (method === 'put') {
+    put(route(routeName, {user, page}));
+  }
+};
 
   return (
     <form onSubmit={handleSubmit} className='w-full'>
@@ -63,22 +65,24 @@ export default function UserForm({ method, initialValues, routeName, roles, user
       </FieldGroup>
 
       {/* Role */}
-      <FieldGroup
-        label='Role'
-        name='role'
-        error={errors.role}
-        isPrimary={true}
-      >
-        <Select
-          id='role'
-          options={roles}
-          value={data.roleSelected}
-          onChange={handleRoleChange}
-          className="mt-1 block w-full"
-          isMulti
-          required
-        />
-      </FieldGroup>
+      {page === 'User' &&
+        <FieldGroup
+          label='Role'
+          name='role'
+          error={errors.role}
+          isPrimary={true}
+        >
+          <Select
+            id='role'
+            options={roles}
+            value={data.roleSelected}
+            onChange={handleRoleChange}
+            className="mt-1 block w-full"
+            isMulti
+            required
+          />
+        </FieldGroup>
+      }
 
       {/* Fullname */}
       <FieldGroup
@@ -164,19 +168,21 @@ export default function UserForm({ method, initialValues, routeName, roles, user
       </FieldGroup>
 
       {/* Sign */}
-      <FieldGroup
-        label='Sign'
-        name='sign'
-        error={errors.sign}
-      >
-        <FileInput
-          id='sign'
+      {page === 'User' && 
+        <FieldGroup
+          label='Sign'
           name='sign'
-          accept="image/*"
-          onFileChange={handleFileChange}
-          currentPreview={data.signPreview}
-        />
-      </FieldGroup>
+          error={errors.sign}
+        >
+          <FileInput
+            id='sign'
+            name='sign'
+            accept="image/*"
+            onFileChange={handleFileChange}
+            currentPreview={data.signPreview}
+          />
+        </FieldGroup>
+      }
 
       <LoadingButton
         type='submit'

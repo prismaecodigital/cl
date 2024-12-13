@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,14 +16,14 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function index(User $user): Response
+    public function index(User $user)
     {
         // Check if the authenticated user is the same as the requested user
         if (auth()->id() !== $user->id) {
-            // Redirect back to the previous page
-            return redirect()->back();
+            return redirect()->back(); // Redirect back to the previous page
         }
 
+        $user->load('hasRoles');
         return Inertia::render('Profile/Index', [
             'user' => $user,
         ]);

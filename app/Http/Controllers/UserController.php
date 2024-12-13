@@ -56,7 +56,7 @@ class UserController extends Controller
 
             $user = User::create($validated);
             $user->hasRoles()->sync($validated['role']);
-            if($validated['sign']){
+            if($request->hasFile('sign')){
                 $user->addMedia($validated['sign'], 'media')->toMediaCollection('signs');
             }
 
@@ -99,18 +99,22 @@ class UserController extends Controller
     {
         DB::beginTransaction();
         try {
+            $page = $request->query('page');
             $validated = $request->validated();
 
             $user->fill($validated);
             $user->save();
             $user->hasRoles()->sync($validated['role']);
 
-            if($validated['sign']){
+            if($request->hasFile('sign')){
                 $user->clearMediaCollection('signs'); // Remove the old image
                 $user->addMedia($validated['sign'])->toMediaCollection('signs');
             }
 
             DB::commit();
+            if($page == 'Profile'){
+                return Redirect::route('dashboard')->with('toast-success', 'Profile Updated!');
+            }
             return Redirect::route('users.index')->with('toast-success', 'User Updated!');
         } catch (\Exception $e) {
             DB::rollBack();
