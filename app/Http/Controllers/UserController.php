@@ -45,8 +45,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
-    // public function store(CreateUserRequest $request): RedirectResponse
+    public function store(CreateUserRequest $request): RedirectResponse
     {
         DB::beginTransaction();
         try {
