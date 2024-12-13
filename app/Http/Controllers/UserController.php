@@ -48,8 +48,6 @@ class UserController extends Controller
     public function store(Request $request): RedirectResponse
     // public function store(CreateUserRequest $request): RedirectResponse
     {
-        dd($request->input());
-
         DB::beginTransaction();
         try {
             $validated = $request->validated();
